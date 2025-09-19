@@ -30,17 +30,17 @@ and reproducible plots for papers and reports. MATLAB code.
    create_scenarios
 
 2. Run one day (1 min)
-```
-[outFN, SOC_end] = run_district_day(32, 'scn4_8PV_4BESS.mat');
+```[outFN, SOC_end] = run_district_day(32, 'scn4_8PV_4BESS.mat');
+
 
 3. Post process + plots for that day 
-post_process_day(2023, 32, 'scn4_8PV_4BESS.mat');
+```post_process_day(2023, 32, 'scn4_8PV_4BESS.mat');
 
 4. Annual pipeline
-run_district(2023, 'scn4_8PV_4BESS.mat');  % daily sims with stateful SOC
+```run_district(2023, 'scn4_8PV_4BESS.mat');  % daily sims with stateful SOC
 post_process_year(2023, 'scn4_8PV_4BESS'); % monthly + annual KPIs
 
 5. Figure used in the one-pager
-plot_selfsuff_monthly(2023, 'scn1_3PV');
+```plot_selfsuff_monthly(2023, 'scn1_3PV');
 plot_selfsuff_monthly(2023, 'scn4_8PV_4BESS');
 plot_selfsuff_vs_smartnodes_year(2023);
