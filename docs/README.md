@@ -27,9 +27,9 @@ and reproducible plots for papers and reports. MATLAB code.
 1) **Clone e setup path**
 ```matlab
 startup
-create_scenarios
+create_scenarios ```
 
 2) **Run one day (1-min step)**
 
-'''
-[outFN, SOC_end] = run_district_day(32, 'scn4_8PV_4BESS.mat');
+```
+[outFN, SOC_end] = run_district_day(32, 'scn4_8PV_4BESS.mat');```
