@@ -1,0 +1,23 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# MATLAB / temp
+*.asv
+*.mex*
+matlab_crash_dump.*
+*.autosave
+.matlab/
+
+# Project outputs (NON versionare risultati grezzi)
+results/
+figs/*/day*/
+figs/**/day*/
+**/backlog/**
+
+# Logs & temp
+*.log
+*.tmp
+*.bak
