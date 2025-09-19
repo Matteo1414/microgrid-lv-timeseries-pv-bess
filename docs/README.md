@@ -5,6 +5,7 @@ Backward/Forward Sweep power flow, robust KPI pipeline (daily → monthly → an
 and reproducible plots for papers and reports. MATLAB code.
 
 > One-pager PDF: see `docs/one-pager.pdf`.
+**📄 One-pager:** [PDF](docs/one-pager.pdf)
 
 ---
 
@@ -19,7 +20,6 @@ and reproducible plots for papers and reports. MATLAB code.
 - **Reproducibility**: deterministic seeds for synthetic loads; clean startup/shutdown
 
 ---
-**📄 One-pager:** [PDF](docs/one-pager.pdf)
 
 
 
