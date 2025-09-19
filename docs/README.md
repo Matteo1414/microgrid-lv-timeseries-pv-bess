@@ -19,6 +19,9 @@ and reproducible plots for papers and reports. MATLAB code.
 - **Reproducibility**: deterministic seeds for synthetic loads; clean startup/shutdown
 
 ---
+**📄 One-pager:** [PDF](docs/one-pager.pdf)
+
+
 
 ## Quick start
 
