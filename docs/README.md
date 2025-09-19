@@ -28,3 +28,8 @@ and reproducible plots for papers and reports. MATLAB code.
 ```matlab
 startup
 create_scenarios
+
+2) **Run one day (1-min step)**
+
+'''
+[outFN, SOC_end] = run_district_day(32, 'scn4_8PV_4BESS.mat');
