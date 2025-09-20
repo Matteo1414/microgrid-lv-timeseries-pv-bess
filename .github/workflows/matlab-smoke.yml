@@ -3,66 +3,56 @@ name: CI – MATLAB smoke test
 on:
   workflow_dispatch:
 
+# permessi minimi per checkout + LFS
+permissions:
+  contents: read
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
 
     steps:
+      # 1) Checkout con LFS abilitato
       - name: Checkout repository (with Git LFS)
         uses: actions/checkout@v4
         with:
-          lfs: true          # scarica i .mat veri invece dei pointer
+          lfs: true
           fetch-depth: 0
 
-      - name: Verify LFS content
+      # 2) Cintura e bretelle: forza il pull LFS e verifica che NON siano rimasti puntatori
+      - name: Force LFS pull + sanity check
         run: |
           git lfs version
-          git lfs install
+          git lfs fetch --all
+          git lfs checkout
           git lfs pull
-          echo "=== LFS tracked files ==="
-          git lfs ls-files --long || true
-          echo "=== data/scenarios contents ==="
+          echo "=== Elenco scenari ==="
           ls -lh data/scenarios || true
-          stat --printf="%n %s bytes\n" data/scenarios/* || true
+          echo "=== Controllo puntatore LFS ==="
+          if head -n 1 data/scenarios/scn2_SPV_1BESS.mat | grep -qi "git-lfs"; then
+            echo "::error::LFS pointer ancora presente per data/scenarios/scn2_SPV_1BESS.mat (download LFS fallito)."
+            exit 1
+          fi
 
+      # 3) Installa MATLAB
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
         with:
           release: R2025a
           products: MATLAB
 
+      # 4) Esegui 1 giorno + check
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            try
-              startup;   % prepara path e cartelle
+            startup;                                           % path + cartelle output
+            [outFN, ~] = run_district_day(32,'scn2_SPV_1BESS.mat');
+            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
+            post_process_day(2023,32,'scn2_SPV_1BESS.mat');    % opzionale KPI e figure "headless"
+            verify_day_robust;                                 % stampa check formali
 
-              scenarioFN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
-
-              % controlli difensivi sui dati LFS
-              if ~isfile(scenarioFN)
-                  dir(fullfile('data','scenarios'));
-                  error('Scenario file missing: %s', scenarioFN);
-              end
-              info = dir(scenarioFN);
-              if info.bytes < 2000
-                  error('Scenario file looks like an LFS pointer (too small: %d bytes).', info.bytes);
-              end
-
-              % run
-              [outFN, ~] = run_district_day(32, scenarioFN);
-              assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
-
-              % KPI/figure + check formali
-              post_process_day(2023,32,'scn2_5PV_1BESS.mat');
-              verify_day_robust;
-
-            catch ME
-              disp(getReport(ME,'extended','hyperlinks','off'));
-              exit(1)
-            end
-
+      # 5) Carica risultati/figure come artifact (se ci sono)
       - name: Upload artifacts (results + figs)
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,5 +61,5 @@ jobs:
           path: |
             results/**
             figs/**
-          if-no-files-found: warn
+          if-no-files-found: ignore
           retention-days: 7
