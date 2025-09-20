@@ -1,62 +1,75 @@
 name: CI – MATLAB smoke test
 
 on:
-  workflow_dispatch:   # lo lanci a mano
+  workflow_dispatch:
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository (with Git LFS)
+      - name: Checkout repository (with Git LFS)
         uses: actions/checkout@v4
         with:
-          lfs: true        # <<< fondamentale per scaricare i .mat reali
+          lfs: true          # scarica i .mat veri invece dei pointer
+          fetch-depth: 0
+
+      - name: Verify LFS content
+        run: |
+          git lfs version
+          git lfs install
+          git lfs pull
+          echo "=== LFS tracked files ==="
+          git lfs ls-files --long || true
+          echo "=== data/scenarios contents ==="
+          ls -lh data/scenarios || true
+          stat --printf="%n %s bytes\n" data/scenarios/* || true
 
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
-        # opzionale: puoi fissare una release
-        # with:
-        #   release: R2025a
-        #   products: MATLAB
+        with:
+          release: R2025a
+          products: MATLAB
 
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            % prepara path/cartelle
-            startup;
+            try
+              startup;   % prepara path e cartelle
 
-            % scenario: usa il path completo dentro al repo
-            scenarioFN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
+              scenarioFN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
 
-            % verifica che il file LFS sia stato scaricato davvero
-            if ~isfile(scenarioFN)
-                error('Scenario file missing: %s', scenarioFN);
+              % controlli difensivi sui dati LFS
+              if ~isfile(scenarioFN)
+                  dir(fullfile('data','scenarios'));
+                  error('Scenario file missing: %s', scenarioFN);
+              end
+              info = dir(scenarioFN);
+              if info.bytes < 2000
+                  error('Scenario file looks like an LFS pointer (too small: %d bytes).', info.bytes);
+              end
+
+              % run
+              [outFN, ~] = run_district_day(32, scenarioFN);
+              assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
+
+              % KPI/figure + check formali
+              post_process_day(2023,32,'scn2_5PV_1BESS.mat');
+              verify_day_robust;
+
+            catch ME
+              disp(getReport(ME,'extended','hyperlinks','off'));
+              exit(1)
             end
-            % prova a leggerlo (se fosse solo un pointer LFS, qui esplode)
-            s = load(scenarioFN,'-mat'); clear s;
 
-            % lancia simulazione
-            [outFN, ~] = run_district_day(32, scenarioFN);
-
-            % verifica output
-            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
-
-            % KPI/figure (ok anche in headless)
-            post_process_day(2023,32,'scn2_5PV_1BESS.mat');
-
-            % check formali
-            verify_day_robust;
-
-      - name: Upload artifacts (results/figs)
+      - name: Upload artifacts (results + figs)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: matlab-results
           path: |
-            results/daily/**
-            results/summary/**
+            results/**
             figs/**
-          if-no-files-found: ignore
+          if-no-files-found: warn
           retention-days: 7
