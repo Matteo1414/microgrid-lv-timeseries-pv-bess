@@ -1,36 +1,29 @@
 name: CI – MATLAB smoke test
-
 on:
   workflow_dispatch:
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
-
     steps:
-      # 1) Checkout con LFS
-      - name: Checkout repository (LFS)
+      - name: Checkout (with LFS)
         uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
 
-      # 2) Forza download degli oggetti LFS + diagnostica
-      - name: Pull LFS & list scenarios
+      - name: Pre-flight check (what's in the repo?)
         shell: bash
         run: |
-          git lfs version || (sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install)
-          git lfs pull
-          echo "=== LFS files ==="
-          git lfs ls-files || true
-          echo "=== data/scenarios ==="
+          echo "== repo root =="
+          ls -lah
+          echo "== data =="
+          ls -lah data || true
+          echo "== data/scenarios =="
           ls -lah data/scenarios || true
-          # Mostra prima riga di ogni *.mat per scovare puntatori LFS
-          for f in data/scenarios/*.mat; do
-            [ -f "$f" ] && head -n 1 "$f" || true
-          done
+          git lfs version || true
+          git lfs ls-files || true
 
-      # 3) MATLAB
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
         with:
@@ -40,51 +33,14 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            %% ——— startup e path
             startup;
-
-            scn   = 'scn2_5PV_1BESS.mat';
-            root  = getenv('MG_ROOT');
-            scDir = fullfile(root,'data','scenarios');
-            fn    = fullfile(scDir, scn);
-
-            % Helper per capire se è un vero MAT (non puntatore LFS)
-            function ok = is_valid_mat(ff)
-              ok = false;
-              if exist(ff,'file') ~= 2, return; end
-              try
-                S = whos('-file', ff);
-                ok = ~isempty(S);
-              catch
-                ok = false;
-              end
-            end
-
-            % 1) Se non è valido → prova a tirare LFS dal runner
-            if ~is_valid_mat(fn)
-              fprintf('[CI] %s non è un MAT valido → provo git lfs pull...\n', fn);
-              system('git lfs pull');
-            end
-
-            % 2) Se ancora non valido → crea gli scenari da sorgente
-            if ~is_valid_mat(fn)
-              if exist('create_scenarios','file') == 2
-                fprintf('[CI] Rigenero gli scenari con create_scenarios.m ...\n');
-                create_scenarios;
-              else
-                error('Scenario %s mancante/corrotto e create_scenarios non disponibile.', scn);
-              end
-            end
-
-            assert(is_valid_mat(fn), 'Scenario MAT non disponibile: %s', fn);
-
-            % — Simulazione, KPI e verifiche
-            [outFN, ~] = run_district_day(32, fn);      % path assoluto ok
+            SCN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
+            assert(isfile(SCN), '*** Manca lo scenario: %s (aggiungilo a data/scenarios/)', SCN);
+            [outFN, ~] = run_district_day(32, SCN);
             assert(isfile(outFN), 'Output MAT non creato: %s', outFN);
-            post_process_day(2023, 32, scn);
+            post_process_day(2023, 32, 'scn2_5PV_1BESS.mat');
             verify_day_robust;
 
-      # 4) Artifacts (se esistono)
       - name: Upload artifacts (results/figs)
         if: always()
         uses: actions/upload-artifact@v4
