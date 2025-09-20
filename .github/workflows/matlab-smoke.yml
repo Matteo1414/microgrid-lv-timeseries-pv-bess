@@ -1,47 +1,68 @@
 name: CI – MATLAB smoke test
 
 on:
-  workflow_dispatch:  # lo lanci a mano quando vuoi
-
-permissions:
-  contents: read
-  actions: write
+  # run it manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
 
+    steps:
+      # 1) Checkout INCLUDING Git LFS files (your scenario .mat are in LFS)
+      - name: Check out repository (with LFS)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      # 2) Make absolutely sure LFS objects are present
+      - name: Ensure LFS objects are downloaded
+        run: |
+          git lfs version || (sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install)
+          git lfs pull
+
+      # 3) Install MATLAB on the runner
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
+        with:
+          release: R2025a
 
+      # 4) Run a one-day simulation and basic checks
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            disp('=== DIAG ==='); disp(pwd); dir
-            assert(exist('startup','file')==2, 'startup.m non trovato nella repo');
-            startup;                      % addpath + crea results/ e figs/
-            assert(exist('run_district_day','file')==2, 'run_district_day.m non in path');
+            startup;                                    % set paths + create results/ and figs/
+            scn = 'scn2_5PV_1BESS.mat';
 
-            % Simula 1 giorno scenario 2
-            [outFN, ~] = run_district_day(32, 'scn2_5PV_1BESS.mat');
-            assert(isfile(outFN), sprintf('MAT non creato: %s', outFN));
+            % --- robust scenario availability (LFS or build on the fly) ---
+            root = getenv('MG_ROOT');
+            scDir = fullfile(root,'data','scenarios');
+            if ~isfile(fullfile(scDir, scn))
+              if exist('create_scenarios','file')==2
+                fprintf('[CI] %s missing → running create_scenarios...\n', scn);
+                create_scenarios;   % will write into data/scenarios
+              else
+                error('Scenario %s not found and create_scenarios.m is not available.', scn);
+              end
+            end
 
-            % Post-process e check "robusto"
-            post_process_day(2023, 32, 'scn2_5PV_1BESS.mat');
-            verify_day_robust;
+            % --- simulate, post-process, and run formal verifications ---
+            [outFN, ~] = run_district_day(32, scn);
+            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
+            post_process_day(2023, 32, scn);            % produces daily KPI/figs
+            verify_day_robust;                          % sanity checks & prints
 
+      # 5) Publish results as downloadable artifacts (kept for 7 days)
       - name: Upload artifacts (results/figs)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-            name: matlab-results
-            path: |
-              results/daily/**
-              results/summary/**
-              figs/**
-            if-no-files-found: warn
-            retention-days: 7
+          name: matlab-results
+          path: |
+            results/daily/**
+            results/summary/**
+            figs/**
+          if-no-files-found: ignore
+          retention-days: 7
