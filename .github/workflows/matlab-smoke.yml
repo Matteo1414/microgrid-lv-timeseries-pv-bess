@@ -3,14 +3,12 @@ name: CI – MATLAB smoke test
 on:
   workflow_dispatch:
 
-# permessi minimi per checkout + LFS
 permissions:
   contents: read
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
-
     steps:
       # 1) Checkout con LFS abilitato
       - name: Checkout repository (with Git LFS)
@@ -19,40 +17,41 @@ jobs:
           lfs: true
           fetch-depth: 0
 
-      # 2) Cintura e bretelle: forza il pull LFS e verifica che NON siano rimasti puntatori
-      - name: Force LFS pull + sanity check
+      # 2) Forza fetch/checkout LFS e fallisci se restano puntatori
+      - name: Force LFS fetch & sanity check
         run: |
+          set -euxo pipefail
           git lfs version
-          git lfs fetch --all
-          git lfs checkout
-          git lfs pull
-          echo "=== Elenco scenari ==="
+          git lfs install --local
+          # scarica gli oggetti necessari
+          git lfs fetch origin --include="data/scenarios/*,data/PV_profiles/*,data/Load_Profiles/*" --exclude=""
+          git lfs checkout --include="data/scenarios/*,data/PV_profiles/*,data/Load_Profiles/*" --force
+          echo "== LFS files =="
+          git lfs ls-files
           ls -lh data/scenarios || true
-          echo "=== Controllo puntatore LFS ==="
-          if head -n 1 data/scenarios/scn2_SPV_1BESS.mat | grep -qi "git-lfs"; then
-            echo "::error::LFS pointer ancora presente per data/scenarios/scn2_SPV_1BESS.mat (download LFS fallito)."
-            exit 1
+          # fallisci se qualche file è ancora un puntatore
+          if grep -RIlq '^version https://git-lfs.github.com/spec' data/scenarios ; then
+            echo "ERROR: sono rimasti puntatori LFS in data/scenarios"; exit 1
           fi
 
-      # 3) Installa MATLAB
+      # 3) MATLAB
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
         with:
           release: R2025a
           products: MATLAB
 
-      # 4) Esegui 1 giorno + check
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            startup;                                           % path + cartelle output
+            startup;                                     % path + cartelle output
             [outFN, ~] = run_district_day(32,'scn2_SPV_1BESS.mat');
             assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
-            post_process_day(2023,32,'scn2_SPV_1BESS.mat');    % opzionale KPI e figure "headless"
-            verify_day_robust;                                 % stampa check formali
+            post_process_day(2023,32,'scn2_SPV_1BESS.mat');  % KPI e figure (headless)
+            verify_day_robust;                           % stampa check formali
 
-      # 5) Carica risultati/figure come artifact (se ci sono)
+      # 4) Artifact (risultati/figs)
       - name: Upload artifacts (results + figs)
         if: always()
         uses: actions/upload-artifact@v4
