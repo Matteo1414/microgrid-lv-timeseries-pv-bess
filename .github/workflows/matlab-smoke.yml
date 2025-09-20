@@ -1,7 +1,6 @@
 name: CI – MATLAB smoke test
 
 on:
-  # run it manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -9,52 +8,83 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout INCLUDING Git LFS files (your scenario .mat are in LFS)
-      - name: Check out repository (with LFS)
+      # 1) Checkout con LFS
+      - name: Checkout repository (LFS)
         uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
 
-      # 2) Make absolutely sure LFS objects are present
-      - name: Ensure LFS objects are downloaded
+      # 2) Forza download degli oggetti LFS + diagnostica
+      - name: Pull LFS & list scenarios
+        shell: bash
         run: |
           git lfs version || (sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install)
           git lfs pull
+          echo "=== LFS files ==="
+          git lfs ls-files || true
+          echo "=== data/scenarios ==="
+          ls -lah data/scenarios || true
+          # Mostra prima riga di ogni *.mat per scovare puntatori LFS
+          for f in data/scenarios/*.mat; do
+            [ -f "$f" ] && head -n 1 "$f" || true
+          done
 
-      # 3) Install MATLAB on the runner
+      # 3) MATLAB
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
         with:
           release: R2025a
 
-      # 4) Run a one-day simulation and basic checks
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            startup;                                    % set paths + create results/ and figs/
-            scn = 'scn2_5PV_1BESS.mat';
+            %% ——— startup e path
+            startup;
 
-            % --- robust scenario availability (LFS or build on the fly) ---
-            root = getenv('MG_ROOT');
+            scn   = 'scn2_5PV_1BESS.mat';
+            root  = getenv('MG_ROOT');
             scDir = fullfile(root,'data','scenarios');
-            if ~isfile(fullfile(scDir, scn))
-              if exist('create_scenarios','file')==2
-                fprintf('[CI] %s missing → running create_scenarios...\n', scn);
-                create_scenarios;   % will write into data/scenarios
-              else
-                error('Scenario %s not found and create_scenarios.m is not available.', scn);
+            fn    = fullfile(scDir, scn);
+
+            % Helper per capire se è un vero MAT (non puntatore LFS)
+            function ok = is_valid_mat(ff)
+              ok = false;
+              if exist(ff,'file') ~= 2, return; end
+              try
+                S = whos('-file', ff);
+                ok = ~isempty(S);
+              catch
+                ok = false;
               end
             end
 
-            % --- simulate, post-process, and run formal verifications ---
-            [outFN, ~] = run_district_day(32, scn);
-            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
-            post_process_day(2023, 32, scn);            % produces daily KPI/figs
-            verify_day_robust;                          % sanity checks & prints
+            % 1) Se non è valido → prova a tirare LFS dal runner
+            if ~is_valid_mat(fn)
+              fprintf('[CI] %s non è un MAT valido → provo git lfs pull...\n', fn);
+              system('git lfs pull');
+            end
 
-      # 5) Publish results as downloadable artifacts (kept for 7 days)
+            % 2) Se ancora non valido → crea gli scenari da sorgente
+            if ~is_valid_mat(fn)
+              if exist('create_scenarios','file') == 2
+                fprintf('[CI] Rigenero gli scenari con create_scenarios.m ...\n');
+                create_scenarios;
+              else
+                error('Scenario %s mancante/corrotto e create_scenarios non disponibile.', scn);
+              end
+            end
+
+            assert(is_valid_mat(fn), 'Scenario MAT non disponibile: %s', fn);
+
+            % — Simulazione, KPI e verifiche
+            [outFN, ~] = run_district_day(32, fn);      % path assoluto ok
+            assert(isfile(outFN), 'Output MAT non creato: %s', outFN);
+            post_process_day(2023, 32, scn);
+            verify_day_robust;
+
+      # 4) Artifacts (se esistono)
       - name: Upload artifacts (results/figs)
         if: always()
         uses: actions/upload-artifact@v4
