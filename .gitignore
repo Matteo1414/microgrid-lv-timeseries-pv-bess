@@ -1,23 +1,38 @@
-# OS / editors
+# =========================
+# OS / Editors
+# =========================
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# MATLAB / temp
+# =========================
+# MATLAB (temp / crash / autosave)
+# =========================
 *.asv
 *.mex*
 matlab_crash_dump.*
 *.autosave
 .matlab/
 
-# Project outputs (NON versionare risultati grezzi)
-results/
-figs/*/day*/
-figs/**/day*/
+# =========================
+# Project outputs (GENERATI) → non versionarli
+# =========================
+results/**
+figs/**
+
+# Consenti solo placeholder, se li vuoi tenere nel repo
+!results/.gitkeep
+!results/README.md
+!figs/.gitkeep
+!figs/README.md
+
+# Se mai usi file di backlog
 **/backlog/**
 
-# Logs & temp
+# =========================
+# Log / temp generici
+# =========================
 *.log
 *.tmp
 *.bak
