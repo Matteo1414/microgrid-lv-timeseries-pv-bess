@@ -17,41 +17,39 @@ jobs:
           lfs: true
           fetch-depth: 0
 
-      # 2) Forza fetch/checkout LFS e fallisci se restano puntatori
-      - name: Force LFS fetch & sanity check
+      # 2) Forza fetch/checkout/pull LFS e controlla che i .mat siano veri file
+      - name: Force LFS pull + sanity check
+        shell: bash
         run: |
           set -euxo pipefail
           git lfs version
-          git lfs install --local
-          # scarica gli oggetti necessari
-          git lfs fetch origin --include="data/scenarios/*,data/PV_profiles/*,data/Load_Profiles/*" --exclude=""
-          git lfs checkout --include="data/scenarios/*,data/PV_profiles/*,data/Load_Profiles/*" --force
-          echo "== LFS files =="
-          git lfs ls-files
-          ls -lh data/scenarios || true
-          # fallisci se qualche file è ancora un puntatore
-          if grep -RIlq '^version https://git-lfs.github.com/spec' data/scenarios ; then
-            echo "ERROR: sono rimasti puntatori LFS in data/scenarios"; exit 1
-          fi
+          git lfs fetch --all
+          git lfs checkout
+          git lfs pull
+          echo "=== LFS files ==="
+          git lfs ls-files || true
+          echo "=== Contenuto data/scenarios ==="
+          ls -l data/scenarios || true
+          # Mostra info su uno scenario (deve essere binario, non 405 B)
+          file data/scenarios/scn2_5PV_1BESS.mat || true
 
-      # 3) MATLAB
+      # 3) Installa MATLAB
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
-        with:
-          release: R2025a
-          products: MATLAB
 
+      # 4) Esegui simulazione + check
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            startup;                                     % path + cartelle output
-            [outFN, ~] = run_district_day(32,'scn2_SPV_1BESS.mat');
-            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
-            post_process_day(2023,32,'scn2_SPV_1BESS.mat');  % KPI e figure (headless)
-            verify_day_robust;                           % stampa check formali
+            startup;                                   % path + cartelle output
+            [outFN, ~] = run_district_day(32,'scn2_5PV_1BESS.mat');
+            assert(isfile(outFN), "Output MAT not found: %s", outFN)
+            % opzionale: KPI e figure “headless”
+            post_process_day(2023,32,'scn2_5PV_1BESS.mat');
+            verify_day_robust;                         % stampa check formali
 
-      # 4) Artifact (risultati/figs)
+      # 5) Carica artefatti (risultati e figure)
       - name: Upload artifacts (results + figs)
         if: always()
         uses: actions/upload-artifact@v4
