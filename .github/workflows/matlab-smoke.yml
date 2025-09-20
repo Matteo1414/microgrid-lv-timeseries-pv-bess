@@ -1,44 +1,52 @@
 name: CI – MATLAB smoke test
+
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # lo lanci a mano
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout (with LFS)
+      - name: Check out repository (with Git LFS)
         uses: actions/checkout@v4
         with:
-          lfs: true
-          fetch-depth: 0
-
-      - name: Pre-flight check (what's in the repo?)
-        shell: bash
-        run: |
-          echo "== repo root =="
-          ls -lah
-          echo "== data =="
-          ls -lah data || true
-          echo "== data/scenarios =="
-          ls -lah data/scenarios || true
-          git lfs version || true
-          git lfs ls-files || true
+          lfs: true        # <<< fondamentale per scaricare i .mat reali
 
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
-        with:
-          release: R2025a
+        # opzionale: puoi fissare una release
+        # with:
+        #   release: R2025a
+        #   products: MATLAB
 
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
+            % prepara path/cartelle
             startup;
-            SCN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
-            assert(isfile(SCN), '*** Manca lo scenario: %s (aggiungilo a data/scenarios/)', SCN);
-            [outFN, ~] = run_district_day(32, SCN);
-            assert(isfile(outFN), 'Output MAT non creato: %s', outFN);
-            post_process_day(2023, 32, 'scn2_5PV_1BESS.mat');
+
+            % scenario: usa il path completo dentro al repo
+            scenarioFN = fullfile('data','scenarios','scn2_5PV_1BESS.mat');
+
+            % verifica che il file LFS sia stato scaricato davvero
+            if ~isfile(scenarioFN)
+                error('Scenario file missing: %s', scenarioFN);
+            end
+            % prova a leggerlo (se fosse solo un pointer LFS, qui esplode)
+            s = load(scenarioFN,'-mat'); clear s;
+
+            % lancia simulazione
+            [outFN, ~] = run_district_day(32, scenarioFN);
+
+            % verifica output
+            assert(isfile(outFN), sprintf('Output MAT not found: %s', outFN));
+
+            % KPI/figure (ok anche in headless)
+            post_process_day(2023,32,'scn2_5PV_1BESS.mat');
+
+            % check formali
             verify_day_robust;
 
       - name: Upload artifacts (results/figs)
