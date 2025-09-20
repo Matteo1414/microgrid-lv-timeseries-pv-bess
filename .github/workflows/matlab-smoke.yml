@@ -10,14 +10,12 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      # 1) Checkout con LFS abilitato
       - name: Checkout repository (with Git LFS)
         uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
 
-      # 2) Forza fetch/checkout/pull LFS e controlla che i .mat siano veri file
       - name: Force LFS pull + sanity check
         shell: bash
         run: |
@@ -30,26 +28,31 @@ jobs:
           git lfs ls-files || true
           echo "=== Contenuto data/scenarios ==="
           ls -l data/scenarios || true
-          # Mostra info su uno scenario (deve essere binario, non 405 B)
           file data/scenarios/scn2_5PV_1BESS.mat || true
 
-      # 3) Installa MATLAB
-      - name: Set up MATLAB
+      - name: Set up MATLAB (with toolboxes)
         uses: matlab-actions/setup-matlab@v2
+        with:
+          products: |
+            MATLAB
+            Statistics and Machine Learning Toolbox
 
-      # 4) Esegui simulazione + check
+      # (facoltativo) stampa le toolbox installate
+      - name: MATLAB ver
+        uses: matlab-actions/run-command@v2
+        with:
+          command: ver
+
       - name: Run 1-day simulation + checks
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            startup;                                   % path + cartelle output
+            startup;
             [outFN, ~] = run_district_day(32,'scn2_5PV_1BESS.mat');
             assert(isfile(outFN), "Output MAT not found: %s", outFN)
-            % opzionale: KPI e figure “headless”
             post_process_day(2023,32,'scn2_5PV_1BESS.mat');
-            verify_day_robust;                         % stampa check formali
+            verify_day_robust;
 
-      # 5) Carica artefatti (risultati e figure)
       - name: Upload artifacts (results + figs)
         if: always()
         uses: actions/upload-artifact@v4
