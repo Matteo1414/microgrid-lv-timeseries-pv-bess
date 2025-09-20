@@ -1,7 +1,11 @@
 name: CI – MATLAB smoke test
 
 on:
-  workflow_dispatch:   # lo lanci a mano quando vuoi
+  workflow_dispatch:  # lo lanci a mano quando vuoi
+
+permissions:
+  contents: read
+  actions: write
 
 jobs:
   smoke:
@@ -17,21 +21,27 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: |
-            startup;                                  % path + cartelle output
-            [outFN, ~] = run_district_day(32,'scn2_5PV_1BESS.mat');
-            assert(isfile(outFN), "Output MAT not found: %s", outFN)
-            % opzionale: KPI e figure “headless”
-            post_process_day(2023,32,'scn2_5PV_1BESS.mat');
-            verify_day_robust;                        % stampa check formali
+            disp('=== DIAG ==='); disp(pwd); dir
+            assert(exist('startup','file')==2, 'startup.m non trovato nella repo');
+            startup;                      % addpath + crea results/ e figs/
+            assert(exist('run_district_day','file')==2, 'run_district_day.m non in path');
+
+            % Simula 1 giorno scenario 2
+            [outFN, ~] = run_district_day(32, 'scn2_5PV_1BESS.mat');
+            assert(isfile(outFN), sprintf('MAT non creato: %s', outFN));
+
+            % Post-process e check "robusto"
+            post_process_day(2023, 32, 'scn2_5PV_1BESS.mat');
+            verify_day_robust;
 
       - name: Upload artifacts (results/figs)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: matlab-results
-          path: |
-            results/daily/**
-            results/summary/**
-            figs/**
-          if-no-files-found: ignore
-          retention-days: 7
+            name: matlab-results
+            path: |
+              results/daily/**
+              results/summary/**
+              figs/**
+            if-no-files-found: warn
+            retention-days: 7
