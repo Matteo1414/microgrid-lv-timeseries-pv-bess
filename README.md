@@ -38,4 +38,11 @@ The architecture is highly modular, separating raw data, core physics, and post-
 3. Run `startup.m` in the MATLAB command window to initialize environment variables and add subfolders to the path.
 4. **Baseline Heuristic Simulation:** Execute `src/main.m` to run the standard rule-based scenarios.
 5. **Predictive Control Simulation:** Execute `src/main_mpc.m` to run the advanced MPC optimization.
-6. **Diagnostics:** Run the
+6. **Diagnostics:** Run the stress test scripts to evaluate topological and load weaknesses.
+
+## 📊 Key Engineering Outcomes
+
+By shifting from a standard heuristic control approach to the MPC architecture, the system achieved:
+* **-21.9% reduction in Joule heating losses** on cables due to smoothed current ramps.
+* **+18.2% increase in Load Hosting Capacity**, preventing grid voltage collapse during extreme winter electrification scenarios ($5.2\times$ load stress).
+* Total suppression of terminal node overvoltages ($>1.10$ p.u.) during summer solar peaks, maintaining the infrastructure strictly within safety standards.
