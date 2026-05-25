@@ -1,0 +1,39 @@
+-----
+CHR02 Tomi (38/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+do laundry at 30°C (by variable);1;0;0;0;1;0;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+run the dishwasher (triggered);1;0;0;0;1;0;0;0;cleaning;run the dishwasher (triggered);Unpaid Work;
+run the dryer with wet laundry (by variable);1;0;0;0;0;1;0;0;cleaning;run the dryer with wet laundry (by variable);Unpaid Work;
+cook coffee;1;0;0;0;0;1;0;0;cooking;cook coffee;Food;
+eat breakfast (1 h);2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+make smoothie;2;0;0;0;1;1;0;0;cooking;make smoothie;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+practice Tuba;1;0;0;0;1;0;0;0;recreation;practice Tuba;Hobby;
+read a book on the couch only 9:00 to 22:00;1;0;0;0;1;0;0;0;recreation;read a book on the couch only 9:00 to 22:00;Hobby;
+relax in the garden 2;1;0;0;0;0;1;0;0;recreation;relax in the garden 2;Hobby;
+use the computer (1_5 h);1;0;0;0;1;0;0;0;recreation;use the computer (1_5 h);Media Use;
+use the computer for recreation (2 h);1;0;0;0;0;1;0;0;recreation;use the computer for recreation (2 h);Media Use;
+use the laptop (1 h);1;0;0;0;0;1;0;0;recreation;use the laptop (1 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);1;0;0;0;0;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;1;0;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 02 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 02 (08 h);Sleep;
+work at the office (09 h);2;0;0;0;1;1;0;0;work;work at the office (09 h);Work / School;
+-----
+CHR02 Katee (37/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat a cooked meal (interrupting) (eat breakfast (1 h));2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+eat breakfast (1 h);2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+make smoothie;2;0;0;0;1;1;0;0;cooking;make smoothie;Food;
+get ready in the morning (women);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with hair washing (women) (20 min hair drying);1;0;0;0;1;0;0;0;hygiene;take a shower with hair washing (women) (20 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+exercise for 30 min on the treadmill;1;0;0;0;1;0;0;0;recreation;exercise for 30 min on the treadmill;Sport;
+play computer games;1;0;0;0;1;0;0;0;recreation;play computer games;Media Use;
+use the computer for recreation (2 h);1;0;0;0;0;1;0;0;recreation;use the computer for recreation (2 h);Media Use;
+use the computer with external HD (1 h);2;0;0;0;0;2;0;0;recreation;use the computer with external HD (1 h);Media Use;
+use the laptop (1 h);1;0;0;0;1;0;0;0;recreation;use the laptop (1 h);Media Use;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+work as teacher;2;0;0;0;1;1;0;0;work;work as teacher;Work / School;

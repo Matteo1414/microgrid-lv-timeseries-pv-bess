@@ -1,0 +1,94 @@
+------
+CHR56 Andreas (50/Male);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+watch the news;290;recreation;watch the news;Media Use
+go to the toilet;21;hygiene;go to the toilet;Hygiene
+clean eye glasses;6;hygiene;clean eye glasses;Hygiene
+play digital piano (1 h);112;recreation;play digital piano (1 h);Hobby
+cook coffee;23;cooking;cook coffee;Food
+read a book on the couch all the time;217;shopping;read a book on the couch all the time;Entertainment
+eat a cooked meal (interrupting) (microwave frozen meal and eat it);23;cooking;microwave frozen meal and eat it;Food
+get ready in the morning (men);21;hygiene;get ready in the morning (men);Hygiene
+work at the office (10 h);1146;work;work at the office (10 h);Work / School
+run the dishwasher (triggered);32;cleaning;run the dishwasher (triggered);Unpaid Work
+take a shower (men);39;hygiene;take a shower (men);Hygiene
+watch a movie for 1 h 30 min;177;recreation;watch a movie for 1 h 30 min;Media Use
+exercise for 30 min on the treadmill;27;recreation;exercise for 30 min on the treadmill;Sport
+watch a movie for 2 h;129;recreation;watch a movie for 2 h;Media Use
+sleep bed 01 (06 h);363;sleeping;sleep bed 01 (06 h);Sleep
+watch sports on TV with SAT Reciever (2 h);128;recreation;watch sports on TV with SAT Reciever (2 h);Media Use
+eat a cooked meal (interrupting) (eat breakfast (1 h));33;cooking;eat breakfast (1 h);Food
+go shopping for food in the supermarket (1_5 h);82;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work
+do paperwork in the home office;11;work;do paperwork in the home office;Unpaid Work
+------
+CHR56 Anton (16/Male);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+go to the toilet;351;hygiene;go to the toilet;Hygiene
+take a shower (men);39;hygiene;take a shower (men);Hygiene
+use the laptop for Internet, Movie, Music, News (2 h);105;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+eat a cooked meal (interrupting) (microwave frozen meal and eat it);23;cooking;microwave frozen meal and eat it;Food
+get ready in the morning (men);18;hygiene;get ready in the morning (men);Hygiene
+eat breakfast (1 h);142;cooking;eat breakfast (1 h);Food
+do computer programming (2 h);469;recreation;do computer programming (2 h);Media Use
+play computer games;155;recreation;play computer games;Media Use
+use the computer with 2 screens (2 h);237;recreation;use the computer with 2 screens (2 h);Media Use
+play with smartphone 30 min;29;recreation;play with smartphone 30 min;Media Use
+watch a movie for 1 h 30 min;89;recreation;watch a movie for 1 h 30 min;Media Use
+use the computer (2 h);132;recreation;use the computer (2 h);Media Use
+sleep bed 03 (08 h) Child;711;sleeping;sleep bed 03 (08 h) Child;Sleep
+use the computer for recreation (2 h);125;recreation;use the computer for recreation (2 h);Media Use
+eat a cooked meal (interrupting) (eat breakfast (1 h));46;cooking;eat breakfast (1 h);Food
+use the computer (1_5 h);93;recreation;use the computer (1_5 h);Media Use
+read a book on the couch only 9:00 to 22:00;112;recreation;read a book on the couch only 9:00 to 22:00;Hobby
+eat a cooked meal (interrupting) (make soup);4;cooking;make soup;Food
+------
+CHR56 Sandi (14/Female);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+get ready in the morning (children);390;hygiene;get ready in the morning (children);Hygiene
+eat small breakfast (25min) interruping subaff, no alarm;50;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food
+go to the toilet;23;hygiene;go to the toilet;Hygiene
+take a shower without hair washing (women);56;hygiene;take a shower without hair washing (women);Hygiene
+practice generic music instrument (1 h);120;recreation;practice generic music instrument (1 h);Hobby
+use the laptop (1_5 h);247;recreation;use the laptop (1_5 h);Media Use
+read a book on the couch only 9:00 to 22:00;244;recreation;read a book on the couch only 9:00 to 22:00;Hobby
+use the laptop for Internet, Movie, Music, News (2 h);243;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+play with smartphone (1 h);124;recreation;play with smartphone (1 h);Games
+use the computer (1 h);61;recreation;use the computer (1 h);Media Use
+go swimming in an indoor swimming pool (2 h);107;recreation;go swimming in an indoor swimming pool (2 h);Sport
+read a book on the couch all the time;137;shopping;read a book on the couch all the time;Entertainment
+sleep bed 04 (10 h) Child;845;sleeping;sleep bed 04 (10 h) Child;Sleep
+eat a cooked meal (interrupting) (eat breakfast (1 h));46;cooking;eat breakfast (1 h);Food
+take a shower with hair washing (women) (5 min hair drying);60;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene
+use the laptop (1 h);46;recreation;use the laptop (1 h);Media Use
+relax in the garden 2;81;recreation;relax in the garden 2;Hobby
+------
+CHR56 Sabine (45/Female);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+go to the toilet;428;hygiene;go to the toilet;Hygiene
+get ready in the morning (women);38;hygiene;get ready in the morning (women);Hygiene
+microwave frozen meal and eat it;34;cooking;microwave frozen meal and eat it;Food
+take a shower without hair washing (women);56;hygiene;take a shower without hair washing (women);Hygiene
+use the computer (2 h);212;recreation;use the computer (2 h);Media Use
+do laundry at 30°C (by variable);14;cleaning;do laundry at 30°C (by variable);Unpaid Work
+fry two eggs and eat them with toast;17;cooking;fry two eggs and eat them with toast;Food
+clean the bath;51;cleaning;clean the bath;Unpaid Work
+make roulades and eat them;123;cooking;make roulades and eat them;Food
+run the dryer with wet laundry (by variable);17;cleaning;run the dryer with wet laundry (by variable);Unpaid Work
+cook with immersion blender;147;cooking;cook with immersion blender;Food
+iron Clothes;63;cleaning;iron Clothes;Unpaid Work
+make mashed potatoes and eat them;73;cooking;make mashed potatoes and eat them;Food
+go shopping for food on the market (2 h);114;shopping;go shopping for food on the market (2 h);Unpaid Work
+watch TV with someone (watch a movie for 1 h 30 min);12;recreation;watch a movie for 1 h 30 min;Media Use
+make custom pizza and eat it;61;cooking;make custom pizza and eat it;Food
+use the laptop (1 h);128;recreation;use the laptop (1 h);Media Use
+sleep bed 02 (08 h);461;sleeping;sleep bed 02 (08 h);Sleep
+eat breakfast (1 h);57;cooking;eat breakfast (1 h);Food
+use the laptop (1_5 h);72;recreation;use the laptop (1_5 h);Media Use
+take a shower with hair washing (women) (5 min hair drying);69;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene
+exercise on cross trainer (30 min);28;recreation;exercise on cross trainer (30 min);Sport
+talk with friends on the phone;27;recreation;talk with friends on the phone;Contacts
+make fondue and eat it;149;cooking;make fondue and eat it;Food
+cook pasta and eat it;26;cooking;cook pasta and eat it;Food
+relax in the garden 2;105;recreation;relax in the garden 2;Hobby
+heat up leftovers;22;cooking;heat up leftovers;Food
+bake a cake;35;cooking;bake a cake;Food
+watch TV series on weekdays 18:00;60;recreation;watch TV series on weekdays 18:00;Media Use
+make frozen pizza and eat it;28;cooking;make frozen pizza and eat it;Food
+make soup;15;cooking;make soup;Food
+use the computer for recreation (2 h);138;recreation;use the computer for recreation (2 h);Media Use

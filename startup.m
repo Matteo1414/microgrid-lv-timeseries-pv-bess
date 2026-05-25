@@ -3,10 +3,19 @@ function startup()
     % Root del progetto ricavata dalla posizione di questo file
     root = fileparts(mfilename('fullpath'));
 
-    % Aggiungo SOLO le cartelle necessarie (evita genpath)
+    % Aggiungo SOLO le cartelle necessarie per il codice core (evita genpath globale)
     addpath(fullfile(root,'src'));
     addpath(fullfile(root,'post'));
     addpath(fullfile(root,'post','utils'));
+
+    % Aggiungo YALMIP includendo tutte le sue sottocartelle (FONDAMENTALE)
+    yalmip_path = fullfile(root, 'YALMIP-master');
+    if exist(yalmip_path, 'dir')
+        addpath(genpath(yalmip_path));
+        fprintf('[MG] YALMIP caricato con successo nel Path.\n');
+    else
+        warning('[MG] ATTENZIONE: Cartella YALMIP-master non trovata nella root!');
+    end
 
     % Cartelle output (idempotente)
     mk(fullfile(root,'results','daily'));

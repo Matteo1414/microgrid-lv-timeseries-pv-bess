@@ -1,0 +1,34 @@
+-----
+CHR22 Anja (7/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat a cooked meal (interrupting) (make soup);2;0;0;0;1;1;0;0;cooking;make soup;Food;
+go to the toilet;2;0;0;0;1;1;0;0;hygiene;go to the toilet;Hygiene;
+play with toys (1 h);1;0;0;0;1;0;0;0;recreation;play with toys (1 h);Games;
+play with toys (1_5 h);1;0;0;0;0;1;0;0;recreation;play with toys (1_5 h);Games;
+play with wooden toys (1 h);1;0;0;0;0;1;0;0;recreation;play with wooden toys (1 h);Entertainment;
+play with wooden toys (2 h);2;0;0;0;2;0;0;0;recreation;play with wooden toys (2 h);Entertainment;
+read a book (1 h);1;0;0;0;1;0;0;0;recreation;read a book (1 h);Hobby;
+read a book on the couch only 9:00 to 22:00;2;0;0;0;0;2;0;0;recreation;read a book on the couch only 9:00 to 22:00;Hobby;
+watch TV (1 h);1;0;0;0;0;1;0;0;recreation;watch TV (1 h);Media Use;
+watch a movie for 2 h;2;0;0;0;1;1;0;0;recreation;watch a movie for 2 h;Media Use;
+read a book on the couch all the time;1;0;0;0;0;1;0;0;shopping;read a book on the couch all the time;Entertainment;
+sleep bed 03 (10 h) Child;2;0;0;0;1;1;0;0;sleeping;sleep bed 03 (10 h) Child;Sleep;
+go to primary school for 6h every day, with vacation;2;0;0;0;1;1;0;0;work;go to primary school for 6h every day, with vacation;Work / School;
+-----
+CHR22 Fiona (28/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+do laundry at 30°C (by variable);1;0;0;0;1;0;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+hang up laundry outside;1;0;0;0;0;1;0;0;cleaning;hang up laundry outside;Unpaid Work;
+wash 3 dishes by hand;1;0;0;0;0;1;0;0;cleaning;wash 3 dishes by hand;Unpaid Work;
+wash 5 dishes by hand;1;0;0;0;1;0;0;0;cleaning;wash 5 dishes by hand;Unpaid Work;
+make soup;2;0;0;0;1;1;0;0;cooking;make soup;Food;
+get ready in the morning (women);1;0;0;0;0;1;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;2;0;0;0;1;1;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with hair washing (women) (20 min hair drying);1;0;0;0;1;0;0;0;hygiene;take a shower with hair washing (women) (20 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+read a book on the couch only 9:00 to 22:00;1;0;0;0;1;0;0;0;recreation;read a book on the couch only 9:00 to 22:00;Hobby;
+use the laptop (1_5 h);1;0;0;0;1;0;0;0;recreation;use the laptop (1_5 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);1;0;0;0;0;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;0;1;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+work at the office (09 h);2;0;0;0;1;1;0;0;work;work at the office (09 h);Work / School;

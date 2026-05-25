@@ -1,0 +1,1324 @@
+Bath:
+  take a bath (150L) (Time limit: )
+    Bath Tub Offset: 0 / 0
+  take a bath (200L) (Time limit: )
+    Bath Tub Offset: 0 / 0
+  get ready in the morning (men) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 5 / 5
+    Bathroom Sink 5 L/Min Offset: 9 / 9
+  take a shower (men) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 12 / 12
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+  get ready in the morning (men) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 5 / 5
+    Bathroom Sink 5 L/Min Offset: 9 / 9
+  take a shower (men) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 12 / 12
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+  take a bath (150L) (Time limit: )
+    Bath Tub Offset: 0 / 0
+  take a bath (200L) (Time limit: )
+    Bath Tub Offset: 0 / 0
+  clean the bath (Time limit: )
+    Cleanser Offset: 0 / 0
+  do hair coloration (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+    Bathroom Sink 5 L/Min Offset: 45 / 45
+    Hair Dryer Braun Silencio 1250 Offset: 50 / 50
+    Hair Dryer Braun Silencio 1250 Offset: 50 / 50
+    Hair Dryer Braun Silencio 1250 Offset: 50 / 50
+    Hair Dryer Braun Silencio 1250 Offset: 50 / 50
+  get ready in the morning (women) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 3 / 3
+    Bathroom Sink 5 L/Min Offset: 10 / 10
+  take a shower with hair washing (women) (20 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+  take a shower with hair washing (women) (5 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+  take a shower without hair washing (women) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+  get ready in the morning (children) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 3 / 3
+  take a shower with hair washing (women) (20 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+  take a shower with hair washing (women) (5 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+    Hair Dryer Braun Silencio 1250 Offset: 22 / 22
+  take a shower without hair washing (women) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+
+Kitchen:
+  bake bread (Time limit: )
+    AFK BM-2N Offset: 0 / 0
+    AFK BM-2N Offset: 0 / 0
+    AFK BM-2N Offset: 0 / 0
+    AFK BM-2N Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 70 / 70
+  clean eye glasses (Time limit: )
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+  cook coffee (Time limit: )
+    Clatronic MS 3249 Milk Foamer Offset: 0 / 0
+    Clatronic MS 3249 Milk Foamer Offset: 0 / 0
+    Clatronic MS 3249 Milk Foamer Offset: 0 / 0
+    Clatronic MS 3249 Milk Foamer Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+  run the dishwasher (triggered) (Time limit: )
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  eat breakfast (1 h) (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Kitchen Sink (10L/min) Offset: 20 / 20
+    Kitchen Sink (10L/min) Offset: 40 / 40
+  clean eye glasses (Time limit: )
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+    Eye Glass Cleaner Grundig UC 5020 Offset: 0 / 0
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  eat breakfast (1 h) (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Juicer / Moulinex Vitafruit Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 7 / 7
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Toaster Salco MT 400 Offset: 8 / 8
+    Kitchen Sink (10L/min) Offset: 20 / 20
+    Kitchen Sink (10L/min) Offset: 40 / 40
+  bake a cake (Time limit: )
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+  cook for Christmas with Baking (5 h) (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 90 / 90
+    Single Stove Plate Offset: 90 / 90
+    Single Stove Plate Offset: 90 / 90
+    Single Stove Plate Offset: 90 / 90
+    Single Stove Plate Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 90 / 90
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 90 / 90
+  make and eat an salad with a kitchen machine (Time limit: Dinner Time (18:00-21:00))
+    Kitchen Machine Bosch UM4VE2B Offset: 5 / 5
+    Kitchen Machine Bosch UM4VE2B Offset: 5 / 5
+    Kitchen Machine Bosch UM4VE2B Offset: 5 / 5
+    Kitchen Machine Bosch UM4VE2B Offset: 5 / 5
+  cook a sunday feast and eat it (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 90 / 90
+  cook a sunday feast with extractor hood and eat it (Time limit: )
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 90 / 90
+  cook food with a deep fryer and eat it (Time limit: )
+    Miele DA 61 Offset: 0 / 0
+    Miele DA 61 Offset: 0 / 0
+    Miele DA 61 Offset: 0 / 0
+    Miele DA 61 Offset: 0 / 0
+    Deep Fryer / DeLonghi F 28311.W Rotofritteuse Offset: 0 / 0
+    Deep Fryer / DeLonghi F 28311.W Rotofritteuse Offset: 0 / 0
+    Deep Fryer / DeLonghi F 28311.W Rotofritteuse Offset: 0 / 0
+    Deep Fryer / DeLonghi F 28311.W Rotofritteuse Offset: 0 / 0
+  cook food with rice and eat it (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Ricecooker / Tristar RK-6112 Offset: 1 / 1
+    Ricecooker / Tristar RK-6112 Offset: 1 / 1
+    Ricecooker / Tristar RK-6112 Offset: 1 / 1
+    Ricecooker / Tristar RK-6112 Offset: 1 / 1
+    Miele DA 61 Offset: 10 / 10
+    Miele DA 61 Offset: 10 / 10
+    Miele DA 61 Offset: 10 / 10
+    Miele DA 61 Offset: 10 / 10
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+  cook food with steam cooker and eat it (Time limit: )
+    Steam Cooker / Phillips HD9140 Offset: 0 / 0
+    Steam Cooker / Phillips HD9140 Offset: 0 / 0
+    Steam Cooker / Phillips HD9140 Offset: 0 / 0
+    Steam Cooker / Phillips HD9140 Offset: 0 / 0
+  cook pasta and eat it (Time limit: )
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+  cook with immersion blender (Time limit: Lunch Time (11:30-13:00))
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Immersion Blender Noah Hit Top Offset: 15 / 15
+    Immersion Blender Noah Hit Top Offset: 15 / 15
+    Immersion Blender Noah Hit Top Offset: 15 / 15
+    Immersion Blender Noah Hit Top Offset: 15 / 15
+  fry two eggs and eat them with toast (Time limit: )
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 1 / 1
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 1 / 1
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 1 / 1
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power Offset: 1 / 1
+  heat up leftovers (Time limit: )
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+    Microwave / Panasonic NN 5259 Offset: 0 / 0
+  make custom pizza and eat it (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 15 / 15
+    Miele DG 1450 Offset: 30 / 30
+    Miele DG 1450 Offset: 30 / 30
+    Miele DG 1450 Offset: 30 / 30
+    Miele DG 1450 Offset: 30 / 30
+  make fondue and eat it (Time limit: )
+    Fondue / Unold 48746 Asia Offset: 0 / 0
+    Fondue / Unold 48746 Asia Offset: 0 / 0
+    Fondue / Unold 48746 Asia Offset: 0 / 0
+    Fondue / Unold 48746 Asia Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 150 / 150
+  make frozen pizza and eat it (Time limit: )
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 21 / 21
+  make mashed potatoes and eat them (Time limit: )
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Immersion Blender Noah Hit Top Offset: 0 / 0
+    Immersion Blender Noah Hit Top Offset: 0 / 0
+    Immersion Blender Noah Hit Top Offset: 0 / 0
+    Immersion Blender Noah Hit Top Offset: 0 / 0
+  make roulades and eat them (Time limit: )
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Extractor Hood / Miele DA 429-4 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front right- full power Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Miele DG 1450 Offset: 0 / 0
+    Kitchen Sink (10L/min) Offset: 90 / 90
+  make soup (Time limit: )
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+    Single Stove Plate Offset: 0 / 0
+  microwave frozen meal and eat it (Time limit: )
+    Microwave / Panasonic NN 5259 Offset: 2 / 2
+    Microwave / Panasonic NN 5259 Offset: 2 / 2
+    Microwave / Panasonic NN 5259 Offset: 2 / 2
+    Microwave / Panasonic NN 5259 Offset: 2 / 2
+  eat icecream from from freezer (Time limit: )
+    Bauknecht GTE 260 Offset: 0 / 0
+    Bauknecht GTE 260 Offset: 0 / 0
+    Bauknecht GTE 260 Offset: 0 / 0
+    Bauknecht GTE 260 Offset: 0 / 0
+  run the dryer with wet laundry (by variable) (Time limit: )
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+  sweep the floors (Time limit: )
+    Mop Offset: 0 / 0
+  dust the house (Time limit: )
+    Duster Offset: 0 / 0
+  do laundry at 30°C (by variable) (Time limit: )
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+  do laundry at 60°C (by variable) (Time limit: )
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+    Washing Machine / Bosch WAE 28143 Offset: 10 / 10
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  talk with friends on the phone (Time limit: )
+    Phone Siemens Gigaset C320 Offset: 0 / 0
+    Phone Siemens Gigaset C320 Offset: 0 / 0
+    Phone Siemens Gigaset C320 Offset: 0 / 0
+    Phone Siemens Gigaset C320 Offset: 0 / 0
+  vacuum the household (Time limit: )
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+  clean the windows (Time limit: )
+    Window Offset: 0 / 0
+  eat small breakfast (25min) interruping subaff, no alarm (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (10L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+
+Concert House:
+  go to a concert (4 h) (Time limit: )
+    Concert Offset: 0 / 0
+  go to a concert (4 h) (Time limit: )
+    Concert Offset: 0 / 0
+
+Hobby Room:
+  do it yourself house fixing and building (Time limit: )
+    AEG PN 2200 RX 4935365097 Offset: 15 / 15
+    AEG PN 2200 RX 4935365097 Offset: 15 / 15
+    AEG PN 2200 RX 4935365097 Offset: 15 / 15
+    AEG PN 2200 RX 4935365097 Offset: 15 / 15
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 25 / 25
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 25 / 25
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 25 / 25
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 25 / 25
+    AEG PN 2200 RX 4935365097 Offset: 60 / 60
+    AEG PN 2200 RX 4935365097 Offset: 60 / 60
+    AEG PN 2200 RX 4935365097 Offset: 60 / 60
+    AEG PN 2200 RX 4935365097 Offset: 60 / 60
+    Skil 4270 Offset: 70 / 70
+    Skil 4270 Offset: 70 / 70
+    Skil 4270 Offset: 70 / 70
+    Skil 4270 Offset: 70 / 70
+    Polishing Machine / Flex L 602 VR Offset: 80 / 80
+    Polishing Machine / Flex L 602 VR Offset: 80 / 80
+    Polishing Machine / Flex L 602 VR Offset: 80 / 80
+    Polishing Machine / Flex L 602 VR Offset: 80 / 80
+
+Living room:
+  exercise for 30 min on the treadmill (Time limit: )
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+  play digital piano (1 h) (Time limit: )
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+  do paperwork in the home office (Time limit: )
+    Lamp Ikea V1017 Jansjo Offset: 0 / 0
+    Lamp Ikea V1017 Jansjo Offset: 0 / 0
+    Lamp Ikea V1017 Jansjo Offset: 0 / 0
+    Lamp Ikea V1017 Jansjo Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  redecorate the house (Time limit: )
+    AEG PN 2200 RX 4935365097 Offset: 0 / 0
+    AEG PN 2200 RX 4935365097 Offset: 0 / 0
+    AEG PN 2200 RX 4935365097 Offset: 0 / 0
+    AEG PN 2200 RX 4935365097 Offset: 0 / 0
+    AEG SB 2E 650 R Offset: 5 / 5
+    AEG SB 2E 650 R Offset: 5 / 5
+    AEG SB 2E 650 R Offset: 5 / 5
+    AEG SB 2E 650 R Offset: 5 / 5
+    Skil 4270 Offset: 15 / 15
+    Skil 4270 Offset: 15 / 15
+    Skil 4270 Offset: 15 / 15
+    Skil 4270 Offset: 15 / 15
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 60 / 60
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 60 / 60
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 60 / 60
+    Hand-held Circular Saw / Bosch PKS 46 Offset: 60 / 60
+    Cordless Screwdriver / Bosch PSR 18 LI-2 Offset: 100 / 100
+    Cordless Screwdriver / Bosch PSR 18 LI-2 Offset: 100 / 100
+    Cordless Screwdriver / Bosch PSR 18 LI-2 Offset: 100 / 100
+    Cordless Screwdriver / Bosch PSR 18 LI-2 Offset: 100 / 100
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+  read a newspaper for 30min (Time limit: )
+    Newspaper Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  play board games (1 h) (Time limit: )
+    Board Games Offset: 0 / 0
+  play computer games (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer (2 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+  use the computer for recreation (2 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer with 2 screens (2 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    TFT Monitor Samsung S27C750P Offset: 0 / 0
+    TFT Monitor Samsung S27C750P Offset: 0 / 0
+    TFT Monitor Samsung S27C750P Offset: 0 / 0
+    TFT Monitor Samsung S27C750P Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+  listen to music on active speakers (1_5 h) (Time limit: )
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+  listen to music with active speakers (2 h) (Time limit: )
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+    Active Speaker Trust Tytan 2.1 Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+  read a newspaper for 30min (Time limit: )
+    Newspaper Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  play with smartphone (1 h) (Time limit: )
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+  play with smartphone 30 min (Time limit: )
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  turn on ceiling fan (4 h) (Time limit: )
+    Westinghouse Fanaway Offset: 0 / 0
+    Westinghouse Fanaway Offset: 0 / 0
+    Westinghouse Fanaway Offset: 0 / 0
+    Westinghouse Fanaway Offset: 0 / 0
+  exercise on cross trainer (30 min) (Time limit: )
+    Electronic Hometrainer / Kettler Satura E Offset: 0 / 0
+    Electronic Hometrainer / Kettler Satura E Offset: 0 / 0
+    Electronic Hometrainer / Kettler Satura E Offset: 0 / 0
+    Electronic Hometrainer / Kettler Satura E Offset: 0 / 0
+  use the laptop (1 h) (Time limit: )
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+  use the laptop (1_5 h) (Time limit: )
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+    Laptop Sony Vaio SVE151G11M Offset: 0 / 0
+  invite friends for coffee (Time limit: )
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 2 / 2
+    Electric Kettle / Petra WK288 1.5L Offset: 2 / 2
+    Electric Kettle / Petra WK288 1.5L Offset: 2 / 2
+    Electric Kettle / Petra WK288 1.5L Offset: 2 / 2
+  iron and watch TV with Sat Reciever (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  iron Clothes (Time limit: )
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+  read a newspaper for 30min (Time limit: )
+    Newspaper Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV series on weekdays 18:00 (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  use the computer (1 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  use the computer (1_5 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer with external HD (1 h) (Time limit: )
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC / Acer 8400 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  practice generic music instrument (1 h) (Time limit: )
+    Generic Music Instrument without Electricity Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+    Energy Saving Lamp / EL-REF 11 E27 Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    CD/DVD Player / Philips DVDR 725 H Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  play Wii (Time limit: )
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+
+Supermarket:
+  go shopping for food in the supermarket (1_5 h) (Time limit: )
+    Supermarket Offset: 0 / 0
+
+Garden:
+  do garden work only on saturday (Time limit: )
+    Gardening Tools Offset: 0 / 0
+  mow the lawn on saturday above 15°C (Time limit: )
+    Lawn Mower / Sabo 32-EL Offset: 15 / 15
+    Lawn Mower / Sabo 32-EL Offset: 15 / 15
+    Lawn Mower / Sabo 32-EL Offset: 15 / 15
+    Lawn Mower / Sabo 32-EL Offset: 15 / 15
+  relax in the garden (Time limit: )
+    Sunbed Offset: 0 / 0
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+  water the garden outside (Time limit: )
+    Watering Can Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+  relax in the garden (Time limit: )
+    Sunbed Offset: 0 / 0
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+
+Bedroom:
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  sleep bed 01 (06 h) (Time limit: )
+    Bed 1 Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  read romance novel (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  sleep bed 02 (08 h) (Time limit: )
+    Bed 2 Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+
+Local Recreational Area:
+  take a saturday day trip (10 h) (Time limit: )
+    Day Trip Bus Offset: 0 / 0
+  take a saturday day trip (10 h) (Time limit: )
+    Day Trip Bus Offset: 0 / 0
+
+Sidewalk:
+  shovel snow (Time limit: )
+    Snow Shovel Offset: 0 / 0
+
+Office Workplace 1:
+  work at the office (10 h) (Time limit: )
+    Office Offset: 0 / 0
+
+Cinema Location:
+  visit the cinema (Time limit: )
+    Cinema Offset: 0 / 0
+
+Children's room:
+  do homework (Time limit: )
+    Schoolbook Offset: 0 / 0
+  do computer programming (2 h) (Time limit: )
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Gaming Computer Offset: 0 / 0
+    Gaming Computer Offset: 0 / 0
+    Gaming Computer Offset: 0 / 0
+    Gaming Computer Offset: 0 / 0
+  sleep bed 03 (08 h) Child (Time limit: )
+    Bed 3 (Children) Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+    TV Medion MD20123_DE_A Offset: 0 / 0
+  play with smartphone (1 h) (Time limit: )
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+  play with smartphone 30 min (Time limit: )
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+    Cell Phone Samsung Charging Offset: 0 / 0
+
+School 1:
+  go to high school for 6h every day, with vacations (Time limit: )
+    School (with holidays) Offset: 0 / 0
+
+School 2:
+  go shopping (4 h) (Time limit: )
+    Shopping Cart Offset: 0 / 0
+  go to high school for 6h every day, with vacations (Time limit: )
+    School (with holidays) Offset: 0 / 0
+
+Summer Camp:
+  go to summer camp for two weeks (Time limit: )
+    Summer Camp Offset: 0 / 0
+
+Indoor Swimming Pool:
+  go swimming in an indoor swimming pool (2 h) (Time limit: )
+    Indoor Swimming Pool Offset: 0 / 0
+  go swimming in an indoor swimming pool (2 h) (Time limit: )
+    Indoor Swimming Pool Offset: 0 / 0
+
+Doctors Office:
+  go to doctor (Time limit: )
+    Doctors Office Offset: 0 / 0
+
+Food Market:
+  go shopping for food on the market (2 h) (Time limit: )
+    Public Market Offset: 0 / 0
+
+Volunteer Workplace:
+  do volunteer work (Time limit: )
+    Volunteering Place Offset: 0 / 0
+
+Children's room 2:
+  do homework (Time limit: )
+    Schoolbook Offset: 0 / 0
+  sleep bed 04 (10 h) Child (Time limit: )
+    Bed 4 Offset: 0 / 0
+
+Outdoor Swimming Pool:
+  go swimming in the outdoor swimming pool (6 h) (Time limit: )
+    Outdoor Swimming Pool Offset: 0 / 0
+

@@ -1,0 +1,8 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (10L/min);176,2818543656355;32171,43842172848;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 15 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Shower 12,5 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 10L/min;870;158775;0;0;Bath devices / Toilet;Toilet;
+Dishwashers / Bosch SGI 4662 Silence Comfort;54;9855;0;0;Kitchen equipment / Dishwashers;Dishwashing;
+Washing Machine Samsung P1405J;160;29200;0;0;Appliances / Washing machine;Laundry;
+Sums;1260,2818543656356;230001,43842172847;0

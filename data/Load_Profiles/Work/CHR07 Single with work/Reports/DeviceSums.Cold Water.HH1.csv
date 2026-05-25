@@ -1,0 +1,9 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Bath Tub;0;0;0;0;Bath devices / Bath Tubs;NoWater;
+Kitchen Sink (10L/min);80,52643801729727;14696,074938156751;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Dishwasher Whirlpool 45cm from Ikea;18;3285;0;0;Kitchen equipment / Dishwashers;Dishwashing;
+Bathroom Sink 15 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Washing Machine AEG Lavamat 54610;0;0;0;0;Appliances / Washing machine;Laundry;
+Shower 5 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 10L/min;180;32850;0;0;Bath devices / Toilet;Toilet;
+Sums;278,52643801729727;50831,07493815675;0

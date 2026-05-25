@@ -1,0 +1,471 @@
+Name:CHR22 Single woman, 1 child, with work HH1 HH1
+Location:(Italy) Rom
+Temperatureprofile:Hamburg, Germany 2007 from Deutscher Wetterdienst DWD (www.dwd.de)
+Persons:
+CHR22 Fiona (28/Female)
+	Desires:
+		Food / Breakfast
+		Cleaning / Bathroom
+		Food / Sunday Feast
+		Food / Cooking Pasta
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Weekend Lunch cooking
+		Spare Time / Learn Dancing
+		Cleaning / Dishwashing by Hand
+		Laundry / Dry Laundry
+		Special / Food Stocking
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Laundry / Laundry at 30°C
+		Laundry / Laundry at 60°C
+		Sleep / Weekend Napping
+		Spare Time / Origami
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Hygiene / Hairwashing (women)
+		Hygiene / Showering (women)
+		Sleep / Sleep Bed 01 (08h)
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Cleaning / Vacuuming
+		Work / Employment (Office 9h)
+	Sickness Desires:
+		Food / Breakfast
+		Food / Sunday Feast
+		Food / Cooking Pasta
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Cleaning / Dishwashing by Hand
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Hygiene / Hairwashing (women)
+		Hygiene / Showering (women)
+		Sleep / Napping
+		Spare Time / Watch TV
+		Spare Time / Tea Drinking
+		Spare Time / Magazine reading
+		Spare Time / Read Newspaper
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 01 (08h)
+		Hygiene / Toilet
+		Special / Un-Hungry
+CHR22 Anja (7/Female)
+	Desires:
+		Hygiene / Get ready in the morning (children)
+		School / Do Homework
+		Spare Time / Toy Playing
+		Spare Time / Wooden Toys
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		School / Primary School 1
+		Sleep / Sleep Bed 03 (10h) Child
+		Spare Time / Watch TV
+		Hygiene / Toilet
+		Special / Un-Hungry
+	Sickness Desires:
+		Hygiene / Get ready in the morning (children)
+		Spare Time / Toy Playing
+		Spare Time / Wooden Toys
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Sleep / Napping
+		Spare Time / Tea Drinking
+		Spare Time / Watch TV
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 03 (10h) Child
+		Hygiene / Toilet
+		Special / Un-Hungry
+
+
+
+Locations:
+
+
+
+Bath
+
+	Light Devices:
+		Bathroom Light (60W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Bathroom Mirror Light 100W (Conventional) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Bathroom Sink 10L/min (Hot water, Cold Water, Warm Water)
+		Toilet 6 L/min (Cold Water)
+		Cleanser (None)
+		Shower 7,5 L/min (Cold Water, Warm Water, Hot water)
+		Hair Dryer / Braun Satin Pro 2200 Ion Care (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Affordances (with desires):
+		get ready in the morning (children)
+			get ready in the morning (children) - Hygiene / Get ready in the morning (children)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+		clean the bath
+			clean the bath - Cleaning / Bathroom
+		get ready in the morning (women)
+			get ready in the morning (women) - Hygiene / Get ready in the morning (women)
+		take a shower with hair washing (women) (20 min hair drying)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Showering (women)
+		take a shower with hair washing (women) (5 min hair drying)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Showering (women)
+		take a shower without hair washing (women)
+			take a shower without hair washing (women) - Hygiene / Showering (women)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+
+
+
+Children's room
+
+	Light Devices:
+		Children Room Light Device (20W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Schoolbook (None)
+		Toys (None)
+		Wooden Toys (None)
+		Bed 3 (Children) (None)
+
+	Affordances (with desires):
+		do homework
+			do homework - School / Do Homework
+		play with toys (1 h)
+			play with toys (1 h) - Spare Time / Toy Playing
+		play with toys (1_5 h)
+			play with toys (1_5 h) - Spare Time / Toy Playing
+		play with toys (2 h)
+			play with toys (2 h) - Spare Time / Toy Playing
+		play with toys 30min
+			play with toys 30min - Spare Time / Toy Playing
+		play with wooden toys (1 h)
+			play with wooden toys (1 h) - Spare Time / Wooden Toys
+		play with wooden toys (2 h)
+			play with wooden toys (2 h) - Spare Time / Wooden Toys
+		sleep bed 03 (10 h) Child
+			sleep bed 03 (10 h) Child - Sleep / Sleep Bed 03 (10h) Child
+
+
+
+Living room
+
+	Light Devices:
+		Living Room Light (60W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Book (None)
+		Toys (None)
+		Couch (None)
+		CD/DVD Player / Philips DVDR 725 H (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Phillips 32-9615 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		SAT Receiver / Kathrein UFS913 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Laptop Sony Vaio SVE151G11M (Reactive, Electricity, Apparent, Inner Device Heat Gains)
+		Origami Paper (None)
+		Magazine (None)
+		LED Lamp Globe E 14 Ambient 3W matt (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Newspaper (None)
+
+	Affordances (with desires):
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		play with toys (1 h)
+			play with toys (1 h) - Spare Time / Toy Playing
+		play with toys (1_5 h)
+			play with toys (1_5 h) - Spare Time / Toy Playing
+		play with toys (2 h)
+			play with toys (2 h) - Spare Time / Toy Playing
+		play with toys 30min
+			play with toys 30min - Spare Time / Toy Playing
+		take a nap
+			take a nap - Sleep / Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		use the laptop (1 h)
+			use the laptop (1 h) - Spare Time / Computer Usage
+		use the laptop (1_5 h)
+			use the laptop (1_5 h) - Spare Time / Computer Usage
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		make origami art
+			make origami art - Spare Time / Origami
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book on the couch all the time
+			read a book on the couch all the time - Spare Time / Read a Book
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		read a magazine
+			read a magazine - Spare Time / Magazine reading
+		read a newspaper for 30min
+			read a newspaper for 30min - Spare Time / Read Newspaper
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+
+
+
+Bedroom
+
+	Light Devices:
+		Bedroom Light (200W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Book (None)
+		Couch (None)
+		Bed 1 (None)
+
+	Affordances (with desires):
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		sleep bed 01 (08 h)
+			sleep bed 01 (08 h) - Sleep / Sleep Bed 01 (08h)
+
+
+
+School
+
+	Light Devices:
+		(None)
+
+	Devices:
+		School (primary) (None)
+
+	Affordances (with desires):
+		go to primary school for 6h every day, with vacation
+			go to primary school for 6h every day, with vacation - School / Primary School 1
+			go to primary school for 6h every day, with vacation - School / Primary School 2
+			go to primary school for 6h every day, with vacation - School / Primary School 3
+
+
+
+Kitchen
+
+	Light Devices:
+		Kitchen Light (20W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Kitchen Sink (5L/min) (Cold Water, Hot water, Warm Water)
+		Electric Kettle / Petra WK288 1.5L (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Egg Cooker / Russell Hobbs 14048-56 Stylo (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Moulinex electronic 833 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen radio / AEG KRC 4323 CD (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Single Stove Plate (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Coffee Machine / Braun KF 580E (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Food Slicer / DOMO Schneidemaschine DO521S (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Toaster / Tefal Vario (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Extractor Hood / Miele DA 429-4 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Microwave / Panasonic NN-CD757W (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Miele H 5241 B (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Miele DA 61 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Cloth Drying Rack (None)
+		Washing Machine / Bosch WFS 8000 (Electricity, Cold Water, Apparent, Reactive, Inner Device Heat Gains)
+		Vacuum Cleaner FiF (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Affordances (with desires):
+		eat breakfast (1 h)
+			eat breakfast (1 h) - Food / Breakfast
+			eat breakfast (1 h) - Special / Un-Hungry
+		cook pasta and eat it
+			cook pasta and eat it - Food / Cooking Pasta
+			cook pasta and eat it - Special / Un-Hungry
+		fry two eggs and eat them with toast
+			fry two eggs and eat them with toast - Food / Fry Eggs with Toast
+			fry two eggs and eat them with toast - Special / Un-Hungry
+		heat up leftovers
+			heat up leftovers - Food / Leftovers
+			heat up leftovers - Special / Un-Hungry
+		make frozen pizza and eat it
+			make frozen pizza and eat it - Food / Frozen Pizza
+			make frozen pizza and eat it - Special / Un-Hungry
+		make soup
+			make soup - Food / Soup
+			make soup - Special / Un-Hungry
+		cook weekend lunch for the family
+			cook weekend lunch for the family - Food / Weekend Lunch cooking
+			cook weekend lunch for the family - Special / Un-Hungry
+		wash 1 dishes by hand
+			wash 1 dishes by hand - Cleaning / Dishwashing by Hand
+		wash 2 dishes by hand
+			wash 2 dishes by hand - Cleaning / Dishwashing by Hand
+		wash 3 dishes by hand
+			wash 3 dishes by hand - Cleaning / Dishwashing by Hand
+		wash 4 dishes by hand
+			wash 4 dishes by hand - Cleaning / Dishwashing by Hand
+		wash 5 dishes by hand
+			wash 5 dishes by hand - Cleaning / Dishwashing by Hand
+		hang up laundry outside
+			hang up laundry outside - Laundry / Dry Laundry
+		do laundry at 30°C (by variable)
+			do laundry at 30°C (by variable) - Laundry / Laundry at 30°C
+		do laundry at 60°C (by variable)
+			do laundry at 60°C (by variable) - Laundry / Laundry at 60°C
+		make and drink tea (15 min)
+			make and drink tea (15 min) - Spare Time / Tea Drinking
+		vacuum the household
+			vacuum the household - Cleaning / Vacuuming
+
+
+
+Dance Studio
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Dancing Shoes (None)
+
+	Affordances (with desires):
+		go to a dancing class
+			go to a dancing class - Spare Time / Learn Dancing
+
+
+
+Supermarket
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Supermarket (None)
+
+	Affordances (with desires):
+		go shopping for food in the supermarket (1_5 h)
+			go shopping for food in the supermarket (1_5 h) - Special / Food Stocking
+
+
+
+Office Workplace 1
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Office (None)
+
+	Affordances (with desires):
+		work at the office (09 h)
+			work at the office (09 h) - Work / Employment (Office 9h)
+
+
+
+All Devices:
+Bathroom Sink 10L/min
+Schoolbook
+Toys
+Wooden Toys
+Book
+Book
+School (primary)
+Couch
+Kitchen Sink (5L/min)
+Electric Kettle / Petra WK288 1.5L
+Toys
+Couch
+CD/DVD Player / Philips DVDR 725 H
+Phillips 32-9615
+SAT Receiver / Kathrein UFS913
+Bed 3 (Children)
+Toilet 6 L/min
+Egg Cooker / Russell Hobbs 14048-56 Stylo
+Moulinex electronic 833
+Kitchen radio / AEG KRC 4323 CD
+Single Stove Plate
+Coffee Machine / Braun KF 580E
+Food Slicer / DOMO Schneidemaschine DO521S
+Toaster / Tefal Vario
+Cleanser
+Extractor Hood / Miele DA 429-4
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind - full power
+Microwave / Panasonic NN-CD757W
+Miele H 5241 B
+Miele DA 61
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind
+Dancing Shoes
+Cloth Drying Rack
+Supermarket
+Laptop Sony Vaio SVE151G11M
+Washing Machine / Bosch WFS 8000
+Origami Paper
+Shower 7,5 L/min
+Hair Dryer / Braun Satin Pro 2200 Ion Care
+Magazine
+LED Lamp Globe E 14 Ambient 3W matt
+Newspaper
+Bed 1
+Vacuum Cleaner FiF
+Office
+
+
+
+Autonomous Devices:
+CD/DVD Player / Philips DVDR 725 H @ Living room
+Electric Tooth Brush / Phillips HX9332 @ Bath
+Kitchen radio / AEG KRC 4323 CD @ Kitchen
+Laptop Sony Vaio SVE151G11M @ Living room
+Liebherr CBP 4056-20A @ Kitchen
+Microwave / Panasonic NN-CD757W @ Kitchen
+Phillips 32-9615 @ Living room
+Phone Siemens Gigaset C320 @ Living room
+Router / AVM FRITZ! Box Fon WLAN 7390 @ Living room
+SAT Receiver / Kathrein UFS913 @ Living room
+Yamaha RX-V667 @ Living room

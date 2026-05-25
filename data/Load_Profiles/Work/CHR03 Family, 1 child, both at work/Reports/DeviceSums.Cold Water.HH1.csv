@@ -1,0 +1,8 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (7.5L/min);0;0;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 5 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Washing Machine Samsung P1405J;50;9125;0;0;Appliances / Washing machine;Laundry;
+Shower 10 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 10L/min;460;83950;0;0;Bath devices / Toilet;Toilet;
+Dishwasher NEFF SD6P1F (2011);33;6022,5;0;0;Kitchen equipment / Dishwashers;Dishwashing;
+Sums;543;99097,5;0

@@ -1,0 +1,18 @@
+Device name;Usage sum in this simulation [None];Usage sum in this simulation linear extrapolated to 1 year [None];Comparison Value from the device entry [None];Percentage of the comparison value [1 = 100%];Device Category;
+Cleanser;0;0;0;0;Cleaning devices;
+Dance Club;0;0;0;0;Other;
+Window;0;0;0;0;Furniture;
+Cloth Drying Rack;0;0;0;0;Furniture;
+Mop;0;0;0;0;Cleaning devices;
+Supermarket;11760;2146200;0;0;Other;
+Cafe Table;0;0;0;0;Other;
+Book;0;0;0;0;Other;
+Couch;0;0;0;0;Furniture;
+Book;0;0;0;0;Other;
+Couch;0;0;0;0;Furniture;
+Magazine;0;0;0;0;Other;
+Newspaper;0;0;0;0;Other;
+Bed 1;0;0;0;0;Furniture;
+Window;0;0;0;0;Furniture;
+Office;134220;24495150;0;0;Other;
+Sums;145980;26641350;0

@@ -1,0 +1,36 @@
+CHR03 Fin (43/Male)
+Activity;Time Used [60 seconds];Percentage
+other;364;0,13
+hygiene;85;0,03
+cooking;251;0,09
+Passive Entertainment (TV etc.);205;0,07
+work;1097;0,38
+shopping;99;0,03
+Active Entertainment (Computer, Internet etc);182;0,06
+sleep;496;0,17
+sports;31;0,01
+Offline Entertainment;54;0,02
+cleaning;16;0,01
+CHR03 Luka (10/Male)
+Activity;Time Used [60 seconds];Percentage
+other;397;0,14
+hygiene;44;0,02
+cooking;145;0,05
+school;739;0,26
+Active Entertainment (Computer, Internet etc);372;0,13
+Passive Entertainment (TV etc.);228;0,08
+gardening and maintenance;138;0,05
+Offline Entertainment;107;0,04
+sleep;710;0,25
+CHR03 Ava (40/Female)
+Activity;Time Used [60 seconds];Percentage
+other;422;0,15
+hygiene;183;0,06
+cooking;340;0,12
+sports;27;0,01
+work;1097;0,38
+cleaning;29;0,01
+Outside recreation;5;0,00
+Active Entertainment (Computer, Internet etc);209;0,07
+sleep;528;0,18
+Offline Entertainment;40;0,01

@@ -1,0 +1,6 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Bath Tub;0;0;0;0;Bath devices / Bath Tubs;NoWater;
+Kitchen Sink (10L/min);0;0;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 5 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Shower 10 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Sums;0;0;0

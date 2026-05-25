@@ -1,0 +1,859 @@
+Name:CHR52 Student Flatsharing HH1 HH1
+Location:(Germany) Chemnitz
+Temperatureprofile:Berlin, Germany 1996 from Deutscher Wetterdienst DWD (www.dwd.de)
+Persons:
+CHR52 Chris (22/Male)
+	Desires:
+		Spare Time / Boardgames
+		Food / Breakfast
+		Food Baking / Cake Baking
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Laundry / Dry Laundry
+		Exercise / Treadmill Exercise
+		Special / Food Stocking
+		Spare Time / Internet
+		Spare Time / Ride a Horse
+		Hygiene / Get ready in the morning (men)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Laundry / Laundry at 30°C
+		Laundry / Laundry at 60°C
+		Spare Time / Watch a Movie in the Home Cinema
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Picture Painting
+		Spare Time / Puzzle Gaming
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		School / Philosophy Studies
+		Hygiene / Showering (men)
+		Spare Time / Singing Lesson
+		Sleep / Sleep Bed 01 (08h)
+		School / Study
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Cleaning / Vacuuming
+		Exercise / Wii
+	Sickness Desires:
+		Food / Breakfast
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Spare Time / Internet
+		Hygiene / Get ready in the morning (men)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Hygiene / Showering (men)
+		Spare Time / Watch TV
+		Spare Time / Tea Drinking
+		Spare Time / Magazine reading
+		Spare Time / Read Newspaper
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 01 (08h)
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Exercise / Wii
+CHR52 Iris (22/Female)
+	Desires:
+		Spare Time / Boardgames
+		Food / Breakfast
+		Food Baking / Cake Baking
+		Spare Time / Cinema Visit
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Cleaning / Dishwashing by Hand
+		Special / Food Stocking
+		Spare Time / Internet
+		Spare Time / Invite Friends for Coffee
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Watch a Movie in the Home Cinema
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Picture Painting
+		Spare Time / Puzzle Gaming
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		School / Sports Study
+		Hygiene / Showering (women)
+		Hygiene / Hairwashing (women)
+		Sleep / Sleep Bed 02 (08h)
+		School / Study
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Cleaning / Vacuuming
+		Exercise / Wii
+		Work / Employment (Part time job)
+	Sickness Desires:
+		Food / Breakfast
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Spare Time / Internet
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Hygiene / Showering (women)
+		Hygiene / Hairwashing (women)
+		Spare Time / Magazine reading
+		Spare Time / Read Newspaper
+		Spare Time / Tea Drinking
+		Spare Time / Watch TV
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 02 (08h)
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Exercise / Wii
+CHR52 Maddy (23/Female)
+	Desires:
+		Spare Time / Bar Visit
+		Spare Time / Boardgames
+		Food / Breakfast
+		Food Baking / Cake Baking
+		Cleaning / Bathroom
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Special / Food Stocking
+		Spare Time / Internet
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Watch a Movie in the Home Cinema
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Picture Painting
+		Spare Time / Puzzle Gaming
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		School / Mechanical Engineering Studies
+		Hygiene / Hairwashing (women)
+		Hygiene / Showering (women)
+		Sleep / Sleep Bed 08 (08h)
+		School / Study
+		Spare Time / Swimming Outdoor
+		Spare Time / Watch TV
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Exercise / Wii
+	Sickness Desires:
+		Food / Breakfast
+		Food / Sunday Feast
+		Food / Soup
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Fry Eggs with Toast
+		Food / Cooking Pasta
+		Spare Time / Internet
+		Hygiene / Get ready in the morning (women)
+		Spare Time / Affiliation
+		Spare Time / Computer Usage
+		Spare Time / Music Listening
+		Sleep / Napping
+		Spare Time / Read a Book
+		Other / Replacement Activity
+		Hygiene / Hairwashing (women)
+		Hygiene / Showering (women)
+		Spare Time / Watch TV
+		Spare Time / Tea Drinking
+		Spare Time / Magazine reading
+		Spare Time / Read Newspaper
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 08 (08h)
+		Spare Time / Swimming Outdoor
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Exercise / Wii
+
+
+
+Locations:
+
+
+
+Living room
+
+	Light Devices:
+		Living Room Light (200W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Board Games (None)
+		Electronic hometrainer / Kettler Track Perfomance (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Laptop Lenovo Thinkpad x220 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		CD/DVD Player / Philips DVDR 725 H (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Home Cinema System / Samsung HT-D5550 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		TV Medion MD20123_DE_A (Reactive, Electricity, Apparent, Inner Device Heat Gains)
+		SAT Receiver / Kathrein UFS913 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Hifi System / Sharp XL-HF300PH (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Desk 2 (None)
+		Puzzle (None)
+		Book (None)
+		Couch (None)
+		Magazine (None)
+		Energy Saving Lamp / EL-REF 11 E27 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Newspaper (None)
+		Desk (None)
+		Nintendo Wii (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Coffee Machine / Braun KF 580E (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Electric Kettle / Petra WK288 1.5L (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Affordances (with desires):
+		play board games (1 h)
+			play board games (1 h) - Spare Time / Boardgames
+		exercise for 30 min on the treadmill
+			exercise for 30 min on the treadmill - Exercise / Treadmill Exercise
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		use the laptop (1 h)
+			use the laptop (1 h) - Spare Time / Computer Usage
+		use the laptop (1_5 h)
+			use the laptop (1_5 h) - Spare Time / Computer Usage
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		watch a movie for 1 h 30 min with home cinema system
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch TV
+		watch a movie for 2 h with home cinema system
+			watch a movie for 2 h with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 2 h with home cinema system - Spare Time / Watch TV
+		listen to music on compact hifi (2 h)
+			listen to music on compact hifi (2 h) - Spare Time / Music Listening
+		paint a picture
+			paint a picture - Spare Time / Picture Painting
+		play a puzzle game
+			play a puzzle game - Spare Time / Puzzle Gaming
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book on the couch all the time
+			read a book on the couch all the time - Spare Time / Read a Book
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		read a magazine
+			read a magazine - Spare Time / Magazine reading
+		read a newspaper for 30min
+			read a newspaper for 30min - Spare Time / Read Newspaper
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		study at home
+			study at home - School / Study
+		play Wii
+			play Wii - Exercise / Wii
+		play board games (1 h)
+			play board games (1 h) - Spare Time / Boardgames
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		invite friends for coffee
+			invite friends for coffee - Spare Time / Invite Friends for Coffee
+		use the laptop (1 h)
+			use the laptop (1 h) - Spare Time / Computer Usage
+		use the laptop (1_5 h)
+			use the laptop (1_5 h) - Spare Time / Computer Usage
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		watch a movie for 1 h 30 min with home cinema system
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch TV
+		watch a movie for 2 h with home cinema system
+			watch a movie for 2 h with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 2 h with home cinema system - Spare Time / Watch TV
+		listen to music on compact hifi (2 h)
+			listen to music on compact hifi (2 h) - Spare Time / Music Listening
+		paint a picture
+			paint a picture - Spare Time / Picture Painting
+		play a puzzle game
+			play a puzzle game - Spare Time / Puzzle Gaming
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book on the couch all the time
+			read a book on the couch all the time - Spare Time / Read a Book
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		read a magazine
+			read a magazine - Spare Time / Magazine reading
+		read a newspaper for 30min
+			read a newspaper for 30min - Spare Time / Read Newspaper
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		study at home
+			study at home - School / Study
+		play Wii
+			play Wii - Exercise / Wii
+		play board games (1 h)
+			play board games (1 h) - Spare Time / Boardgames
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		use the laptop (1 h)
+			use the laptop (1 h) - Spare Time / Computer Usage
+		use the laptop (1_5 h)
+			use the laptop (1_5 h) - Spare Time / Computer Usage
+		use the laptop for Internet, Movie, Music, News (2 h)
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Computer Usage
+			use the laptop for Internet, Movie, Music, News (2 h) - Spare Time / Internet
+		watch a movie for 1 h 30 min with home cinema system
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 1 h 30 min with home cinema system - Spare Time / Watch TV
+		watch a movie for 2 h with home cinema system
+			watch a movie for 2 h with home cinema system - Spare Time / Watch a Movie in the Home Cinema
+			watch a movie for 2 h with home cinema system - Spare Time / Watch TV
+		listen to music on compact hifi (2 h)
+			listen to music on compact hifi (2 h) - Spare Time / Music Listening
+		paint a picture
+			paint a picture - Spare Time / Picture Painting
+		play a puzzle game
+			play a puzzle game - Spare Time / Puzzle Gaming
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book on the couch all the time
+			read a book on the couch all the time - Spare Time / Read a Book
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		read a magazine
+			read a magazine - Spare Time / Magazine reading
+		read a newspaper for 30min
+			read a newspaper for 30min - Spare Time / Read Newspaper
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		study at home
+			study at home - School / Study
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		play Wii
+			play Wii - Exercise / Wii
+
+
+
+Kitchen
+
+	Light Devices:
+		Kitchen Light (300W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Egg Cooker / Russell Hobbs 14048-56 Stylo (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Juicer / Moulinex Vitafruit (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Sink (7.5L/min) (Cold Water, Hot water, Warm Water)
+		Kitchen radio / AEG KRC 4323 CD (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front left (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Coffee Machine / Braun Impression KF 600 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Food Slicer / DOMO Schneidemaschine DO521S (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Toaster / Bosch TAT8SL1 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Miele H 5241 B (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Handmixer / Phillips Robust HR 1581 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Extractor Hood / Miele DA 429-4 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind- semi aktiv (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Microwave / Panasonic NN-CD757W (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Cloth Drying Rack (None)
+		Washing Machine Samsung P1405J (Cold Water, Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Electric Kettle / Phillips Essential HD 4685/90 Schwarz (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Vacuum Cleaner FiF (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Affordances (with desires):
+		eat breakfast (1 h)
+			eat breakfast (1 h) - Food / Breakfast
+			eat breakfast (1 h) - Special / Un-Hungry
+		bake a cake
+			bake a cake - Food Baking / Cake Baking
+		cook pasta and eat it
+			cook pasta and eat it - Food / Cooking Pasta
+			cook pasta and eat it - Special / Un-Hungry
+		fry two eggs and eat them with toast
+			fry two eggs and eat them with toast - Food / Fry Eggs with Toast
+			fry two eggs and eat them with toast - Special / Un-Hungry
+		heat up leftovers
+			heat up leftovers - Food / Leftovers
+			heat up leftovers - Special / Un-Hungry
+		make frozen pizza and eat it
+			make frozen pizza and eat it - Food / Frozen Pizza
+			make frozen pizza and eat it - Special / Un-Hungry
+		make soup
+			make soup - Food / Soup
+			make soup - Special / Un-Hungry
+		hang up laundry outside
+			hang up laundry outside - Laundry / Dry Laundry
+		do laundry at 30°C (by variable)
+			do laundry at 30°C (by variable) - Laundry / Laundry at 30°C
+		do laundry at 60°C (by variable)
+			do laundry at 60°C (by variable) - Laundry / Laundry at 60°C
+		make and drink tea (15 min)
+			make and drink tea (15 min) - Spare Time / Tea Drinking
+		vacuum the household
+			vacuum the household - Cleaning / Vacuuming
+		eat breakfast (1 h)
+			eat breakfast (1 h) - Food / Breakfast
+			eat breakfast (1 h) - Special / Un-Hungry
+		bake a cake
+			bake a cake - Food Baking / Cake Baking
+		cook pasta and eat it
+			cook pasta and eat it - Food / Cooking Pasta
+			cook pasta and eat it - Special / Un-Hungry
+		fry two eggs and eat them with toast
+			fry two eggs and eat them with toast - Food / Fry Eggs with Toast
+			fry two eggs and eat them with toast - Special / Un-Hungry
+		heat up leftovers
+			heat up leftovers - Food / Leftovers
+			heat up leftovers - Special / Un-Hungry
+		make frozen pizza and eat it
+			make frozen pizza and eat it - Food / Frozen Pizza
+			make frozen pizza and eat it - Special / Un-Hungry
+		make soup
+			make soup - Food / Soup
+			make soup - Special / Un-Hungry
+		wash 2 dishes by hand
+			wash 2 dishes by hand - Cleaning / Dishwashing by Hand
+		make and drink tea (15 min)
+			make and drink tea (15 min) - Spare Time / Tea Drinking
+		vacuum the household
+			vacuum the household - Cleaning / Vacuuming
+		eat breakfast (1 h)
+			eat breakfast (1 h) - Food / Breakfast
+			eat breakfast (1 h) - Special / Un-Hungry
+		bake a cake
+			bake a cake - Food Baking / Cake Baking
+		cook pasta and eat it
+			cook pasta and eat it - Food / Cooking Pasta
+			cook pasta and eat it - Special / Un-Hungry
+		fry two eggs and eat them with toast
+			fry two eggs and eat them with toast - Food / Fry Eggs with Toast
+			fry two eggs and eat them with toast - Special / Un-Hungry
+		heat up leftovers
+			heat up leftovers - Food / Leftovers
+			heat up leftovers - Special / Un-Hungry
+		make frozen pizza and eat it
+			make frozen pizza and eat it - Food / Frozen Pizza
+			make frozen pizza and eat it - Special / Un-Hungry
+		make soup
+			make soup - Food / Soup
+			make soup - Special / Un-Hungry
+		make and drink tea (15 min)
+			make and drink tea (15 min) - Spare Time / Tea Drinking
+
+
+
+Supermarket
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Supermarket (None)
+
+	Affordances (with desires):
+		go shopping for food in the supermarket (1_5 h)
+			go shopping for food in the supermarket (1_5 h) - Special / Food Stocking
+		go shopping for food in the supermarket (1_5 h)
+			go shopping for food in the supermarket (1_5 h) - Special / Food Stocking
+		go shopping for food in the supermarket (1_5 h)
+			go shopping for food in the supermarket (1_5 h) - Special / Food Stocking
+
+
+
+Horse Stable
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Horse (None)
+
+	Affordances (with desires):
+		go to horse riding lessons
+			go to horse riding lessons - Spare Time / Ride a Horse
+
+
+
+Bath
+
+	Light Devices:
+		Bathroom Light (60W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Bathroom Mirror Light 100W (Conventional) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Bathroom Sink 5 L/Min (Cold Water, Warm Water, Hot water)
+		Shower 10 L/min (Hot water, Cold Water, Warm Water)
+		Toilet 6 L/min (Cold Water)
+		Hair Dryer / Braun Satin Pro 2200 Ion Care (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Heater / Honeywell BH-888E (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Cleanser (None)
+
+	Affordances (with desires):
+		get ready in the morning (men)
+			get ready in the morning (men) - Hygiene / Get ready in the morning (men)
+		take a shower (men)
+			take a shower (men) - Hygiene / Showering (men)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+		get ready in the morning (women)
+			get ready in the morning (women) - Hygiene / Get ready in the morning (women)
+		take a shower with hair washing (women) (20 min hair drying)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Showering (women)
+		take a shower with hair washing (women) (5 min hair drying)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Showering (women)
+		take a shower without hair washing (women)
+			take a shower without hair washing (women) - Hygiene / Showering (women)
+		take a shower with electric air heater
+			take a shower with electric air heater - Hygiene / Hairwashing (women)
+			take a shower with electric air heater - Hygiene / Showering (women)
+		take a shower with hair washing (women) (20 min hair drying)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Showering (women)
+		take a shower without hair washing (women)
+			take a shower without hair washing (women) - Hygiene / Showering (women)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+		clean the bath
+			clean the bath - Cleaning / Bathroom
+		get ready in the morning (women)
+			get ready in the morning (women) - Hygiene / Get ready in the morning (women)
+		take a shower with hair washing (women) (20 min hair drying)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Showering (women)
+		take a shower with hair washing (women) (5 min hair drying)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (5 min hair drying) - Hygiene / Showering (women)
+		take a shower without hair washing (women)
+			take a shower without hair washing (women) - Hygiene / Showering (women)
+		take a shower with electric air heater
+			take a shower with electric air heater - Hygiene / Hairwashing (women)
+			take a shower with electric air heater - Hygiene / Showering (women)
+		take a shower with hair washing (women) (20 min hair drying)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Hairwashing (women)
+			take a shower with hair washing (women) (20 min hair drying) - Hygiene / Showering (women)
+		take a shower without hair washing (women)
+			take a shower without hair washing (women) - Hygiene / Showering (women)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+
+
+
+Bedroom
+
+	Light Devices:
+		Bedroom Light (60W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Couch (None)
+		Book (None)
+		Bed 1 (None)
+		Bed 2 (None)
+
+	Affordances (with desires):
+		take a nap
+			take a nap - Sleep / Napping
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		sleep bed 01 (08 h)
+			sleep bed 01 (08 h) - Sleep / Sleep Bed 01 (08h)
+		take a nap
+			take a nap - Sleep / Napping
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		sleep bed 02 (08 h)
+			sleep bed 02 (08 h) - Sleep / Sleep Bed 02 (08h)
+		take a nap
+			take a nap - Sleep / Napping
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+
+
+
+University
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Student philosophy (None)
+		Baseball (None)
+		Student (engineering) (None)
+
+	Affordances (with desires):
+		study philosophy
+			study philosophy - School / Philosophy Studies
+		study sports
+			study sports - School / Sports Study
+		study mechanical enginering
+			study mechanical enginering - School / Mechanical Engineering Studies
+
+
+
+Singing School
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Singing School (None)
+
+	Affordances (with desires):
+		take singing lessons
+			take singing lessons - Spare Time / Singing Lesson
+
+
+
+Cinema Location
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Cinema (None)
+
+	Affordances (with desires):
+		visit the cinema
+			visit the cinema - Spare Time / Cinema Visit
+
+
+
+Office Workplace 1
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Part time jobber (None)
+
+	Affordances (with desires):
+		go to part time job
+			go to part time job - Work / Employment (Part time job)
+
+
+
+Bar Location
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Bar (None)
+
+	Affordances (with desires):
+		go to a bar (4 h)
+			go to a bar (4 h) - Spare Time / Bar Visit
+
+
+
+Bedroom 2
+
+	Light Devices:
+		Bedroom Light (20W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Bed 8 (None)
+
+	Affordances (with desires):
+		sleep bed 08 (08 h)
+			sleep bed 08 (08 h) - Sleep / Sleep Bed 08 (08h)
+
+
+
+Outdoor Swimming Pool
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Outdoor Swimming Pool (None)
+
+	Affordances (with desires):
+		go swimming in the outdoor swimming pool (6 h)
+			go swimming in the outdoor swimming pool (6 h) - Exercise / Swimming
+			go swimming in the outdoor swimming pool (6 h) - Spare Time / Swimming Outdoor
+
+
+
+All Devices:
+Board Games
+Egg Cooker / Russell Hobbs 14048-56 Stylo
+Juicer / Moulinex Vitafruit
+Kitchen Sink (7.5L/min)
+Kitchen radio / AEG KRC 4323 CD
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front left
+Coffee Machine / Braun Impression KF 600
+Food Slicer / DOMO Schneidemaschine DO521S
+Toaster / Bosch TAT8SL1
+Miele H 5241 B
+Handmixer / Phillips Robust HR 1581
+Extractor Hood / Miele DA 429-4
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind- semi aktiv
+Microwave / Panasonic NN-CD757W
+Cloth Drying Rack
+Electronic hometrainer / Kettler Track Perfomance
+Supermarket
+Laptop Lenovo Thinkpad x220
+Horse
+Bathroom Sink 5 L/Min
+Washing Machine Samsung P1405J
+CD/DVD Player / Philips DVDR 725 H
+Home Cinema System / Samsung HT-D5550
+TV Medion MD20123_DE_A
+SAT Receiver / Kathrein UFS913
+Hifi System / Sharp XL-HF300PH
+Couch
+Desk 2
+Puzzle
+Book
+Book
+Student philosophy
+Shower 10 L/min
+Electric Kettle / Phillips Essential HD 4685/90 Schwarz
+Couch
+Magazine
+Energy Saving Lamp / EL-REF 11 E27
+Newspaper
+Singing School
+Bed 1
+Desk
+Toilet 6 L/min
+Vacuum Cleaner FiF
+Nintendo Wii
+Cinema
+Coffee Machine / Braun KF 580E
+Electric Kettle / Petra WK288 1.5L
+Baseball
+Hair Dryer / Braun Satin Pro 2200 Ion Care
+Heater / Honeywell BH-888E
+Bed 2
+Part time jobber
+Bar
+Cleanser
+Student (engineering)
+Bed 8
+Outdoor Swimming Pool
+
+
+
+Autonomous Devices:
+CD/DVD Player / Philips DVDR 725 H @ Living room
+Electric Razor Braun Cruzer 5 @ Bath
+Electric Tooth Brush / Phillips HX9332 @ Bath
+Hifi System / Sharp XL-HF300PH @ Living room
+Home Cinema System / Samsung HT-D5550 @ Living room
+Kitchen radio / AEG KRC 4323 CD @ Kitchen
+Laptop Lenovo Thinkpad x220 @ Living room
+Liebherr CBNPes 3956 @ Kitchen
+Microwave / Panasonic NN-CD757W @ Kitchen
+Nintendo Wii @ Living room
+Phone Siemens Gigaset C320 @ Living room
+Router O2 Box 6431 @ Living room
+SAT Receiver / Kathrein UFS913 @ Living room
+TV Medion MD20123_DE_A @ Living room
+Yamaha RX-V667 @ Living room

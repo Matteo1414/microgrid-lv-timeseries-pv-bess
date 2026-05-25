@@ -1,0 +1,5 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (7.5L/min);125,74774562321808;22948,9635762373;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 5 L/Min;460;83950;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Shower 10 L/min;990;180675;0;0;Bath devices / Showers;Hygiene;
+Sums;1575,7477456232182;287573,9635762373;0

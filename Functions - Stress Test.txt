@@ -1,0 +1,3922 @@
+
+
+Cartella Principale (Root)
+
+L'ingresso e l'uscita del tuo ambiente di lavoro.
+
+
+
+1) main.m (Il direttore d'orchestra che lancia tutto)
+
+
+
+% =========================================================================
+% TESI MAGISTRALE - Simulatore Microgrid (MAIN SCRIPT UNIVERSALE)
+% =========================================================================
+clear; clc; close all;
+disp('=== INIZIALIZZAZIONE AMBIENTE ===');
+
+% Richiama lo script di configurazione per aggiungere le cartelle al Path
+startup(); 
+
+disp('=== GENERAZIONE SCENARI AUTOMATICA ===');
+% Esegue lo script che crea i file .mat nella cartella data/scenarios
+create_scenarios; 
+
+% --- 1. Parametri di Simulazione (Il Cruscotto) ---
+ANNO          = 2023;
+GIORNO_INIZIO = 1;      % 1 Gennaio
+GIORNO_FINE   = 365;    % 365 per l'anno intero
+SOC_INIZIALE  = 0.50;   % Tutte le batterie partono col 50% di carica
+
+% --- 2. Interruttori di Simulazione ---
+% Scegli cosa simulare mettendo 'true' o 'false'
+ESEGUI_TOPOLOGIA   = true;  % Simula scn0, scn1, scn2, scn3, scn4
+ESEGUI_SENSITIVITA = true;  % Simula scn4_k050 fino a scn4_k120
+
+% --- 3. Costruzione della Playlist ---
+scenari = {}; % Inizializza playlist vuota
+
+if ESEGUI_TOPOLOGIA
+    scenari_topo = {
+        'scn0_passive.mat';
+        'scn1_3PV.mat';
+        'scn2_5PV_1BESS.mat';
+        'scn3_7PV_2BESS.mat';
+        'scn4_8PV_4BESS.mat' % Rimesso al suo posto!
+    };
+    scenari = [scenari; scenari_topo];
+end
+
+if ESEGUI_SENSITIVITA
+    scenari_sens = {
+        'scn4_k050.mat'; 'scn4_k060.mat'; 'scn4_k070.mat'; 'scn4_k080.mat';
+        'scn4_k090.mat'; 'scn4_k100.mat'; 'scn4_k110.mat'; 'scn4_k120.mat'
+    };
+    scenari = [scenari; scenari_sens];
+end
+
+% --- Ottimizzazione Intelligente ---
+% Se l'utente vuole simulare tutto, scn4_8PV_4BESS e scn4_k100 sono doppioni.
+% Diciamo a MATLAB di scartare il primo per risparmiare mezzo milione di calcoli.
+if ESEGUI_TOPOLOGIA && ESEGUI_SENSITIVITA
+    idx_doppione = strcmp(scenari, 'scn4_8PV_4BESS.mat');
+    scenari(idx_doppione) = []; 
+    disp('[INFO] "scn4_8PV_4BESS" saltato: matematicamente identico a "scn4_k100".');
+end
+
+% --- 4. Motore di Simulazione ---
+disp('=== AVVIO SIMULAZIONI BATTERY DISPATCH ===');
+for i = 1:numel(scenari)
+    scn = scenari{i};
+    fprintf('\n► Lancio Scenario %d di %d: %s (Giorni %d -> %d)\n', i, numel(scenari), scn, GIORNO_INIZIO, GIORNO_FINE);
+    
+    % run_district_range fa la staffetta dei giorni e passa il SOC
+    run_district_range(ANNO, GIORNO_INIZIO, GIORNO_FINE, scn, SOC_INIZIALE);
+end
+
+disp('=== TUTTE LE SIMULAZIONI COMPLETATE CON SUCCESSO ===');
+
+2) main_mpc.m (direttore d'orchestra modello MPC)
+
+
+% =========================================================================
+% TESI MAGISTRALE - Simulatore Microgrid (MAIN SCRIPT MPC)
+% =========================================================================
+clear; clc; close all;
+disp('=== INIZIALIZZAZIONE AMBIENTE MPC ===');
+
+% Richiama lo script di configurazione per aggiungere le cartelle e YALMIP al Path
+startup(); 
+
+% --- 1. Parametri di Simulazione ---
+ANNO          = 2023;
+GIORNO_INIZIO = 190;    % Testiamo il 15 Luglio (giorno estivo critico per il reverse flow)
+GIORNO_FINE   = 197;    % Facciamo 2 giorni per testare il carry-over del SOC
+SOC_INIZIALE  = 0.50;   % SOC di partenza
+
+% Scegliamo di testare lo scenario a massima penetrazione
+scenari = {'scn4_k100.mat'}; 
+
+% --- 2. Motore di Ottimizzazione e Simulazione ---
+disp('=== AVVIO CICLO EMPC + POWER FLOW ===');
+
+N = 16; % Numero di nodi
+
+for i = 1:numel(scenari)
+    scn = scenari{i};
+    fprintf('\n► Lancio Scenario %d di %d: %s\n', i, numel(scenari), scn);
+    
+    % Caricamento asset dello scenario per l'MPC
+    Sfile = load(fullfile(getenv('MG_ROOT'), 'data', 'scenarios', scn));
+    PV_struct = utils.safeget(Sfile, 'PV');
+    BESS_struct = utils.safeget(Sfile, 'BESS');
+    
+    SOC0 = SOC_INIZIALE; % Inizializzazione SOC per il primo giorno
+    
+    for d = GIORNO_INIZIO:GIORNO_FINE
+        fprintf('\n>>> Giorno %03d | Ottimizzazione EMPC in corso...\n', d);
+        
+        % FASE 1: Estrattore Previsioni (Il Forecaster)
+        [P_load_15m, P_pv_15m] = utils.get_forecast_15min(getenv('MG_ROOT'), N, d, PV_struct);
+        
+        % Aggiorniamo il SOC iniziale nella struttura BESS in base al giorno precedente
+        if ~isempty(BESS_struct)
+           for b=1:numel(BESS_struct)
+               BESS_struct(b).SOC_init = SOC0(min(b, numel(SOC0)));
+           end
+        end
+        
+        % FASE 2: Ottimizzatore YALMIP + Gurobi (Il Cervello)
+        [P_bess_15m_tot, diag] = utils.empc_optimizer(P_load_15m, P_pv_15m, BESS_struct);
+        fprintf('    Stato MPC: %s | OPEX: %.2f euro\n', diag.status, diag.OPEX_euro);
+        
+        % FASE 3: Validazione Elettrica (Power Flow 1-min)
+        fprintf('    Lancio Power Flow (Backward/Forward Sweep)...\n');
+        [outFN, SOC_end] = run_district_day_mpc(d, scn, SOC0, P_bess_15m_tot);
+        
+        % Passaggio del SOC al giorno successivo (Continuità termodinamica)
+        SOC0 = SOC_end;
+    end
+end
+
+disp('=== TEST MPC COMPLETATO CON SUCCESSO ===');
+
+
+
+3) startup.m (Configura i path e le variabili di base all'avvio)
+
+
+
+% File: startup.m  (mettilo nella root del progetto)
+function startup()
+    % Root del progetto ricavata dalla posizione di questo file
+    root = fileparts(mfilename('fullpath'));
+
+    % Aggiungo SOLO le cartelle necessarie per il codice core (evita genpath globale)
+    addpath(fullfile(root,'src'));
+    addpath(fullfile(root,'post'));
+    addpath(fullfile(root,'post','utils'));
+
+    % Aggiungo YALMIP includendo tutte le sue sottocartelle (FONDAMENTALE)
+    yalmip_path = fullfile(root, 'YALMIP-master');
+    if exist(yalmip_path, 'dir')
+        addpath(genpath(yalmip_path));
+        fprintf('[MG] YALMIP caricato con successo nel Path.\n');
+    else
+        warning('[MG] ATTENZIONE: Cartella YALMIP-master non trovata nella root!');
+    end
+
+    % Cartelle output (idempotente)
+    mk(fullfile(root,'results','daily'));
+    mk(fullfile(root,'results','summary'));
+    mk(fullfile(root,'figs'));
+
+    % Espongo la root a fine sessione (serve per shutdown)
+    setenv('MG_ROOT', root);
+
+    fprintf('[MG] Paths ready. Root: %s\n', root);
+
+    % helper locale
+    function mk(p), if ~exist(p,'dir'), mkdir(p); end, end
+end
+
+
+4) shutdown.m (Pulisce l'ambiente alla chiusura)
+
+
+% File: shutdown.m  (root del progetto)
+function shutdown()
+    root = getenv('MG_ROOT');
+    if isempty(root) || ~isfolder(root), return; end
+
+    rmpath( fullfile(root,'src'), ...
+            fullfile(root,'post'), ...
+            fullfile(root,'post','utils') );
+
+    fprintf('[MG] Paths removed. Root: %s\n', root);
+end
+
+
+
+
+5) verify_day_robust.m (Check di robustezza numerica)
+
+
+
+% =========================================================================
+%  SCRIPT: verify_day_robust.m        (rev. BUGFIX Nodo 1)
+% =========================================================================
+clear; clc;
+
+% === Config ===
+year = 2023;
+day  = 197; % Impostato di default sul 16 Luglio per il test
+scns = {'scn0_passive.mat','scn1_3PV.mat','scn2_5PV_1BESS.mat', ...
+        'scn3_7PV_2BESS.mat','scn4_k100.mat'};
+
+fprintf('\n[VERIFY] Formal checks on day %03d (robust)\n', day);
+
+for i = 1:numel(scns)
+    scn = scns{i};
+    [matFN, ~] = run_district_day(day, scn);
+    S = load(matFN);
+    
+    % 1) Voltage limits
+    okV = all(S.Vmag(:) >= 0.95 & S.Vmag(:) <= 1.05);
+    [Vmin, idx] = min(S.Vmag(:)); [busMin, tMin] = ind2sub(size(S.Vmag), idx);
+    
+    % 2) Instantaneous loss series (kW)
+    Psl_kW = S.Psl * 100;                     % p.u. -> kW (Sbase=100 kVA)
+    
+    % --- FIX NODO 1 ---
+    P_nodes_kW = S.P_kw;
+    if isfield(S,'P_pv'),   P_nodes_kW = P_nodes_kW + S.P_pv;   end
+    if isfield(S,'P_bess'), P_nodes_kW = P_nodes_kW + S.P_bess; end
+    P_ext_kW = Psl_kW + P_nodes_kW(1, :);
+    % ------------------
+    
+    if size(S.P_kw,1) < 2
+        error('Unexpected size: P_kw should have at least 2 rows (slack + others).');
+    end
+    busSum_noSlack = sum(S.P_kw(2:end,:) + S.P_pv(2:end,:) + S.P_bess(2:end,:), 1);
+    loss_t = max(0, Psl_kW - busSum_noSlack); % 1×1440 kW
+    
+    % 3) Energy comparison (kWh) with robust method
+    dt_h      = 1/60;
+    E_loss_ts = trapz(loss_t)         * dt_h;
+    E_imp_ts  = trapz(max(P_ext_kW,0)) * dt_h; 
+    
+    [E_imp_rb, E_loss_rb] = energy_balance(S.Psl, matFN);
+    
+    assert(abs(E_loss_ts - E_loss_rb) < 1.0, ...
+        'Loss energy mismatch (>1 kWh): ts=%.2f  robust=%.2f', E_loss_ts, E_loss_rb);
+    assert(abs(E_imp_ts  - E_imp_rb)  < 1.0, ...
+        'Import energy mismatch (>1 kWh): ts=%.2f  robust=%.2f', E_imp_ts, E_imp_rb);
+        
+    % 4) Quick KPIs
+    E_exp  = trapz(abs(min(P_ext_kW,0))) * dt_h; 
+    E_pv   = 0; if isfield(S,'P_pv'), E_pv = trapz(-min(S.P_pv(:),0)) * dt_h; end
+    E_load = E_imp_ts - E_exp + E_pv;
+    
+    SelfSuff = 1 - E_imp_ts / max(E_load, eps);
+    SelfCons = 1 - E_exp    / max(E_pv , eps);
+    devLossMean = mean(loss_t);  
+    
+    fprintf(' - %-17s | Vmin=%.3f @bus=%d t=%02d:%02d | okV=%d | Loss(ts)=%.2f kWh | SS=%.1f%% SC=%.1f%%\n',...
+        erase(scn,'.mat'), Vmin, busMin, floor((tMin-1)/60), mod(tMin-1,60), okV, ...
+        E_loss_ts, 100*SelfSuff, 100*SelfCons);
+end
+fprintf('\n[VERIFY] Done.\n');
+
+
+6) compare_mpc.m
+
+% Script rapido per confrontare il vero scambio al trasformatore (P_slack)
+clear; clc; close all;
+
+dayNum = 196; % 15 Luglio
+tag = 'scn4_k100';
+
+% Costruisci i percorsi per il file VECCHIO e il file NUOVO
+root = fileparts(mfilename('fullpath'));
+old_file = fullfile(root, 'results', 'daily', sprintf('day%03d__%s.mat', dayNum, tag));
+new_file = fullfile(root, 'results', 'daily_mpc', sprintf('day%03d__%s_MPC.mat', dayNum, tag));
+
+% Carica i dati
+S_old = load(old_file);
+S_new = load(new_file);
+
+% Asse temporale in ore
+h = S_old.t_min / 60;
+
+% Calcolo del VERO scambio (Psl + P_nodo1) in kW
+P_ext_old = (S_old.Psl * 100) + S_old.P_kw(1,:);
+if isfield(S_old,'P_pv'), P_ext_old = P_ext_old + S_old.P_pv(1,:); end
+if isfield(S_old,'P_bess'), P_ext_old = P_ext_old + S_old.P_bess(1,:); end
+
+P_ext_new = (S_new.Psl * 100) + S_new.P_kw(1,:);
+if isfield(S_new,'P_pv'), P_ext_new = P_ext_new + S_new.P_pv(1,:); end
+if isfield(S_new,'P_bess'), P_ext_new = P_ext_new + S_new.P_bess(1,:); end
+
+% Disegno il grafico comparativo
+figure('Color', 'w', 'Name', 'Confronto MPC vs Greedy');
+plot(h, P_ext_old, 'r--', 'LineWidth', 1.5); hold on;
+plot(h, P_ext_new, 'b', 'LineWidth', 2);
+grid on;
+xlabel('Ora del giorno [h]');
+ylabel('Scambio di Potenza Attiva [kW]');
+title(sprintf('Scambio al PoC - Giorno %03d (Valori Negativi = Esportazione)', dayNum));
+legend('Logica Istantanea (Greedy)', 'Logica Predittiva (EMPC)', 'Location', 'best');
+
+
+7) compare_statcom.m
+
+% Script per verificare l'effetto dello STATCOM sulle tensioni e sulla reattiva
+clear; clc; close all;
+
+dayNum = 196; % Il nostro giorno critico estivo
+tag = 'scn4_k100';
+
+root = fileparts(mfilename('fullpath'));
+old_file = fullfile(root, 'results', 'daily', sprintf('day%03d__%s.mat', dayNum, tag));
+new_file = fullfile(root, 'results', 'daily_mpc', sprintf('day%03d__%s_MPC.mat', dayNum, tag));
+
+S_old = load(old_file);
+S_new = load(new_file);
+
+h = S_old.t_min / 60;
+N = size(S_old.Vmag, 1);
+
+% --- PLOT 1: Heatmap Comparativa delle Tensioni ---
+figure('Color', 'w', 'Name', 'Impatto STATCOM sulle Tensioni', 'Position', [100 100 1200 500]);
+
+subplot(1,2,1);
+imagesc(h, 1:N, S_old.Vmag);
+colormap(jet); colorbar; 
+caxis([0.96 1.04]); % Fissiamo i limiti colore per un confronto equo
+title('Tensione VECCHIA (Senza STATCOM)');
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+
+subplot(1,2,2);
+imagesc(h, 1:N, S_new.Vmag);
+colormap(jet); colorbar; 
+caxis([0.96 1.04]);
+title('Tensione NUOVA (MPC + STATCOM +-2%)');
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+
+% --- PLOT 2: Azione dello STATCOM ---
+if isfield(S_new, 'Q_statcom_log')
+    figure('Color', 'w', 'Name', 'Iniezione Potenza Reattiva');
+    plot(h, sum(S_new.Q_statcom_log, 1), 'LineWidth', 1.5, 'Color', '#D95319');
+    grid on;
+    title('Potenza Reattiva Totale Azionata dagli Inverter');
+    xlabel('Ora del giorno [h]'); ylabel('Q Totale [kVAr] (Positivo = Assorbe, Negativo = Inietta)');
+end
+
+8) plot_thesis_results.m
+
+% =========================================================================
+% VERDETTO FINALE: Confronto Diretto Greedy vs EMPC per la Tesi
+% =========================================================================
+clear; clc; close all;
+
+scenario = 'scn4_k100'; % Scenario critico a massima penetrazione
+year = 2023;
+sumDir = fullfile(fileparts(mfilename('fullpath')), 'results', 'summary');
+
+csvOld = fullfile(sumDir, sprintf('KPI_%s.csv', scenario));
+csvMPC = fullfile(sumDir, sprintf('KPI_%s_MPC.csv', scenario));
+
+if ~isfile(csvOld) || ~isfile(csvMPC)
+    error('File CSV mancanti. Assicurati di aver runnato i post-processing per entrambi i modelli.');
+end
+
+T_old = readtable(csvOld);
+T_mpc = readtable(csvMPC);
+
+% Estrazione Dati Annuali
+loss_old = T_old.E_losses_kWh;
+loss_mpc = T_mpc.E_losses_kWh;
+ss_old = T_old.SelfSuff * 100;
+ss_mpc = T_mpc.SelfSuff * 100;
+
+% Calcolo del Risparmio Netto
+delta_loss_perc = ((loss_old - loss_mpc) / loss_old) * 100;
+
+fprintf('\n=== RISULTATI TOTALI ANNO %d (%s) ===\n', year, scenario);
+fprintf('Perdite Joule (Logica Istantanea) : %.1f kWh\n', loss_old);
+fprintf('Perdite Joule (Logica Predittiva) : %.1f kWh\n', loss_mpc);
+fprintf('RISPARMIO NETTO PERDITE TERMICA   : %.1f %%\n', delta_loss_perc);
+fprintf('--------------------------------------------------\n');
+fprintf('Autosufficienza (Logica Istantanea): %.2f %%\n', ss_old);
+fprintf('Autosufficienza (Logica Predittiva): %.2f %%\n', ss_mpc);
+
+% Bar Plot per la tesi
+figure('Color','w','Name','Impatto EMPC sulle Perdite','Position',[100 100 600 450]);
+b = bar([loss_old, loss_mpc], 'FaceColor', 'flat');
+b.CData(1,:) = [0.8500 0.3250 0.0980]; % Rosso/Arancio per Greedy
+b.CData(2,:) = [0.0000 0.4470 0.7410]; % Blu per l'MPC
+
+set(gca, 'XTickLabel', {'Logica Istantanea (Greedy)', 'Logica Predittiva (EMPC)'});
+ylabel('Perdite Joule Totali Annue [kWh]');
+title(sprintf('Riduzione delle Perdite Termiche sulla Rete (-%.1f%%)', delta_loss_perc));
+grid on;
+
+
+9) run_master_stresstests.m
+
+% =========================================================================
+% MASTER SCRIPT: STRESS TEST DIAGNOSTICI (Tesi Magistrale)
+% =========================================================================
+clear; clc; close all;
+startup(); 
+global L_scale Load_scale; 
+
+disp('=== INIZIO STRESS TEST ===');
+
+daySpring = 97;  % Giorno di massimo Voltage Rise
+dayWinter = 357; % Giorno di massimo Voltage Drop
+
+%% ========================================================================
+% TEST 1: STRESS TEST TOPOLOGICO (Allungamento Linee -> Voltage Rise)
+% ========================================================================
+disp(['--- AVVIO TEST 1: STRESS TOPOLOGICO (Giorno ' num2str(daySpring) ') ---']);
+lunghezze_test = [1, 4, 7, 10, 13];
+Vmax_A = zeros(size(lunghezze_test));
+Vmax_B = zeros(size(lunghezze_test));
+Vmax_C = zeros(size(lunghezze_test));
+Vmax_MPC = zeros(size(lunghezze_test));
+
+Load_scale = 1.0; % Carichi normali
+
+% Caricamento asset per MPC (Usiamo lo scenario C: Distribuito)
+Sfile_C = load(fullfile(getenv('MG_ROOT'), 'data', 'scenarios', 'scn_stress_C_MaxPV_DistrBESS.mat'));
+PV_C = utils.safeget(Sfile_C, 'PV');
+BESS_C = utils.safeget(Sfile_C, 'BESS');
+
+for i = 1:length(lunghezze_test)
+    L_scale = lunghezze_test(i);
+    fprintf('Calcolo L_scale = %d...\n', L_scale);
+    
+    % A: No BESS
+    [outA, ~] = run_district_day(daySpring, 'scn_stress_A_MaxPV_0BESS.mat');
+    Sa = load(outA, 'Vmag'); Vmax_A(i) = max(Sa.Vmag(:));
+    
+    % B: BESS Centralizzato (Greedy)
+    [outB, ~] = run_district_day(daySpring, 'scn_stress_B_MaxPV_CentralBESS.mat');
+    Sb = load(outB, 'Vmag'); Vmax_B(i) = max(Sb.Vmag(:));
+    
+    % C: BESS Distribuito (Greedy) -> IL PARADOSSO
+    [outC, ~] = run_district_day(daySpring, 'scn_stress_C_MaxPV_DistrBESS.mat');
+    Sc = load(outC, 'Vmag'); Vmax_C(i) = max(Sc.Vmag(:));
+    
+    % D: BESS Distribuito (MPC + STATCOM) -> LA CURA DEFINITIVA
+    [P_load_15m, P_pv_15m] = utils.get_forecast_15min(getenv('MG_ROOT'), 16, daySpring, PV_C);
+    [P_bess_15m_tot, ~] = utils.empc_optimizer(P_load_15m, P_pv_15m, BESS_C);
+    [outMPC, ~] = run_district_day_mpc(daySpring, 'scn_stress_C_MaxPV_DistrBESS.mat', 0.50, P_bess_15m_tot);
+    Smpc = load(outMPC, 'Vmag'); Vmax_MPC(i) = max(Smpc.Vmag(:));
+end
+
+fig1 = figure('Color', 'w', 'Name', 'Stress Test Topologico', 'Position', [100 100 850 550]);
+% Linea A tratteggiata più spessa per farla vedere sotto la B
+plot(lunghezze_test, Vmax_A, '--o', 'Color', [0.8500 0.3250 0.0980], 'LineWidth', 4, 'DisplayName', 'A: Rete senza BESS (Crisi)'); hold on;
+plot(lunghezze_test, Vmax_B, '-s', 'Color', [0.9290 0.6940 0.1250], 'LineWidth', 2, 'DisplayName', 'B: BESS Cabina (Cura Inutile)');
+plot(lunghezze_test, Vmax_C, '-d', 'Color', [0.4940 0.1840 0.5560], 'LineWidth', 2, 'DisplayName', 'C: BESS Distribuito - GREEDY (Danno!)');
+plot(lunghezze_test, Vmax_MPC, '-^', 'Color', [0 0.4470 0.7410], 'LineWidth', 3, 'DisplayName', 'D: BESS Distribuito - MPC (Cura Perfetta)');
+
+yline(1.10, 'r--', 'Limite Normativo CEI (1.10 p.u.)', 'LineWidth', 2, 'HandleVisibility', 'off');
+xlabel('Moltiplicatore Lunghezza Tratti Periferici (L_{scale})', 'FontSize', 11, 'FontWeight', 'bold');
+ylabel('Tensione Massima Raggiunta |V_{max}| [p.u.]', 'FontSize', 11, 'FontWeight', 'bold');
+title(sprintf('Stress Topologico: Il fallimento del Greedy vs Il controllo MPC (Giorno %d)', daySpring), 'FontSize', 12);
+grid on; legend('Location', 'NorthWest');
+
+%% ========================================================================
+% TEST 2: STRESS TEST DI CARICO (Elettrificazione estrema -> Voltage Drop)
+% ========================================================================
+disp(['--- AVVIO TEST 2: STRESS DI POTENZA CARICHI (Giorno ' num2str(dayWinter) ') ---']);
+carichi_test = [1.0, 2.0, 3.0, 4.5, 6.0]; 
+Vmin_Passive = zeros(size(carichi_test));
+Vmin_MPC     = zeros(size(carichi_test));
+
+L_scale = 1.0; % Linee normali
+
+Sfile_mpc = load(fullfile(getenv('MG_ROOT'), 'data', 'scenarios', 'scn4_k100.mat'));
+PV_struct_w = utils.safeget(Sfile_mpc, 'PV');
+BESS_struct_w = utils.safeget(Sfile_mpc, 'BESS');
+
+for i = 1:length(carichi_test)
+    Load_scale = carichi_test(i);
+    fprintf('Calcolo Elettrificazione Load_scale = %.1f...\n', Load_scale);
+    
+    % 1. Scenario Passivo 
+    [outPass, ~] = run_district_day(dayWinter, 'scn0_passive.mat');
+    Sp = load(outPass, 'Vmag'); Vmin_Passive(i) = min(Sp.Vmag(:));
+    
+    % 2. Sostegno Intelligente (MPC) 
+    [P_load_15m_W, P_pv_15m_W] = utils.get_forecast_15min(getenv('MG_ROOT'), 16, dayWinter, PV_struct_w);
+    [P_bess_15m_tot_W, ~] = utils.empc_optimizer(P_load_15m_W, P_pv_15m_W, BESS_struct_w);
+    [outMPC_W, ~] = run_district_day_mpc(dayWinter, 'scn4_k100.mat', 0.50, P_bess_15m_tot_W);
+    S_mpc_w = load(outMPC_W, 'Vmag'); Vmin_MPC(i) = min(S_mpc_w.Vmag(:));
+end
+
+fig2 = figure('Color', 'w', 'Name', 'Stress Test Carichi', 'Position', [150 150 800 500]);
+plot(carichi_test, Vmin_Passive, '-o', 'Color', [0.8500 0.3250 0.0980], 'LineWidth', 2, 'DisplayName', 'Scenario 0: Rete Passiva (Blackout)'); hold on;
+plot(carichi_test, Vmin_MPC, '-d', 'Color', [0 0.4470 0.7410], 'LineWidth', 3, 'DisplayName', 'Scenario 4: BESS Distribuito (MPC + STATCOM)');
+yline(0.90, 'r--', 'Limite Normativo CEI (0.90 p.u.)', 'LineWidth', 2, 'HandleVisibility', 'off');
+xlabel('Moltiplicatore Densità di Carico (Load_{scale})', 'FontSize', 11, 'FontWeight', 'bold');
+ylabel('Tensione Minima Raggiunta |V_{min}| [p.u.]', 'FontSize', 11, 'FontWeight', 'bold');
+title(sprintf('Elettrificazione Estrema: Prevenzione del Voltage Drop (Giorno %d)', dayWinter), 'FontSize', 12);
+grid on; legend('Location', 'SouthWest');
+
+disp('=== TEST COMPLETATI CON SUCCESSO ===');
+
+
+
+10) plot_battery_health.m
+
+
+% =========================================================================
+% SCRIPT DIAGNOSTICO: Salute della Batteria (SOC vs Potenza)
+% Dimostrazione dell'usura termomeccanica: Greedy vs MPC
+% =========================================================================
+clear; clc; close all;
+startup(); % Assicurati che i path siano caricati
+
+disp('=== AVVIO ANALISI SALUTE BATTERIA (Giorno 196) ===');
+
+% 1. Definizione Parametri e File
+dayNum = 196; % 15 Luglio (Massimo stress di carica/scarica)
+tag = 'scn4_k100';
+projRoot = getenv('MG_ROOT');
+
+file_greedy = fullfile(projRoot, 'results', 'daily', sprintf('day%03d__%s.mat', dayNum, tag));
+file_mpc    = fullfile(projRoot, 'results', 'daily_mpc', sprintf('day%03d__%s_MPC.mat', dayNum, tag));
+
+if ~isfile(file_greedy) || ~isfile(file_mpc)
+    error('File dei risultati mancanti. Assicurati di aver runnato gli scenari base e MPC per il giorno %d', dayNum);
+end
+
+% 2. Caricamento Dati
+S_gr  = load(file_greedy, 'SOC_mean', 'P_bess');
+S_mpc = load(file_mpc, 'SOC_mean', 'P_bess');
+
+% 3. Estrazione Metriche (Valore Assoluto della Potenza = Corrente)
+% Calcoliamo la potenza totale assoluta scambiata dai BESS per ogni minuto
+P_tot_gr  = sum(abs(S_gr.P_bess), 1); 
+P_tot_mpc = sum(abs(S_mpc.P_bess), 1);
+
+% Convertiamo il SOC in percentuale
+soc_gr  = S_gr.SOC_mean * 100;
+soc_mpc = S_mpc.SOC_mean * 100;
+
+% 4. Generazione del Grafico (Scatter Plot con Zone di Sicurezza)
+fig = figure('Color', 'w', 'Name', 'Salute Batteria - Stress Test', 'Position', [100 100 900 600]);
+
+% Calcolo del limite Y per il grafico (Potenza massima + 10% di margine)
+maxP = max([max(P_tot_gr), max(P_tot_mpc)]) * 1.1;
+
+% --- DISEGNO DELLE ZONE TERMODINAMICHE (BACKGROUND) ---
+% Zona Rossa 1: Low SOC (Stress Meccanico / Sottoscarica)
+patch([0 20 20 0], [0 0 maxP maxP], [1 0.85 0.85], 'EdgeColor', 'none', 'FaceAlpha', 0.6, 'HandleVisibility', 'off'); hold on;
+% Zona Rossa 2: High SOC (Rischio Lithium Plating)
+patch([80 100 100 80], [0 0 maxP maxP], [1 0.85 0.85], 'EdgeColor', 'none', 'FaceAlpha', 0.6, 'HandleVisibility', 'off');
+% Zona Verde: Safe Operating Area (SOA)
+patch([20 80 80 20], [0 0 maxP maxP], [0.85 1 0.85], 'EdgeColor', 'none', 'FaceAlpha', 0.5, 'HandleVisibility', 'off');
+
+% --- PLOT DEI DATI (SCATTER) ---
+% Modello Greedy (Rompere il litio)
+scatter(soc_gr, P_tot_gr, 50, [0.8500 0.3250 0.0980], 'filled', 'MarkerEdgeColor', 'k', ...
+    'MarkerFaceAlpha', 0.7, 'DisplayName', 'Greedy (Istantaneo)');
+
+% Modello MPC (Preservare il litio)
+scatter(soc_mpc, P_tot_mpc, 60, [0 0.4470 0.7410], 'd', 'filled', 'MarkerEdgeColor', 'k', ...
+    'MarkerFaceAlpha', 0.8, 'DisplayName', 'MPC (Predittivo)');
+
+% --- FORMATTAZIONE E TESTI ---
+xline(20, 'r--', 'LineWidth', 1.5, 'HandleVisibility', 'off');
+xline(80, 'r--', 'LineWidth', 1.5, 'HandleVisibility', 'off');
+
+text(10, maxP*0.92, sprintf('DANGER ZONE\n(Stress Catodo)'), 'HorizontalAlignment', 'center', 'Color', [0.8 0 0], 'FontWeight', 'bold', 'FontSize', 10);
+text(90, maxP*0.92, sprintf('DANGER ZONE\n(Lithium Plating)'), 'HorizontalAlignment', 'center', 'Color', [0.8 0 0], 'FontWeight', 'bold', 'FontSize', 10);
+text(50, maxP*0.92, sprintf('SAFE OPERATING AREA (SOA)'), 'HorizontalAlignment', 'center', 'Color', [0 0.5 0], 'FontWeight', 'bold', 'FontSize', 11);
+
+xlabel('State of Charge (SOC) [%]', 'FontSize', 12, 'FontWeight', 'bold');
+ylabel('Potenza Assoluta Totale Scambiata dai BESS |P_{tot}| [kW]', 'FontSize', 12, 'FontWeight', 'bold');
+title('Analisi Salute Batteria: Correlazione tra Potenza Scambiata e SOC (Giorno 196)', 'FontSize', 13);
+legend('Location', 'North');
+grid on;
+xlim([0 100]);
+ylim([0 maxP]);
+
+% 5. Salvataggio
+outDir = fullfile(projRoot, 'figs', 'summary');
+if ~isfolder(outDir), mkdir(outDir); end
+saveas(fig, fullfile(outDir, 'Battery_Health_Scatter.png'));
+
+disp('► Grafico "Salute Batteria" generato e salvato in figs/summary/');
+
+%% --- AGGIUNTA DIAGNOSTICA: L'INTUIZIONE SULL'ENERGIA (ENERGY THROUGHPUT) ---
+% Calcoliamo i kWh processati nelle varie zone di SOC (Integrale della Potenza)
+dt_h = 1/60; % Passo di integrazione (1 minuto in ore)
+
+% Indici delle zone per Greedy
+idx_danger_gr = (soc_gr < 20) | (soc_gr > 80);
+idx_safe_gr   = (soc_gr >= 20) & (soc_gr <= 80);
+
+% Indici delle zone per MPC
+idx_danger_mpc = (soc_mpc < 20) | (soc_mpc > 80);
+idx_safe_mpc   = (soc_mpc >= 20) & (soc_mpc <= 80);
+
+% Calcolo Energia [kWh] processata nelle due zone
+E_danger_gr = sum(P_tot_gr(idx_danger_gr)) * dt_h;
+E_safe_gr   = sum(P_tot_gr(idx_safe_gr)) * dt_h;
+
+E_danger_mpc = sum(P_tot_mpc(idx_danger_mpc)) * dt_h;
+E_safe_mpc   = sum(P_tot_mpc(idx_safe_mpc)) * dt_h;
+
+% Creazione Grafico a Barre
+fig_bar = figure('Color', 'w', 'Name', 'Energy Throughput per Zona', 'Position', [200 200 700 500]);
+b = bar([1, 2], [E_safe_gr, E_danger_gr; E_safe_mpc, E_danger_mpc], 'stacked');
+
+% Colori
+b(1).FaceColor = [0.4660 0.6740 0.1880]; % Verde (Safe Zone)
+b(2).FaceColor = [0.8500 0.3250 0.0980]; % Rosso (Danger Zone)
+
+set(gca, 'XTick', [1 2], 'XTickLabel', {'Modello Greedy (Istantaneo)', 'Modello MPC (Predittivo)'}, 'FontSize', 11);
+ylabel('Energia Totale Ciclata [kWh]', 'FontSize', 12, 'FontWeight', 'bold');
+title('Distribuzione dello Stress Chimico: Energia ciclata per fasce di SOC', 'FontSize', 13);
+legend({'Energia ciclata in Safe Zone (20%-80%)', 'Energia ciclata in Danger Zone (<20% o >80%)'}, 'Location', 'NorthWest');
+grid on;
+
+% Aggiungiamo i valori numerici sopra le barre
+text(1, E_safe_gr/2, sprintf('%.1f kWh', E_safe_gr), 'HorizontalAlignment', 'center', 'Color', 'w', 'FontWeight', 'bold');
+text(1, E_safe_gr + E_danger_gr/2, sprintf('%.1f kWh', E_danger_gr), 'HorizontalAlignment', 'center', 'Color', 'w', 'FontWeight', 'bold');
+text(2, E_safe_mpc/2, sprintf('%.1f kWh', E_safe_mpc), 'HorizontalAlignment', 'center', 'Color', 'w', 'FontWeight', 'bold');
+text(2, E_safe_mpc + E_danger_mpc/2, sprintf('%.1f kWh', E_danger_mpc), 'HorizontalAlignment', 'center', 'Color', 'w', 'FontWeight', 'bold');
+
+% Salva
+saveas(fig_bar, fullfile(outDir, 'Battery_Energy_Throughput.png'));
+disp('► Grafico "Energy Throughput" generato con successo.');
+
+
+11) generate_chap5_figures.m
+
+% =========================================================================
+% SCRIPT GENERATORE IMMAGINI CAPITOLO 5 (Stress Test & Diagnostica)
+% =========================================================================
+clear; clc; close all;
+startup(); 
+global L_scale Load_scale;
+
+outDir = fullfile(getenv('MG_ROOT'), 'figs', 'summary_chap5');
+if ~isfolder(outDir), mkdir(outDir); end
+
+% ========================================================================
+% PARTE 1: IL CRASH TOPOLOGICO (Giorno 97, Cavi Lunghissimi)
+% ========================================================================
+disp('--- Generazione Figure: STRESS TOPOLOGICO ---');
+daySpring = 97; 
+L_scale = 8.0;     % Linee lunghissime
+Load_scale = 1.0;  % Carico normale
+
+% 1. Simulazione Greedy (Il Disastro)
+[outGreedy_Topo, ~] = run_district_day(daySpring, 'scn_stress_C_MaxPV_DistrBESS.mat');
+S_gr_topo = load(outGreedy_Topo, 'Vmag', 't_min');
+
+% 2. Simulazione MPC (La Cura)
+Sfile_C = load(fullfile(getenv('MG_ROOT'), 'data', 'scenarios', 'scn_stress_C_MaxPV_DistrBESS.mat'));
+PV_C = utils.safeget(Sfile_C, 'PV'); BESS_C = utils.safeget(Sfile_C, 'BESS');
+[P_load_15m, P_pv_15m] = utils.get_forecast_15min(getenv('MG_ROOT'), 16, daySpring, PV_C);
+[P_bess_15m_tot, ~] = utils.empc_optimizer(P_load_15m, P_pv_15m, BESS_C);
+[outMPC_Topo, ~] = run_district_day_mpc(daySpring, 'scn_stress_C_MaxPV_DistrBESS.mat', 0.50, P_bess_15m_tot);
+S_mpc_topo = load(outMPC_Topo, 'Vmag');
+
+h_axis = S_gr_topo.t_min / 60;
+N_bus = size(S_gr_topo.Vmag, 1);
+max_V_topo = max(S_gr_topo.Vmag(:)); % Troviamo il vero picco per sbloccare i colori!
+
+% FIGURA A: Heatmap Comparative (Side-by-Side)
+fig_hm_topo = figure('Color', 'w', 'Position', [100 100 1200 500], 'Name', 'Heatmap Topologica');
+subplot(1,2,1);
+imagesc(h_axis, 1:N_bus, S_gr_topo.Vmag);
+set(gca,'YDir','normal'); colormap(jet); colorbar; 
+caxis([0.98 max_V_topo]); % Limite dinamico sbloccato!
+title('Voltage Rise - Modello Greedy (L_{scale} = 8)', 'FontSize', 12);
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+
+subplot(1,2,2);
+imagesc(h_axis, 1:N_bus, S_mpc_topo.Vmag);
+set(gca,'YDir','normal'); colormap(jet); colorbar; 
+caxis([0.98 max_V_topo]); % Stessa scala per confronto equo
+title('Mitigazione MPC + STATCOM', 'FontSize', 12);
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+saveas(fig_hm_topo, fullfile(outDir, 'Heatmap_Stress_Topologico.png'));
+
+% FIGURA B: Il calvario del Nodo 16 (Plot 2D)
+fig_n16 = figure('Color', 'w', 'Position', [150 150 800 400]);
+plot(h_axis, S_gr_topo.Vmag(16, :), 'Color', [0.4940 0.1840 0.5560], 'LineWidth', 2, 'DisplayName', 'Nodo 16 (Greedy)'); hold on;
+plot(h_axis, S_mpc_topo.Vmag(16, :), 'Color', [0 0.4470 0.7410], 'LineWidth', 2, 'DisplayName', 'Nodo 16 (MPC)');
+yline(1.10, 'r--', 'Limite Normativo CEI (1.10 p.u.)', 'LineWidth', 2, 'HandleVisibility', 'off');
+xlabel('Ora del giorno [h]'); ylabel('Tensione |V| [p.u.]');
+title('Profilo di Tensione al Nodo Periferico (Bus 16) - Giorno 97', 'FontSize', 12);
+grid on; legend('Location', 'NorthWest');
+saveas(fig_n16, fullfile(outDir, 'Plot2D_Nodo16_VoltageRise.png'));
+
+%% ========================================================================
+% PARTE 2: IL BLACKOUT DA ELETTRIFICAZIONE (Giorno 357, Carichi x6)
+% ========================================================================
+disp('--- Generazione Figure: STRESS DI CARICO ---');
+dayWinter = 357; 
+L_scale = 1.0;     % Linee normali
+Load_scale = 6.0;  % Elettrificazione estrema
+
+% 1. Simulazione Rete Passiva (Il Blackout)
+[outPass_Load, ~] = run_district_day(dayWinter, 'scn0_passive.mat');
+S_pass_load = load(outPass_Load, 'Vmag', 't_min');
+
+% 2. Simulazione MPC (Il Salvataggio)
+Sfile_mpc = load(fullfile(getenv('MG_ROOT'), 'data', 'scenarios', 'scn4_k100.mat'));
+PV_W = utils.safeget(Sfile_mpc, 'PV'); BESS_W = utils.safeget(Sfile_mpc, 'BESS');
+[P_load_15m_W, P_pv_15m_W] = utils.get_forecast_15min(getenv('MG_ROOT'), 16, dayWinter, PV_W);
+[P_bess_15m_tot_W, ~] = utils.empc_optimizer(P_load_15m_W, P_pv_15m_W, BESS_W);
+[outMPC_Load, ~] = run_district_day_mpc(dayWinter, 'scn4_k100.mat', 0.50, P_bess_15m_tot_W);
+S_mpc_load = load(outMPC_Load, 'Vmag', 'Q_statcom_log');
+
+min_V_load = min(S_pass_load.Vmag(:)); % Troviamo il baratro reale
+
+% FIGURA C: Heatmap Comparative (Side-by-Side)
+fig_hm_load = figure('Color', 'w', 'Position', [200 200 1200 500], 'Name', 'Heatmap Elettrificazione');
+subplot(1,2,1);
+imagesc(h_axis, 1:N_bus, S_pass_load.Vmag);
+set(gca,'YDir','normal'); colormap(jet); colorbar; 
+caxis([min_V_load 1.02]); % Limite inferiore sbloccato!
+title('Voltage Drop - Rete Passiva (Load_{scale} = 6)', 'FontSize', 12);
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+
+subplot(1,2,2);
+imagesc(h_axis, 1:N_bus, S_mpc_load.Vmag);
+set(gca,'YDir','normal'); colormap(jet); colorbar; 
+caxis([min_V_load 1.02]); 
+title('Sostegno Attivo MPC + STATCOM', 'FontSize', 12);
+xlabel('Ora del giorno [h]'); ylabel('Nodo');
+saveas(fig_hm_load, fullfile(outDir, 'Heatmap_Stress_Carico.png'));
+
+% FIGURA D: La Pistola Fumante dello STATCOM
+fig_statcom = figure('Color', 'w', 'Position', [250 250 800 400]);
+plot(h_axis, sum(S_mpc_load.Q_statcom_log, 1), 'Color', [0.8500 0.3250 0.0980], 'LineWidth', 2);
+xlabel('Ora del giorno [h]'); ylabel('Potenza Reattiva Capacitiva Inietta [kVAR]');
+title('Azione dello STATCOM per la prevenzione del Blackout Serale (Giorno 357)', 'FontSize', 12);
+grid on;
+saveas(fig_statcom, fullfile(outDir, 'Plot_STATCOM_Winter.png'));
+
+disp('=== TUTTE LE FIGURE DEL CAPITOLO 5 SONO PRONTE IN figs/summary_chap5/ ===');
+
+
+Cartella src (Core & Simulazione)
+
+I file che costruiscono la fisica della rete e macinano i calcoli pesanti.
+
+
+
+12) topology_district.m (Definisce linee, nodi e impedenze)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  FILE:  topology_district.m               (must run in the same folder)
+%
+%  Creates in the MATLAB workspace the variables:
+%      • N  (number of buses)                 • lineData   (topology)
+%      • idxLineMat  (row lookup matrix)      • fromBus, toBus, Zpu (opt.)
+%
+%  ────────────────────────────────────────────────────────────────────────────
+%  WARNING
+%  – This file must be executed after Zbase has been defined in the main,
+%    so that the function to_pu(L) knows Zbase.
+%  – Any change to line lengths or parameters must be done here and will
+%    automatically propagate to ALL scripts that call it.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% (Topo-0) STRESS TEST PARAMETER INJECTION
+global L_scale;
+if isempty(L_scale)
+    L_scale = 1.0; % Valore di default: rete normale
+end
+
+%% (Topo-1) General data
+N = 16;                   % bus 1 = slack
+
+%% (Topo-2) Reference LV line impedance
+Z_line_km = 0.20 + 1j*0.15;   % Ω/km   (Cu 4×150 mm² 3-phase 0.4 kV)
+
+%% (Topo-3) Branch lengths (km) - CON APPLICAZIONE L_scale SUI RAMI PERIFERICI
+L_1_2  = 0.03;                  % 30 m  → school
+L_1_3  = 0.05; L_3_4 = 0.05; L_4_5 = 0.05; L_5_6 = 0.05;            % shops
+L_1_7  = 0.15; L_7_8 = 0.08; 
+% Tratti terminali soggetti a indebolimento topologico:
+L_8_9  = 0.08 * L_scale; L_9_10 = 0.08 * L_scale; L_10_11 = 0.08 * L_scale;
+L_1_12 = 0.15; L_12_13 = 0.08; 
+% Tratti terminali soggetti a indebolimento topologico:
+L_13_14 = 0.08 * L_scale; L_14_15 = 0.08 * L_scale; L_15_16 = 0.08 * L_scale;
+
+%% (Topo-4) Per-unit conversion
+to_pu = @(Lkm) (Z_line_km*Lkm)/Zbase;       % anonymous function (uses Zbase)
+
+Zpu_vec = [
+    to_pu(L_1_2)
+    to_pu(L_1_3)   ; to_pu(L_3_4) ; to_pu(L_4_5) ; to_pu(L_5_6)
+    to_pu(L_1_7)   ; to_pu(L_7_8) ; to_pu(L_8_9) ; to_pu(L_9_10); to_pu(L_10_11)
+    to_pu(L_1_12)  ; to_pu(L_12_13); to_pu(L_13_14); to_pu(L_14_15); to_pu(L_15_16)
+];
+
+%% (Topo-5) Topology matrix  [from  to   Rpu   Xpu]
+lineData = [
+    1  2   real(Zpu_vec(1))   imag(Zpu_vec(1));
+    1  3   real(Zpu_vec(2))   imag(Zpu_vec(2));
+    3  4   real(Zpu_vec(3))   imag(Zpu_vec(3));
+    4  5   real(Zpu_vec(4))   imag(Zpu_vec(4));
+    5  6   real(Zpu_vec(5))   imag(Zpu_vec(5));
+    1  7   real(Zpu_vec(6))   imag(Zpu_vec(6));
+    7  8   real(Zpu_vec(7))   imag(Zpu_vec(7));
+    8  9   real(Zpu_vec(8))   imag(Zpu_vec(8));
+    9 10   real(Zpu_vec(9))   imag(Zpu_vec(9));
+   10 11   real(Zpu_vec(10))  imag(Zpu_vec(10));
+    1 12   real(Zpu_vec(11))  imag(Zpu_vec(11));
+   12 13   real(Zpu_vec(12))  imag(Zpu_vec(12));
+   13 14   real(Zpu_vec(13))  imag(Zpu_vec(13));
+   14 15   real(Zpu_vec(14))  imag(Zpu_vec(14));
+   15 16   real(Zpu_vec(15))  imag(Zpu_vec(15));
+];
+
+%% (Topo-6) Helper tables
+fromBus = lineData(:,1);
+toBus   = lineData(:,2);
+Zpu     = lineData(:,3)+1j*lineData(:,4);
+
+% Row lookup → idxLineMat(i,j) = row number corresponding to line i→j
+idxLineMat = zeros(N);                % 0 if branch does not exist
+for m = 1:size(lineData,1)
+    idxLineMat(fromBus(m),toBus(m)) = m;
+end
+
+
+
+13) create_scenarios.m (Genera i file .mat con le topologie PV/BESS)
+
+
+
+%% create_scenarios.m      (rev. STRESS TEST EDITION)
+% -------------------------------------------------------------------------
+root = fileparts(mfilename('fullpath'));
+while ~isempty(root) && ~isfolder(fullfile(root,'data'))
+    root = fileparts(root);                       
+end
+assert(~isempty(root),'Unable to find project root');
+scDir = fullfile(root,'data','scenarios');
+if ~isfolder(scDir), mkdir(scDir); end
+
+mk_bess = @(node,P_kW,Ehrs) struct( ...
+        'node'     , node     , 'E_kWh'    , P_kW*Ehrs, ...
+        'Pmax_kW'  , P_kW     , 'eta_c'    , 0.94     , ...
+        'eta_d'    , 0.94     , 'SOC_init' , 0.50     , ...
+        'SOC_min'  , 0.10     , 'SOC_max'  , 0.95       );
+
+%% 3) - Scenario 0 : fully passive
+PV = struct([]);    BESS = struct([]);
+save(fullfile(scDir,'scn0_passive.mat'),'PV','BESS')
+
+%% 4) - Scenario 1 : 3 residential PV
+PV = struct('node',{8,9,14},'Pmax_kW',{6,6,6},'phi',{1,1,1});
+BESS = struct([]);                       
+save(fullfile(scDir,'scn1_3PV.mat'),'PV','BESS')
+
+%% 5) - Scenario 2 : 5 PV  + BESS at building 7
+PV = struct('node',{7,8,9,10,14},'Pmax_kW',{30,6,6,6,6},'phi',num2cell(ones(1,5)));
+BESS = mk_bess( 7 , 30 , 2 );             
+save(fullfile(scDir,'scn2_5PV_1BESS.mat'),'PV','BESS')
+
+%% 6) - Scenario 3 : 7 PV  + BESS at buildings 7 and 13
+PV = struct('node',{7,8,9,10,11,14,15},'Pmax_kW',{30,6,6,6,6,6,6},'phi',num2cell(ones(1,7)));
+BESS = [ mk_bess(7,30,2); mk_bess(13,30,2) ];          
+save(fullfile(scDir,'scn3_7PV_2BESS.mat'),'PV','BESS')
+
+%% 7) - Scenario 4 : Sensitività sul Sizing 
+k_sizing_vec = 0.5 : 0.1 : 1.2; 
+for k = k_sizing_vec
+    PV = struct('node',{1,2,7,8,9,10,11,14,15}, ...
+          'Pmax_kW',num2cell([100,50,30,6,6,6,6,6,6]*k), 'phi',num2cell(ones(1,9)));
+    BESS = [mk_bess(1,100*k,2); mk_bess(2,50*k,2); mk_bess(7,30*k,2); mk_bess(13,30*k,2)];
+    nome_file = sprintf('scn4_k%03.0f.mat', k * 100);
+    save(fullfile(scDir, nome_file), 'PV', 'BESS');
+end
+
+%% ================== NUOVI SCENARI STRESS TEST ==================
+%% 9) - STRESS TEST A: La Crisi (Max PV, 0 BESS)
+PV = struct('node',{1,2,7,8,9,10,11,14,15},'Pmax_kW',{100,50,30,6,6,6,6,6,6},'phi',num2cell(ones(1,9)));
+BESS = struct([]); 
+save(fullfile(scDir,'scn_stress_A_MaxPV_0BESS.mat'),'PV','BESS')
+
+%% 10) - STRESS TEST B: La Cura Sbagliata (1 BESS Gigante vicino allo Slack)
+PV = struct('node',{1,2,7,8,9,10,11,14,15},'Pmax_kW',{100,50,30,6,6,6,6,6,6},'phi',num2cell(ones(1,9)));
+BESS = mk_bess( 7, 120, 2 ); % Tutta la capacità confinata a monte
+save(fullfile(scDir,'scn_stress_B_MaxPV_CentralBESS.mat'),'PV','BESS')
+
+%% 11) - STRESS TEST C: La Cura Intelligente (BESS Distribuiti in Periferia)
+PV = struct('node',{1,2,7,8,9,10,11,14,15},'Pmax_kW',{100,50,30,6,6,6,6,6,6},'phi',num2cell(ones(1,9)));
+BESS = [ mk_bess(8,30,2); mk_bess(11,30,2); mk_bess(14,30,2); mk_bess(16,30,2) ]; % Accumulo a fine linea
+save(fullfile(scDir,'scn_stress_C_MaxPV_DistrBESS.mat'),'PV','BESS')
+
+fprintf('► Scenarios updated with Stress Test configurations in %s\n', scDir);
+
+
+
+14) pv_profile_hourly_kW_per_kWp.m (Motore di generazione del profilo solare)
+
+
+
+function pv = pv_profile_hourly_kW_per_kWp(root)
+%PV_PROFILE_HOURLY_KW_PER_KWP  Load hourly PV profile for 1 kWp in Rome.
+%
+%   pv = pv_profile_hourly_kW_per_kWp(root) tries, in order:
+%     1) utils.read_pv_rome()   – if available on the path;
+%     2) utils.read_pv_rome_kWp – alternative name in old snapshots;
+%     3) directly reading data/PV_profiles/PV_Roma_kWp_2023.csv.
+%
+%   The output pv is a column vector (8760×1) of kW per 1 kWp.
+
+    % 1) try the official helper in utils (8760×1 kW/kWp)
+    if exist('utils.read_pv_rome','file') == 2
+        pv = utils.read_pv_rome();
+        return
+    end
+    % 2) try alternative helper name in older snapshots
+    if exist('utils.read_pv_rome_kWp','file') == 2
+        pv = utils.read_pv_rome_kWp();
+        return
+    end
+
+    % 3) fallback: read the CSV manually from data/PV_profiles
+    csvName = 'PV_Roma_kWp_2023.csv';
+    here    = root;
+    csvFN   = '';
+    % climb up to locate data/PV_profiles
+    while ~isempty(here)
+        cand = fullfile(here,'data','PV_profiles',csvName);
+        if exist(cand,'file')
+            csvFN = cand;
+            break
+        end
+        parent = fileparts(here);
+        if strcmp(parent,here), break
+        end
+        here = parent;
+    end
+    assert(~isempty(csvFN), 'PV profile CSV not found while climbing folders');
+
+    % read entire file as text (UTF‑8)
+    fid = fopen(csvFN,'r','n','UTF-8');
+    assert(fid >= 0, 'Cannot open %s', csvFN);
+    rowsCell = textscan(fid,'%s','Delimiter','\n','Whitespace','','CollectOutput',true);
+    fclose(fid);
+    rows = rowsCell{1};
+    % keep only rows starting with “20” (timestamp lines)
+    rows = rows(strncmp(rows,'20',2));
+    assert(~isempty(rows),'No timestamp rows found in %s', csvFN);
+
+    % detect delimiter and decimal separator
+    sep    = ',';
+    decChar= '.';
+    if ~contains(rows{1},',')
+        sep    = ';';
+        decChar= ',';
+    end
+
+    % build regular expression to capture the numeric PV column (2nd field)
+    if sep == ','
+        expr = '^[^,]+,\s*([0-9.]+)';   % decimal point
+    else
+        expr = '^[^;]+;\s*([0-9,]+)';   % decimal comma
+    end
+    tokens = regexp(rows, expr,'tokens','once');
+    tokens = tokens(~cellfun('isempty',tokens));
+
+    % convert string tokens to numeric, replacing decimal comma if needed
+    P_W = cellfun(@(c) str2double(strrep(c{1},decChar,'.')), tokens);
+    assert(~any(isnan(P_W)), 'Failed to parse numeric PV values in %s', csvFN);
+
+    % convert from W to kW
+    P_kW = P_W / 1000;
+    n = numel(P_kW);
+
+    % handle various lengths (8760, 8784, 52560, 52704)
+    switch n
+        case 8760
+            pv = P_kW(:);
+        case 8784
+            pv = P_kW(1:8760);
+        case {52560, 52704}
+            stepNom = n / 8760;      % should be around 6
+            step    = round(stepNom);
+            pvHourly= mean(reshape(P_kW(1:step*8760), step, []), 1).';
+            pv      = pvHourly(1:8760);
+        otherwise
+            error('Unrecognized PV series length: %d samples', n);
+    end
+end
+
+
+
+15) run_district_day.m (Il cuore del ciclo giornaliero)
+
+
+
+% =========================================================================
+%  FILE:  src/run_district_day.m        (rev. STRESS TEST Load_scale)
+% =========================================================================
+function [outFN, SOC_end] = run_district_day(dayNum, scenarioFN, SOC0)
+
+% ---------- 1) Paths & constants -----------------------------------------
+projRoot = fileparts(fileparts(mfilename('fullpath'))); 
+addpath(fullfile(projRoot,'src'));                       
+
+Sbase      = 100e3;           
+Vbase_L2L  = 400;             
+Zbase      = Vbase_L2L^2/Sbase; %#ok<NASGU>
+
+DT_min  = 1;                  
+NSTEPS  = 1440;               
+t_min   = 0:DT_min:1440-DT_min;
+
+if nargin < 1 || dayNum < 1 || dayNum > 365
+    error('dayNum must be in 1..365');
+end
+
+% ---------- 2) Network ----------------------------------------------------
+run(fullfile(projRoot,'src','topology_district.m'));
+
+% ---------- 3) Load scenario & optional SOC override ----------------------
+PV   = struct([]);    
+BESS = struct([]);
+
+if ~isempty(scenarioFN)
+    if ~isfile(scenarioFN)
+        [~,n,ext] = fileparts(scenarioFN);
+        if isempty(ext), ext = '.mat'; end
+        scenarioFN = fullfile(projRoot,'data','scenarios',[n ext]);
+    end
+    assert(isfile(scenarioFN), "Scenario file not found:\n%s", scenarioFN);
+    Sfile = load(scenarioFN);                 
+    if isfield(Sfile,'PV'),   PV   = Sfile.PV;   end
+    if isfield(Sfile,'BESS'), BESS = Sfile.BESS; end
+end
+
+if isempty(PV),   PV   = struct('node',{},'Pmax_kW',{},'phi',{}); end
+if isempty(BESS), BESS = struct('node',{},'E_kWh',{},'Pmax_kW',{}, ...
+                                'eta_c',{},'eta_d',{}, ...
+                                'SOC_min',{},'SOC_max',{},'SOC_init',{}); end
+nBESS = numel(BESS);
+
+if nargin >= 3 && ~isempty(SOC0) && nBESS > 0
+    v = SOC0(:).';                             
+    for k = 1:nBESS
+        val = v(min(k, numel(v)));            
+        lo  = 0.10;  hi = 0.95;               
+        if isfield(BESS(k),'SOC_min') && ~isempty(BESS(k).SOC_min), lo = BESS(k).SOC_min; end
+        if isfield(BESS(k),'SOC_max') && ~isempty(BESS(k).SOC_max), hi = BESS(k).SOC_max; end
+        BESS(k).SOC_init = min(max(val, lo), hi);
+    end
+end
+
+% ---------- 4) PV profile (per node) -------------------------------------
+pvNode = [];  pvPmax = [];  pvPhi = [];
+if ~isempty(PV)
+    pvNode = [PV.node];
+    pvPmax = [PV.Pmax_kW];
+    if isfield(PV,'phi'), pvPhi = [PV.phi]; else, pvPhi = ones(size(pvNode)); end
+end
+nPV = numel(pvNode);
+
+pvYear = pv_profile_hourly_kW_per_kWp(projRoot);   
+pv24   = pvYear((dayNum-1)*24 + (1:24));           
+pvMin  = interp1(0:60:1380, pv24(:).', t_min, 'pchip', 0);  
+
+P_pv = zeros(N, NSTEPS);
+Q_pv = zeros(N, NSTEPS);
+for k = 1:nPV
+    nd          = pvNode(k);
+    P_pv(nd,:)  = -pvPmax(k) * pvMin;                       
+    phi_k       = max(min(pvPhi(k), 1), -1);                
+    Q_pv(nd,:)  =  P_pv(nd,:) * tan(acos(phi_k));
+end
+
+% ---------- 5) Loads (CON STRESS TEST ELETTRICO) --------------------------
+[P_kw, Q_kw] = utils.profiles_synthetic_residential(projRoot,N,NSTEPS,dayNum);
+
+global Load_scale;
+if isempty(Load_scale)
+    Load_scale = 1.0;
+end
+
+P_kw = P_kw * Load_scale;
+Q_kw = Q_kw * Load_scale;
+
+P_kw_load = P_kw + P_pv;
+
+% ---------- 6) BESS dispatch ---------------------------------------------
+if nBESS > 0
+    [P_bess, Q_bess, SOC_mean, SOC_full] = utils.dispatch_bess(BESS, P_kw_load, NSTEPS, DT_min);
+else
+    P_bess   = zeros(size(P_kw));
+    Q_bess   = zeros(size(P_kw));
+    SOC_mean = nan(1, NSTEPS);
+    SOC_full = zeros(0, NSTEPS);
+end
+
+% ---------- 7) Net injections (p.u.) -------------------------------------
+P_net = P_kw_load + P_bess;
+Q_net = Q_kw      + Q_pv + Q_bess;
+
+kW2pu = 1/(Sbase/1e3);
+P_pu  = P_net * kW2pu;
+Q_pu  = Q_net * kW2pu;
+
+% ---------- 8) Time‑series power-flow ------------------------------------
+pf_fun = @bfs_powerflow_radial1;
+
+maxIter = 50;
+tol     = 1e-6;
+V0      = ones(N,1);
+Vmag    = zeros(N, NSTEPS);
+Psl     = zeros(1, NSTEPS);
+Qsl     = zeros(1, NSTEPS);
+idxSlack= find(fromBus == 1);
+
+for t = 1:NSTEPS
+    [V, Ibr, ~, ok] = pf_fun(lineData, P_pu(:,t), Q_pu(:,t), V0, 1, 0, maxIter, tol);
+    if ~ok
+        warning('Power-flow did not converge – day %d, minute %d.', dayNum, t);
+    end
+    V0 = V;
+    Vmag(:,t) = abs(V);
+    Ssl    = V(1) * conj(sum(Ibr(idxSlack)));
+    Psl(t) = real(Ssl);
+    Qsl(t) = imag(Ssl);
+end
+
+% ---------- 9) Save -------------------------------------------------------
+outDir = fullfile(projRoot,'results','daily');
+if ~isfolder(outDir), mkdir(outDir); end
+
+[~, baseName, ~] = fileparts(scenarioFN);
+tag = regexprep(baseName,'[^\w]','_');
+
+outFN = fullfile(outDir, sprintf('day%03d__%s.mat', dayNum, tag));
+save(outFN, 'dayNum','t_min','Vmag','Psl','Qsl', ...
+            'SOC_mean','P_kw','Q_kw','P_pv','Q_pv','P_bess','Q_bess', '-v7.3');
+fprintf('► Day %03d saved\n', dayNum);
+
+% ---------- 10) SOC_end ---------------------------------------------------
+if nargout > 1
+    if nBESS == 0, SOC_end = []; else, SOC_end = SOC_full(:, end); end
+end
+end
+
+16) run_district_day_mpc.m
+
+% =========================================================================
+%  FILE:  src/run_district_day_mpc.m  
+%  Descrizione: Motore giornaliero guidato dall'ottimizzatore EMPC.
+%               Include logica STATCOM con Deadband per controllo Q-V.
+% =========================================================================
+function [outFN, SOC_end] = run_district_day_mpc(dayNum, scenarioFN, SOC0, P_bess_15m_tot)
+
+    % ---------- 1) Paths & Costanti -----------------------------------------
+    projRoot = fileparts(fileparts(mfilename('fullpath'))); 
+    addpath(fullfile(projRoot,'src')); 
+
+    Sbase      = 100e3;           
+    Vbase_L2L  = 400;             
+    Zbase      = Vbase_L2L^2/Sbase; %#ok<NASGU>
+
+    DT_min  = 1;                  
+    NSTEPS  = 1440;               
+    t_min   = 0:DT_min:1440-DT_min;
+
+    % ---------- 2) Rete e Scenario ------------------------------------------
+    run(fullfile(projRoot,'src','topology_district.m'));
+
+    if ~isfile(scenarioFN)
+        [~,n,ext] = fileparts(scenarioFN);
+        if isempty(ext), ext = '.mat'; end
+        scenarioFN = fullfile(projRoot,'data','scenarios',[n ext]);
+    end
+    Sfile = load(scenarioFN);                 
+    PV   = utils.safeget(Sfile, 'PV');
+    BESS = utils.safeget(Sfile, 'BESS');
+    nBESS = numel(BESS);
+
+    % Override SOC iniziale
+    if nargin >= 3 && ~isempty(SOC0) && nBESS > 0
+        v = SOC0(:).';                             
+        for k = 1:nBESS
+            val = v(min(k, numel(v)));             
+            lo = 0.10;  hi = 0.95;                
+            if isfield(BESS(k),'SOC_min') && ~isempty(BESS(k).SOC_min), lo = BESS(k).SOC_min; end
+            if isfield(BESS(k),'SOC_max') && ~isempty(BESS(k).SOC_max), hi = BESS(k).SOC_max; end
+            BESS(k).SOC_init = min(max(val, lo), hi);
+        end
+    end
+
+% ---------- 3) Profili Carico e FV a 1 minuto ---------------------------
+    [P_kw, Q_kw] = utils.profiles_synthetic_residential(projRoot,N,NSTEPS,dayNum);
+    
+    % --- FIX STRESS TEST: Applichiamo il Load_scale alla fisica reale dell'MPC! ---
+    global Load_scale;
+    if isempty(Load_scale)
+        Load_scale = 1.0;
+    end
+    P_kw = P_kw * Load_scale;
+    Q_kw = Q_kw * Load_scale;
+    % ------------------------------------------------------------------------------
+    
+    P_pv = zeros(N, NSTEPS);
+    Q_pv = zeros(N, NSTEPS);
+    if ~isempty(PV)
+        pvYear = pv_profile_hourly_kW_per_kWp(projRoot);   
+        pv24   = pvYear((dayNum-1)*24 + (1:24));           
+        pvMin  = interp1(0:60:1380, pv24(:).', t_min, 'pchip', 0);  
+
+        for k = 1:numel(PV)
+            nd = PV(k).node;
+            P_pv(nd,:) = -PV(k).Pmax_kW * pvMin; 
+            phi_k = max(min(PV(k).phi, 1), -1);                 
+            Q_pv(nd,:) = P_pv(nd,:) * tan(acos(phi_k));
+        end
+    end
+    
+    P_kw_load = P_kw + P_pv;
+
+    % ---------- 4) Disaggregazione Setpoint MPC sulle Batterie -------------
+    P_bess = zeros(N, NSTEPS);
+    Q_bess = zeros(N, NSTEPS);
+    
+    if nBESS > 0 && nargin >= 4 && ~isempty(P_bess_15m_tot)
+        % Mantenitore di Ordine Zero: espande 96 step a 1440 step
+        P_bess_1min_tot = repelem(P_bess_15m_tot, 15);
+        
+        Pmax_tot = sum([BESS.Pmax_kW]);
+        SOC_full = zeros(nBESS, NSTEPS);
+        
+        for b = 1:nBESS
+            nd = BESS(b).node;
+            quota = BESS(b).Pmax_kW / Pmax_tot; 
+            Pcmd_local = P_bess_1min_tot * quota;
+            
+            soc = BESS(b).SOC_init;
+            E_kWh = BESS(b).E_kWh;
+            eta_c = 0.94; eta_d = 0.94;
+            soc_vec = zeros(1, NSTEPS);
+            
+            for t = 1:NSTEPS
+                if Pcmd_local(t) > 0 && soc >= BESS(b).SOC_max
+                    Pcmd_local(t) = 0;
+                elseif Pcmd_local(t) < 0 && soc <= BESS(b).SOC_min
+                    Pcmd_local(t) = 0;
+                end
+                
+                if Pcmd_local(t) > 0
+                    dE = Pcmd_local(t) * eta_c * (1/60);
+                else
+                    dE = Pcmd_local(t) / eta_d * (1/60);
+                end
+                soc = soc + dE / E_kWh;
+                soc_vec(t) = soc;
+            end
+            
+            P_bess(nd,:) = P_bess(nd,:) + Pcmd_local;
+            SOC_full(b,:) = soc_vec;
+        end
+        SOC_mean = mean(SOC_full, 1);
+    else
+        SOC_mean = nan(1, NSTEPS);
+        SOC_full = zeros(0, NSTEPS);
+    end
+
+    % ---------- 5) Calcolo Power Flow con Logica STATCOM (Droop Q-V) -------
+    
+    % Calcolo Potenza Apparente Nominale degli Inverter (S_inv) sovradimensionati del 10%
+    S_inv_node = zeros(N, 1);
+    if ~isempty(PV)
+        for k = 1:numel(PV)
+            nd = PV(k).node; 
+            S_inv_node(nd) = S_inv_node(nd) + PV(k).Pmax_kW * 1.1; 
+        end
+    end
+    if nBESS > 0
+        for b = 1:nBESS
+            nd = BESS(b).node; 
+            S_inv_node(nd) = S_inv_node(nd) + BESS(b).Pmax_kW * 1.1; 
+        end
+    end
+
+    P_net = P_kw_load + P_bess;
+    Q_net_base = Q_kw + Q_pv + Q_bess; 
+
+    kW2pu = 1/(Sbase/1e3);
+    pf_fun = @bfs_powerflow_radial1;
+    
+    V0 = ones(N,1);
+    Vmag = zeros(N, NSTEPS);
+    Psl  = zeros(1, NSTEPS);
+    Qsl  = zeros(1, NSTEPS);
+    Q_statcom_log = zeros(N, NSTEPS); 
+    
+    idxSlack = find(fromBus == 1);
+
+    for t = 1:NSTEPS
+        P_t = P_net(:,t);
+        Q_t = Q_net_base(:,t);
+        Q_statcom_t = zeros(N,1);
+        
+        for iter = 1:5
+            P_pu  = P_t * kW2pu;
+            Q_pu  = (Q_t + Q_statcom_t) * kW2pu;
+            
+            [V, Ibr, ~, ok] = pf_fun(lineData, P_pu, Q_pu, V0, 1, 0, 50, 1e-6);
+            if ~ok && iter == 1
+                warning('Power-flow did not converge – day %d, minute %d.', dayNum, t);
+            end
+            
+            % Errore di tensione rispetto al target
+            err = 1.0 - abs(V); 
+            
+            % LOGICA INDUSTRIALE: Banda Morta del +- 2% (0.02 p.u.)
+            dV_eff = zeros(N,1);
+            dV_eff(err > 0.02)  = err(err > 0.02) - 0.02;  % Sottotensione
+            dV_eff(err < -0.02) = err(err < -0.02) + 0.02; % Sovratensione
+         
+          % LOGICA INDUSTRIALE: Banda Morta più stretta del +- 0.5% (0.005 p.u.) per forzare l'intervento
+          % dV_eff = zeros(N,1);
+          % dV_eff(err > 0.005)  = err(err > 0.005) - 0.005;  
+          % dV_eff(err < -0.005) = err(err < -0.005) + 0.005;  
+
+
+            % Calcolo capacità residua
+            P_inv_tot = abs(P_bess(:,t) + P_pv(:,t)); 
+            Q_max = sqrt(max(S_inv_node.^2 - P_inv_tot.^2, 0));
+            
+            % Droop Control sull'errore efficace (Retroazione negativa)
+            Q_statcom_t = Q_statcom_t - dV_eff * 200; 
+            
+            % Saturazione
+            Q_statcom_t = max(min(Q_statcom_t, Q_max), -Q_max);
+            
+            % Condizione di uscita basata sull'errore efficace residuo
+            if max(abs(dV_eff(S_inv_node > 0))) < 1e-4
+                break;
+            end
+        end
+        
+        V0 = V;
+        Vmag(:,t) = abs(V);
+        Q_statcom_log(:,t) = Q_statcom_t; 
+        
+        Ssl    = V(1) * conj(sum(Ibr(idxSlack)));
+        Psl(t) = real(Ssl);
+        Qsl(t) = imag(Ssl);
+    end
+
+    % ---------- 6) Salvataggio Risultati ------------------------------------
+    outDir = fullfile(projRoot,'results','daily_mpc'); 
+    if ~isfolder(outDir), mkdir(outDir); end
+
+    [~, baseName, ~] = fileparts(scenarioFN);
+    tag = regexprep(baseName,'[^\w]','_');
+
+    outFN = fullfile(outDir, sprintf('day%03d__%s_MPC.mat', dayNum, tag));
+    
+    save(outFN, 'dayNum','t_min','Vmag','Psl','Qsl', ...
+                'SOC_mean','P_kw','Q_kw','P_pv','Q_pv','P_bess','Q_bess', 'Q_statcom_log', '-v7.3');
+    fprintf('► Day %03d (MPC + STATCOM) saved\n', dayNum);
+
+    if nargout > 1
+        if nBESS == 0, SOC_end = []; else, SOC_end = SOC_full(:, end); end
+    end
+end
+
+
+
+17) run_district_range.m (Gestisce cicli su più giorni/mesi)
+
+
+
+function T = run_district_range(year, dayFrom, dayTo, scenarioName, SOC0)
+% RUN_DISTRICT_RANGE  Simulate a consecutive range of days, carrying over BESS SOC.
+%   T = run_district_range(2023, 32, 33, 'scn4_8PV_4BESS.mat');
+%   T = run_district_range(2023, 1, 31, 'scn2_5PV_1BESS.mat', 0.5);
+%
+% Inputs:
+%   year        – calendar year for KPI logging (optional; can be empty)
+%   dayFrom     – starting day (1…365)
+%   dayTo       – ending day (>= dayFrom)
+%   scenarioName– name of the scenario MAT file (with or without .mat)
+%   SOC0        – initial SOC of the BESS (scalar or vector), optional
+%
+% Output:
+%   T – table with columns Day, Vmin, MatFile (path of the saved .mat)
+
+    if nargin < 5
+        SOC0 = [];
+    end
+
+    projRoot = fileparts(fileparts(mfilename('fullpath')));  % project root
+    sumDir   = fullfile(projRoot, 'results', 'summary');
+    if ~exist(sumDir, 'dir')
+        mkdir(sumDir);
+    end
+
+    T = table;
+
+    for d = dayFrom:dayTo
+        fprintf('\n>>> Day %03d | %s\n', d, scenarioName);
+
+        % Run the simulation for one day
+        [outFN, SOC_end] = run_district_day(d, scenarioName, SOC0);
+
+        % Optionally run daily post-processing (only if year is provided)
+        if nargin >= 1 && ~isempty(year) && exist('post_process_day', 'file') == 2
+            post_process_day(year, d, scenarioName);
+        end
+
+        % Store the min voltage for diagnostics
+        S    = load(outFN, 'Vmag');
+        Vmin = min(S.Vmag(:));
+
+        % Append to output table
+        T = [T; table(d, Vmin, {outFN}, ...
+                      'VariableNames', {'Day','Vmin','MatFile'})];
+
+        % Carry over SOC to next day
+        SOC0 = SOC_end;
+    end
+end
+
+
+
+18) bfs_powerflow_radial1.m (Il risolutore matematico di rete)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% bfs_powerflow_radial1.m   (optimized)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [V_sol, I_branches, iter, success] = bfs_powerflow_radial1( ...
+        lineData, P, Q, V_init, Vslack, angSlack, maxIter, toll)
+
+N      = numel(P);
+nLines = size(lineData,1);
+success = false;
+
+fromBus = lineData(:,1);
+toBus   = lineData(:,2);
+Zpu     = lineData(:,3) + 1j*lineData(:,4);
+
+% -------- precomputed row-index (NxN) ------------------------------------
+idxLineMat = zeros(N);                 % 0 if non-existent
+for m = 1:nLines
+    idxLineMat(fromBus(m),toBus(m)) = m;
+end
+
+% -------- parent / children ----------------------------------------------
+parent   = zeros(N,1);
+children = cell(N,1);
+for m = 1:nLines
+    parent(toBus(m))      = fromBus(m);
+    children{fromBus(m)}  = [children{fromBus(m)}, toBus(m)];
+end
+
+% -------- initializations -------------------------------------------------
+V          = V_init;
+I_branches = complex(NaN(nLines,1),NaN(nLines,1));
+
+% -------- BFS iterations --------------------------------------------------
+for iter = 1:maxIter
+    % ---------- BACKWARD SWEEP -------------------------------------------
+    I_inj = zeros(N,1);
+    for k = 2:N
+        if V(k) ~= 0
+            I_inj(k) = conj((P(k)+1j*Q(k))/V(k));
+        end
+    end
+
+    nodeList = getNodeListFromLeaves(parent,1);
+    for tbus = nodeList
+        if tbus == 1, continue; end
+        fbus = parent(tbus);
+
+        iLine = I_inj(tbus);
+        I_inj(fbus) = I_inj(fbus) + iLine;
+
+        idx = idxLineMat(fbus,tbus);
+        I_branches(idx) = iLine;
+    end
+
+    % ---------- FORWARD SWEEP --------------------------------------------
+    V_new    = V;
+    V_new(1) = Vslack*exp(1j*angSlack);
+
+    nodeListFwd = getNodeListFromSlack(children,1);
+    for cNode = nodeListFwd
+        fNode  = parent(cNode);
+        idx    = idxLineMat(fNode,cNode);
+        V_new(cNode) = V_new(fNode) - I_branches(idx)*Zpu(idx);
+    end
+
+    % ---------- Convergence ----------------------------------------------
+    if max(abs(V_new - V)) < toll
+        success = true;  V = V_new;  break;
+    end
+    V = V_new;
+end
+
+V_sol = V;
+
+end  % ---------- end function --------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function nodeList = getNodeListFromLeaves(parent,slackBus)
+N = numel(parent);
+isLeaf = true(N,1);  isLeaf(slackBus)=false;
+for k = 1:N
+    if parent(k)>0, isLeaf(parent(k)) = false; end
+end
+stack = find(isLeaf).'; visited=false(N,1); nodeList=[];
+while ~isempty(stack)
+    t = stack(end); stack(end)=[];
+    if ~visited(t)
+        nodeList=[nodeList,t]; visited(t)=true;
+        p = parent(t);
+        if p>0 && ~visited(p), stack=[stack,p]; end
+    end
+end
+nodeList = unique(nodeList,'stable');
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function nodeListFwd = getNodeListFromSlack(children,slackBus)
+queue = slackBus; visited=false(numel(children),1); visited(slackBus)=true;
+nodeListFwd=[];
+while ~isempty(queue)
+    f = queue(1); queue(1)=[]; %#ok<AGROW>
+    for c = children{f}
+        if ~visited(c)
+           nodeListFwd=[nodeListFwd,c]; queue=[queue,c]; visited(c)=true; %#ok<AGROW>
+        end
+    end
+end
+end
+
+
+
+19) smoke_test_day.m (Script di collaudo rapido)
+
+
+
+function T = smoke_test_day(dayNum, scenarios, year)
+% =========================================================================
+%  Simulate a single day for multiple scenarios (rev. VISUAL BUGFIX + FULL TABLE)
+% =========================================================================
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+    if nargin < 2 || isempty(scenarios)
+        scenarios = {'scn0_passive.mat','scn1_3PV.mat', ...
+                     'scn2_5PV_1BESS.mat','scn3_7PV_2BESS.mat','scn4_k100.mat'};
+    end
+    if nargin < 3
+        year = [];
+    end
+    
+    fprintf('[SMOKE] Day %03d – %d scenario(s)\n', dayNum, numel(scenarios));
+    T = table;
+    
+    for i = 1:numel(scenarios)
+        scn = scenarios{i};
+        fprintf('\n==== %s — day %03d =====================================\n', scn, dayNum);
+        
+        [outFN, ~] = run_district_day(dayNum, scn);
+        S = load(outFN);
+        t = minutes(S.t_min);
+        
+        scName = erase(scn,'.mat');
+        figDir = fullfile(projRoot, 'figs', scName, sprintf('day%03d', dayNum));
+        if ~exist(figDir,'dir'), mkdir(figDir); end
+        
+        % --- CALCOLO VERO SCAMBIO RETE (P_ext e Q_ext) ---
+        Psl_kW = S.Psl * 100;
+        Qsl_kvar = S.Qsl * 100;
+        
+        P_nodes_kW = S.P_kw;
+        Q_nodes_kvar = S.Q_kw;
+        if isfield(S,'P_pv'),   P_nodes_kW = P_nodes_kW + S.P_pv;   end
+        if isfield(S,'Q_pv'),   Q_nodes_kvar = Q_nodes_kvar + S.Q_pv; end
+        if isfield(S,'P_bess'), P_nodes_kW = P_nodes_kW + S.P_bess; end
+        if isfield(S,'Q_bess'), Q_nodes_kvar = Q_nodes_kvar + S.Q_bess; end
+        
+        % Vero scambio al Punto di Consegna (PoC)
+        P_ext_kW = Psl_kW + P_nodes_kW(1, :);
+        Q_ext_kvar = Qsl_kvar + Q_nodes_kvar(1, :);
+        % -------------------------------------------------
+
+        % Voltage map
+        f1 = figure('Color','w','Visible','off');
+        plot_voltage_map(t, S.Vmag);
+        saveas(f1, fullfile(figDir,'Vmag_map.png')); close(f1);
+        
+        % Slack P/Q (Passiamo i valori corretti P_ext e Q_ext convertiti in p.u. / 100)
+        f2 = figure('Color','w','Visible','off');
+        plot_slack_power(t, P_ext_kW/100, Q_ext_kvar/100); 
+        title(sprintf('True Net Exchange MT/BT – %s – day %03d', scName, dayNum));
+        saveas(f2, fullfile(figDir,'SlackPQ.png')); close(f2);
+        
+        % SOC
+        if isfield(S,'SOC_mean') || isfield(S,'SOC_full')
+            if isfield(S,'SOC_mean'), socMean = S.SOC_mean;
+            else,                     socMean = mean(S.SOC_full,1);
+            end
+            f3 = figure('Color','w','Visible','off');
+            plot(t, socMean*100, 'LineWidth',1.2); grid on
+            xlabel('Hour'); ylabel('SOC [%]');
+            title(sprintf('BESS average SOC – %s – day %03d', scName, dayNum));
+            saveas(f3, fullfile(figDir,'SOC.png')); close(f3);
+        end
+        
+        % Check Tensioni
+        okV  = all(S.Vmag(:) >= 0.95 & S.Vmag(:) <= 1.05);
+        [Vmin, idx] = min(S.Vmag(:)); [busMin, tMin] = ind2sub(size(S.Vmag), idx);
+        
+        % Calcolo KPI per Tabella e CSV
+        E_imp  = sum(max(P_ext_kW,0))/60;
+        E_exp  = sum(abs(min(P_ext_kW,0)))/60;
+        E_pv   = 0; if isfield(S,'P_pv'), E_pv = sum(-min(S.P_pv(:),0))/60; end
+        E_load = E_imp - E_exp + E_pv;
+        
+        E_loss = NaN;
+        if exist('energy_balance','file') == 2
+            [~, E_loss] = energy_balance(S.Psl, outFN);
+        end
+        
+        SelfSuff = 1 - E_imp / max(E_load, eps);
+        SelfCons = 1 - E_exp / max(E_pv , eps);
+        
+        fprintf('Vmin = %.3f p.u. @ bus %d, t=%02d:%02d  | limits OK: %d\n', ...
+                Vmin, busMin, floor((tMin-1)/60), mod(tMin-1,60), okV);
+        fprintf('E_imp=%.1f  E_exp=%.1f  E_pv=%.1f  E_load=%.1f  Loss=%.1f  | SS=%.1f%%  SC=%.1f%%\n', ...
+                E_imp, E_exp, E_pv, E_load, E_loss, 100*SelfSuff, 100*SelfCons);
+        
+        if ~isempty(year) && exist('post_process_day','file') == 2
+            post_process_day(year, dayNum, scn);
+        end
+        
+        % Costruzione tabella completa
+        T = [T; table( string(scn), Vmin, logical(okV), E_imp, E_exp, E_pv, E_load, E_loss, ...
+                       100*SelfSuff, 100*SelfCons, ...
+             'VariableNames', {'Scenario','Vmin','VoltOK','E_imp','E_exp','E_pv','E_load','E_loss','SelfSuff_pct','SelfCons_pct'})];
+    end
+    disp(T);
+end
+
+
+20) read_pv_rome.m
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  FILE:  +utils/read_pv_rome.m          (version 2025-05-12)
+%
+%  Returns a 8760×1 vector with AC power (kW) produced by
+%  1 kWp of PV in Rome (PVGIS data).
+%
+%  Supported features:
+%    • CSV with separator “,” (decimal “.”)   or  “;” (decimal “,”)
+%    • Hourly step  (8760 / 8784 samples)
+%    • 10-min step  (52560 / 52704 samples)      ← average every 6 samples
+%
+%  © 2024-2025 – Microgrid District
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function pv = read_pv_rome()
+
+%% 1) File search ----------------------------------------------------------
+csvName = 'PV_Roma_kWp_2023.csv';
+here    = fileparts(mfilename('fullpath'));     % …\src\+utils
+fn      = '';
+
+while ~isempty(here)
+    cand = fullfile(here,'data','PV_profiles',csvName);
+    if exist(cand,'file')
+        fn = cand;
+        break
+    end
+    parent = fileparts(here);
+    if strcmp(parent, here), break, end       % reached root
+    here = parent;
+end
+assert(~isempty(fn), 'PV profile CSV not found while walking up folders');
+
+%% 2) Read entire text file (UTF-8) ---------------------------------------
+fid = fopen(fn,'r','n','UTF-8');
+if fid < 0, error('Unable to open %s', fn); end
+rows = textscan(fid,'%s','Delimiter','\n','Whitespace','','CollectOutput',true);
+fclose(fid);
+rows = rows{1};
+
+%% 3) Keep only rows starting with “20” (timestamp) -----------------------
+rows = rows(strncmp(rows,'20',2));
+
+%% 4) Determine separator and regexp for 2nd numeric field ----------------
+sep = ','; decChar = '.';
+if ~contains(rows{1},',')
+    sep = ';'; decChar = ',';
+end
+
+if sep==','
+    expr = '^[^,]+,\s*([0-9.]+)';          % decimal .
+else
+    expr = '^[^;]+;\s*([0-9,]+)';          % decimal ,
+end
+
+tokens = regexp(rows, expr,'tokens','once');
+tokens = tokens(~cellfun('isempty',tokens));
+
+P_W = cellfun(@(c) str2double(strrep(c{1},decChar,'.')), tokens);  % W
+
+%% 5) Conversions & adaptation to 8760 ------------------------------------
+P_kW = P_W / 1000;          % kW
+n    = numel(P_kW);
+
+switch n
+    case 8760                                 % OK
+        pv = P_kW;
+
+    case 8784                                 % leap year (hourly)
+        pv = P_kW(1:8760);
+
+    case {52560, 52704}                       % 10-min step
+        stepNom = n / 8760;                   % ≃6 or 6.016…
+        step    = round(stepNom);             % always 6
+        pv      = mean( reshape(P_kW(1:step*8760), step, [] ), 1 ).';
+        % if 52704 → drop last hour (as for 8784)
+        pv      = pv(1:8760);
+
+    otherwise
+        error('PV series of length %d not recognized', n);
+end
+end
+
+
+
+
+21) read_pv_rome_kWp.m
+
+
+
+function PkW = read_pv_rome_kWp()
+% -------------------------------------------------------------------------
+%  Hourly power (kW per 1 kWp) – Rome 2023  •  size = [8760 × 1]
+%  Handles the 6 duplicates due to DST (2×March, 4×October).
+%  – No ImportOptions → compatible with all releases.
+%  – Required file:  data/PV_profiles/PV_Roma_kWp_2023.csv
+% -------------------------------------------------------------------------
+
+%% 1) File path
+proj = fileparts( fileparts( fileparts( mfilename('fullpath') ) ) );  % …/+utils → /src → <root>
+csv  = fullfile(proj,'data','PV_profiles','PV_Roma_kWp_2023.csv');
+assert(exist(csv,'file')==2, 'File %s not found',csv);
+
+%% 2) Fast read (timestamp string + power column in W)
+fid = fopen(csv,'r');  assert(fid>0,'Unable to open %s',csv);
+for k = 1:12,  fgetl(fid); end          % skip PVGIS header (12 fixed rows)
+
+C = textscan(fid,'%s%f%*[^\n]','Delimiter',',');   %#ok<DTXSCAN>
+fclose(fid);
+
+tsRaw = C{1};          % cell of strings  "20230326:0200"
+Pwatt = C{2};          % power in W (per 1 kWp)
+
+%% 3) Timestamp → datenumber (works in all releases)
+%    Remove colons and use format  'yyyymmddHHMM'
+tsNoCol = strrep(tsRaw,':','');
+dn      = datenum(tsNoCol,'yyyymmddHHMM');
+
+%% 4) Remove duplicates (DST) – keep the 1st sample
+[dnU,idxUnique] = unique(dn,'stable');
+Pwatt           = Pwatt(idxUnique);
+
+%% 5) Length check with helpful error if mismatch
+assert(numel(dnU)==8760, ...
+  'Expected 8760 hourly samples, found %d (dup/removal failed)', numel(dnU));
+
+%% 6) Output in kW
+PkW = Pwatt / 1e3;
+end
+
+
+22) profiles_synthetic_residential.m
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  FILE:  +utils/profiles_synthetic_residential.m      (2025-05-13)
+
+%
+
+%  Returns residential & commercial loads of the micro-grid
+
+%  *for the requested day dayNum* (1 = Jan-1), 1-min step.
+
+%
+
+%  ROBUSTNESS → CSVs may contain few hours or a few days:
+
+%       • Compute the actual length L (1-min samples) of each profile.
+
+%       • Starting-index is  mod((dayNum-1)*1440 , L) + 1
+
+%       • If we overrun the end, continue from the start (“ring buffer”).
+
+%
+
+%  Parameters
+
+%  ---------
+
+%     projRoot : string         path to project root
+
+%     N        : int            number of buses (16)
+
+%     NSTEPS   : int            samples per day (1440)
+
+%     dayNum   : int            1–365  (optional, default 1)
+
+%
+
+%  Output
+
+%  ------
+
+%     P_kw , Q_kw  : N × NSTEPS matrices     [kW]
+
+%
+
+%  © 2024-2025 – Microgrid District
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function [P_kw,Q_kw] = profiles_synthetic_residential(projRoot,N,NSTEPS,dayNum)
+
+if nargin < 4,  dayNum = 1;  end
+
+if dayNum < 1 || dayNum > 365
+
+    error('dayNum must be in the range 1..365');
+
+end
+
+shift = (dayNum-1)*NSTEPS;                 % samples to “skip”
+
+%% —— folders and CSV lists ————————————————————————————————
+
+houseDir = fullfile(projRoot,'data','Load_Profiles','Work');
+
+if ~isfolder(houseDir)                      % alternative naming (legacy)
+
+    houseDir = fullfile(projRoot,'data','LoadProfiles','Work');
+
+end
+
+assert(isfolder(houseDir),'Work folder not found:\n%s',houseDir);
+
+villDirs = dir(fullfile(houseDir,'CHR*'));
+
+assert(numel(villDirs) >= 7,'Need ≥7 CHR* folders (household profiles)');
+
+houseNodes = [8 9 10 11 14 15 16];          % house nodes map
+
+nvill      = numel(houseNodes);
+
+P_kw_h = zeros(nvill,NSTEPS);   Q_kw_h = P_kw_h;
+
+for k = 1:nvill
+
+    %% --- read CSV (kWh per measurement step) ----------------------------
+
+    eCsv = fullfile(villDirs(k).folder,villDirs(k).name,'Results', ...
+
+                    'SumProfiles.Electricity.csv');
+
+    qCsv = fullfile(villDirs(k).folder,villDirs(k).name,'Results', ...
+
+                    'SumProfiles.Reactive.csv');
+
+    tblE = readtable(eCsv,'VariableNamingRule','preserve');
+
+    tblQ = readtable(qCsv,'VariableNamingRule','preserve');
+
+    colE = find(contains(tblE.Properties.VariableNames,'kWh','IgnoreCase',1),1);
+
+    colQ = find(contains(tblQ.Properties.VariableNames,'kWh','IgnoreCase',1),1);
+
+    e_kWh = tblE{:,colE};          % column vectors
+
+    q_kWh = tblQ{:,colQ};
+
+    L = numel(e_kWh);              % actual profile length
+
+    if L < 1
+
+        error('File %s is empty', eCsv);
+
+    end
+
+    %% --- start index & circular slicing --------------------------------
+
+    iStart = mod(shift, L) + 1;    % 1 … L
+
+    iEnd   = iStart + NSTEPS - 1;
+
+    if iEnd <= L
+
+        idx = iStart : iEnd;                       % inside vector
+
+    else
+
+        idx = [ iStart : L , 1 : mod(iEnd-1,L) ];  % wrap-around
+
+    end
+
+    assert(numel(idx) == NSTEPS);                 % safety
+
+    %% --- from kWh/pass to kW (1 min) -----------------------------------
+
+    P_kw_h(k,:) = 60 * e_kWh(idx).';              % kWh/min → kW
+
+    Q_kw_h(k,:) = 60 * q_kWh(idx).';
+
+end
+
+%% —— apartment buildings (sum of 6 random houses, fixed SEED) ————————
+
+rng(42)                                           % global repeatability
+
+palNodes = [7 13];
+
+P_kw = zeros(N,NSTEPS);   Q_kw = P_kw;
+
+for p = 1:numel(palNodes)
+
+    idx6 = randsample(nvill,6,false);             % any 6 houses
+
+    P_kw(palNodes(p),:) = sum(P_kw_h(idx6,:),1);
+
+    Q_kw(palNodes(p),:) = sum(Q_kw_h(idx6,:),1);
+
+end
+
+%% —— single houses -------------------------------------------------------
+
+for k = 1:nvill
+
+    nd = houseNodes(k);
+
+    P_kw(nd,:) = P_kw_h(k,:);
+
+    Q_kw(nd,:) = Q_kw_h(k,:);
+
+end
+
+%% —— synthetic commercial profiles (constant) ————————————————
+
+tmin = 0:NSTEPS-1;
+
+[Bar,Parr,Autolav,Farm,Rist,Scu] = utils.profiles_synthetic(tmin);
+
+P_kw(3,:)  = Bar;       Q_kw(3,:)  = Bar .*tan(acos(0.90));
+
+P_kw(4,:)  = Parr;      Q_kw(4,:)  = Parr.*tan(acos(0.90));
+
+P_kw(5,:)  = Autolav;   Q_kw(5,:)  = Autolav.*tan(acos(0.85));
+
+P_kw(6,:)  = Farm;      Q_kw(6,:)  = Farm.*tan(acos(0.90));
+
+P_kw(12,:) = Rist;      Q_kw(12,:) = Rist.*tan(acos(0.90));
+
+P_kw(2,:)  = Scu;       Q_kw(2,:)  = Scu .*tan(acos(0.90));
+
+end
+
+
+
+23) profiles_synthetic.m
+
+
+
+function [bar,parr,autolav,farm,rist,scu] = profiles_synthetic(t)
+
+% PROFILES_SYNTHETIC - Returns 6 kW vectors (1xNSTEPS) 
+
+% with realistic STOCHASTIC block-based load profiles.
+
+    bar     = f_bar(t);
+
+    parr    = f_parr(t);
+
+    autolav = f_autolav(t);
+
+    farm    = f_farm(t);
+
+    rist    = f_rist(t);
+
+    scu     = f_scu(t);
+
+    % ---------- local functions ----------------------------------------------
+
+    function P = f_bar(tt)
+
+        h = tt/60;
+
+        N = length(tt);
+
+        P = 1.5 * ones(1,N); % Base frigo/vetrine sempre accese
+
+        
+
+        open_idx = find(h>=6.5 & h<=22);
+
+        P(open_idx) = 3 + 0.5*rand(1,length(open_idx)); % Luci e macchinari base
+
+        
+
+        % Macchina Caffè / Piastre (picchi brevi e intensi di 3-5 min)
+
+        for s = 1:randi([30 50]) % Rush mattutino
+
+            st = randi([6*60 11*60]); dur = randi([2 5]); 
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 3 + rand(1, length(idx));
+
+        end
+
+        for s = 1:randi([20 40]) % Rush serale / aperitivo
+
+            st = randi([17*60 21*60]); dur = randi([2 5]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 2.5 + rand(1, length(idx));
+
+        end
+
+    end
+
+    function P = f_parr(tt)
+
+        h = tt/60;
+
+        N = length(tt);
+
+        P = 0.5 * ones(1,N); % Stand-by
+
+        
+
+        open_idx = find(h>=9 & h<=19);
+
+        P(open_idx) = 2 + 0.3*rand(1,length(open_idx)); % Luci/Cassa
+
+        
+
+        % Accensione Phon e Caschi (picchi di 1.5-2 kW per 15-30 min)
+
+        for s = 1:randi([15 25])
+
+            st = randi([9*60 18.5*60]); dur = randi([15 30]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 1.5 + 0.3*randn(1, length(idx));
+
+        end
+
+    end
+
+    function P = f_autolav(tt)
+
+        rng(23); % Manteniamo il seed fisso come prima per coerenza
+
+        N = length(tt);
+
+        P = 0.5 * ones(1,N); % Pompe in stand-by
+
+        
+
+        % Spruzzi di idropulitrici (15 kW netti per 3-6 minuti)
+
+        for s = 1:randi([8 20])
+
+            st = randi([8*60 20*60]);  dur = randi([3 6]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = 15 + 2*randn(1, length(idx));
+
+        end
+
+    end
+
+    function P = f_farm(tt)
+
+        h = tt/60;
+
+        N = length(tt);
+
+        P = 1.2 * ones(1,N); % Frigoriferi per medicinali h24
+
+        
+
+        morn = find(h>=8.5 & h<=13);
+
+        P(morn) = 4 + 0.4*randn(1,length(morn)); % Luci e banchi
+
+        
+
+        aft = find(h>=15.5 & h<=19.5);
+
+        P(aft) = 4.5 + 0.5*randn(1,length(aft));
+
+        
+
+        % Compressori HVAC che attaccano e staccano (1.5 kW step)
+
+        for s = 1:randi([4 8])
+
+            st = randi([8*60 18*60]); dur = randi([20 45]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 1.5;
+
+        end
+
+    end
+
+    function P = f_rist(tt)
+
+        h = tt/60;
+
+        N = length(tt);
+
+        P = 2.5 * ones(1,N); % Celle frigorifere h24
+
+        
+
+        % Base Preparazione e Servizio
+
+        prep1 = find(h>=10 & h<12); P(prep1) = 6 + 1.5*randn(1,length(prep1));
+
+        lunch = find(h>=12 & h<15.5); P(lunch) = 18 + 2*randn(1,length(lunch));
+
+        prep2 = find(h>=18 & h<20); P(prep2) = 8 + 1.5*randn(1,length(prep2));
+
+        din   = find(h>=20 & h<23.5); P(din) = 22 + 3*randn(1,length(din));
+
+        
+
+        % Forni e Lavastoviglie industriali (botte da 5-8 kW per 10-20 min)
+
+        for s = 1:randi([8 15])
+
+            st = randi([12*60 14.5*60]); dur = randi([10 20]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 5 + 1.5*randn(1, length(idx));
+
+        end
+
+        for s = 1:randi([12 20])
+
+            st = randi([20*60 23*60]); dur = randi([10 20]);
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 6 + 2*randn(1, length(idx));
+
+        end
+
+    end
+
+    function P = f_scu(tt)
+
+        h = tt/60;
+
+        N = length(tt);
+
+        P = 1.5 * ones(1,N); % Server, UPS, allarmi notturni
+
+        
+
+        open_idx = find(h>=7.5 & h<=14.5);
+
+        P(open_idx) = 10 + 1.5*randn(1,length(open_idx)); % Illuminazione e uffici
+
+        
+
+        % Cicli Impianto di Condizionamento/Riscaldamento (ON 20min, OFF 40min)
+
+        for st = 7.5*60 : 60 : 14*60
+
+            idx = st : min(st+20, N);
+
+            P(idx) = P(idx) + 8;
+
+        end
+
+        
+
+        % Accensione aule informatica / Laboratori (4 kW per 45-60 min)
+
+        for s = 1:4 
+
+            st = randi([8*60 13*60]); dur = randi([45 60]); 
+
+            idx = st : min(st+dur, N);
+
+            P(idx) = P(idx) + 4 + randn(1, length(idx));
+
+        end
+
+    end
+
+end
+
+
+
+
+
+24) dispatch_bess.m (L'algoritmo di EMS per le batterie)
+
+
+
+function [P_kw , Q_kvar , SOC_mean , SOC_full] = dispatch_bess(cfg, Pnet_kw, ...
+                                                                Nsteps, dt_min)
+% DISPATCH_BESS – P-only control of one or more BESS based on the global
+%                 microgrid power balance (surplus / deficit).
+%
+% Outputs
+%   P_kw      : N × Nsteps matrix with BESS active-power contribution
+%               ( +import when charging,  –export when discharging )
+%   Q_kvar    : N × Nsteps matrix for reactive power (zeros; placeholder)
+%   SOC_mean  : 1 × Nsteps vector → arithmetic mean of all BESS SOCs
+%   SOC_full  : nBESS × Nsteps matrix (individual SOC trajectories)
+%
+% Notes (rev. 2025-09-16  «SOC-safe power limiting»)
+%   This revision clamps the charge/discharge power at each step to the
+%   SOC headroom, so that SOC never crosses [SOC_min, SOC_max] and energy
+%   is conserved (no implicit clipping after the fact).
+%
+% 2024–2025 – Microgrid District
+
+% -------------------------------------------------------------------------
+% General initializations
+% -------------------------------------------------------------------------
+P_kw   = zeros(size(Pnet_kw));    % default: no BESS
+Q_kvar = zeros(size(Pnet_kw));
+
+if isempty(cfg)
+    SOC_mean = nan(1,Nsteps);
+    SOC_full = zeros(0,Nsteps);
+    return
+end
+if ~isstruct(cfg)
+    error('cfg must be a struct or an array of structs');
+end
+
+% ---- control constants ---------------------------------------------------
+dt_h = dt_min/60;           % time step in hours
+Pthr = 0.5;                 % hysteresis [kW] to avoid chattering
+
+% ---- global variables ----------------------------------------------------
+nBESS    = numel(cfg);
+SOC_full = zeros(nBESS,Nsteps);
+Pgrid    = sum(Pnet_kw,1);          % net microgrid load (+deficit, –surplus)
+
+% ========================================================================
+% Loop over each BESS
+% ========================================================================
+for b = 1:nBESS
+    bess  = cfg(b);
+    node  = bess.node;
+    if node < 1 || node > size(Pnet_kw,1)
+        warning('dispatch_bess: node %d out of range, ignored', node);
+        continue
+    end
+
+    % ---- parameters (with defaults) -------------------------------------
+    eta_c   = getfield_or(bess,'eta_c',  0.95);
+    eta_d   = getfield_or(bess,'eta_d',  0.95);
+    soc_min = getfield_or(bess,'SOC_min',0.10);
+    soc_max = getfield_or(bess,'SOC_max',0.95);
+
+    E_kWh = bess.E_kWh;
+    Pmax  = bess.Pmax_kW;
+    soc   = min(max(bess.SOC_init, soc_min), soc_max);
+
+    Pcmd   = zeros(1,Nsteps);   % signed command actually injected (+charge, –discharge)
+    socVec = zeros(1,Nsteps);
+
+    % ------------- time loop ---------------------------------------------
+    for t = 1:Nsteps
+        Pg = Pgrid(t);   % +deficit → discharge;   –surplus → charge
+
+        Pchg = 0;  Pdis = 0;
+
+        if (Pg < -Pthr) && (soc < soc_max)
+            % -------- surplus ⇒ charge
+            P_req = min(Pmax, -Pg);                            % request from balance
+            % SOC headroom limit:  dE = Pchg * eta_c * dt_h  ≤ E_kWh*(soc_max - soc)
+            P_soc = (E_kWh * (soc_max - soc)) / max(eta_c*dt_h, eps);
+            Pchg  = min(P_req, P_soc);
+
+        elseif (Pg > Pthr) && (soc > soc_min)
+            % -------- deficit ⇒ discharge
+            P_req = min(Pmax, Pg);                             % request from balance
+            % SOC energy available:  Pdis/eta_d * dt_h ≤ E_kWh*(soc - soc_min)
+            P_soc = (E_kWh * (soc - soc_min)) * eta_d / max(dt_h, eps);
+            Pdis  = min(P_req, P_soc);
+
+        else
+            % -------- dead-band / or SOC at bounds
+            Pchg = 0;  Pdis = 0;
+        end
+
+        % Signed command (+charge, –discharge) used by the network model
+        Pcmd(t) = Pchg - Pdis;
+
+        % ---- SOC update (energy-consistent) -----------------------------
+        % charging adds  Pchg*eta_c*dt_h  ;  discharging removes  Pdis/eta_d*dt_h
+        dE =  Pchg * eta_c * dt_h  -  Pdis / eta_d * dt_h;    % [kWh]
+        soc = soc + dE / E_kWh;
+        % final safety clamp (should be inactive thanks to power limits)
+        soc = min(max(soc, soc_min), soc_max);
+
+        socVec(t) = soc;
+    end
+
+% Inject BESS power at its node (sum if multiple BESS share the node)
+    P_kw(node,:)  = P_kw(node,:) + Pcmd;
+    SOC_full(b,:) = socVec;
+    
+    % --- FIX: AGGIORNAMENTO DINAMICO DELLA RETE ---
+    % La potenza della batteria (+ se carica, - se scarica) viene sommata al carico.
+    % In questo modo, la prossima batteria del ciclo leggerà un Pgrid aggiornato
+    % (il surplus/deficit residuo) e non andrà a sovraccaricare la rete.
+    Pgrid = Pgrid + Pcmd;
+    
+end % <-- fine del ciclo sulle batterie
+
+% -------------------------------------------------------------------------
+% SOC output
+% -------------------------------------------------------------------------
+if nBESS == 1
+    SOC_mean = SOC_full;           % row vector
+else
+    SOC_mean = mean(SOC_full, 1);  % 1×Nsteps
+end
+end
+
+% ================= internal helper =======================================
+function val = getfield_or(S, fld, default)
+    if isfield(S, fld), val = S.(fld); else, val = default; end
+end
+
+
+
+
+
+25) get_nodes.m
+
+
+
+function nodes = get_nodes(A)
+
+% utils.get_nodes  Return a vector with the .node fields of a struct array
+
+%
+
+%   nodes = utils.get_nodes(PV)
+
+    if isempty(A)
+
+        nodes = [];
+
+    else
+
+        nodes = [A.node];     % assumes .node exists
+
+    end
+
+end
+
+
+
+
+
+26) safeget.m
+
+
+
+function out = safeget(S, fieldName)
+
+% utils.safeget  Return S.(fieldName) if it exists, otherwise struct([])
+
+%
+
+%   out = utils.safeget(S,'PV')
+
+    if isfield(S, fieldName)
+
+        out = S.(fieldName);
+
+    else
+
+        out = struct([]);        % empty struct compatible with get_nodes
+
+    end
+
+end
+
+
+
+
+
+27) plot_residential_profiles.m
+
+
+
+function plot_residential_profiles()
+
+% =========================================================================
+
+%  Display 1-min load profiles of:
+
+%     – single houses                  – apartment buildings (sum of 6 houses)
+
+%     – total residential sum
+
+%  © 2025 – Microgrid District
+
+% =========================================================================
+
+    %% — 1)  Basics
+
+    NSTEPS = 1440;            % 24 h at 1 min
+
+    tmin   = 0:NSTEPS-1;
+
+    h      = tmin/60;
+
+    %% — 2)  Find “…\data\Load_Profiles\Work”
+
+    projRoot = fileparts(fileparts(mfilename('fullpath')));       % …\src
+
+    workDir  = '';
+
+    here = projRoot;
+
+    while ~isempty(here)
+
+        cand = fullfile(here,'data','Load_Profiles','Work');
+
+        if isfolder(cand), workDir = cand; break, end
+
+        here = fileparts(here);
+
+    end
+
+    assert(~isempty(workDir), 'Folder Load_Profiles/Work not found');
+
+    villDirs = dir(fullfile(workDir,'CHR*'));
+
+    assert(numel(villDirs) >= 7,'Need ≥7 CHR* folders');
+
+    houseNodes = [8 9 10 11 14 15 16];
+
+    nvill      = numel(houseNodes);
+
+    P_kw_house = zeros(nvill,NSTEPS);
+
+    %% — 3)  Read houses
+
+    for k = 1:nvill
+
+        eCsv = fullfile(villDirs(k).folder,villDirs(k).name,'Results', ...
+
+                        'SumProfiles.Electricity.csv');
+
+        tbl  = readtable(eCsv,'VariableNamingRule','preserve');
+
+        col  = find(contains(tbl.Properties.VariableNames,'kWh','IgnoreCase',true),1);
+
+        e_kWh = tbl{:,col};
+
+        assert(numel(e_kWh) >= NSTEPS,'%s has <1440 samples',eCsv);
+
+        P_kw_house(k,:) = 60*e_kWh(1:NSTEPS).';   % kWh/min → kW
+
+    end
+
+    %% — 4)  Buildings (sum of 6 random houses)
+
+    rng(42)
+
+    palNodes   = [7 13];
+
+    npal       = numel(palNodes);
+
+    P_kw_pala  = zeros(npal,NSTEPS);
+
+    for p = 1:npal
+
+        idx6 = randsample(nvill,6,false);
+
+        P_kw_pala(p,:) = sum(P_kw_house(idx6,:),1);
+
+    end
+
+    %% — 5)  Plots
+
+    % Houses
+
+    figure('Name','Houses');
+
+    plot(h,P_kw_house,'LineWidth',1.2);  grid on
+
+    xlabel('Hour of day'), ylabel('Power [kW]')
+
+    title('Household load profiles')
+
+    legend("House "+string(1:nvill),'Location','eastoutside')
+
+    % Buildings
+
+    figure('Name','Buildings');
+
+    plot(h,P_kw_pala,'LineWidth',1.4); grid on
+
+    xlabel('Hour of day'), ylabel('Power [kW]')
+
+    title('Apartment buildings')
+
+    legend("Building "+string(1:npal),'Location','best')
+
+    % Sum
+
+    P_tot = sum(P_kw_house,1)+sum(P_kw_pala,1);
+
+    figure('Name','Total residential');
+
+    plot(h,P_tot,'k','LineWidth',1.8); grid on
+
+    xlabel('Hour of day'), ylabel('Total power [kW]')
+
+    title('Total residential load')
+
+end
+
+
+
+
+
+28) plot_synthetic_profiles.m
+
+
+
+function plot_synthetic_profiles()
+
+% Display individual synthetic commercial profiles and their sum
+
+NSTEPS = 1440;      % 24h at 1 min
+
+tmin = 0:NSTEPS-1;
+
+h = tmin / 60;      % time in hours
+
+[bar, parr, autolav, farm, rist, scu] = utils.profiles_synthetic(tmin);
+
+% ---- Plot 1: all profiles separately ------------------------------------
+
+figure;
+
+plot(h, bar,      'LineWidth',1.2); hold on;
+
+plot(h, parr,     'LineWidth',1.2);
+
+plot(h, autolav,  'LineWidth',1.2);
+
+plot(h, farm,     'LineWidth',1.2);
+
+plot(h, rist,     'LineWidth',1.2);
+
+plot(h, scu,      'LineWidth',1.2);
+
+xlabel('Hour of day');
+
+ylabel('Power [kW]');
+
+title('Synthetic commercial load profiles');
+
+legend({'Bar', 'Hairdresser', 'Carwash', 'Pharmacy', 'Restaurant', 'School'});
+
+grid on;
+
+% ---- Plot 2: sum of synthetic profiles ----------------------------------
+
+figure;
+
+plot(h, bar + parr + autolav + farm + rist + scu, 'k', 'LineWidth', 1.8);
+
+xlabel('Hour of day');
+
+ylabel('Total power [kW]');
+
+title('Sum of synthetic commercial profiles');
+
+grid on;
+
+end
+
+
+
+
+
+29) plot_total_microgrid.m
+
+
+
+function plot_total_microgrid()
+
+% =========================================================================
+
+%  Total micro-grid load (houses + buildings + synthetic commercial)
+
+% =========================================================================
+
+    NSTEPS = 1440;   tmin = 0:NSTEPS-1;   h = tmin/60;
+
+    %% — 1)  Houses folder
+
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+
+    workDir  = '';
+
+    here = projRoot;
+
+    while ~isempty(here)
+
+        cand = fullfile(here,'data','Load_Profiles','Work');
+
+        if isfolder(cand), workDir = cand; break, end
+
+        here = fileparts(here);
+
+    end
+
+    assert(~isempty(workDir),'Folder Load_Profiles/Work not found');
+
+    villDirs = dir(fullfile(workDir,'CHR*'));
+
+    assert(numel(villDirs) >= 7);
+
+    houseNodes = [8 9 10 11 14 15 16];
+
+    nvill      = numel(houseNodes);
+
+    P_kw_house = zeros(nvill,NSTEPS);
+
+    for k = 1:nvill
+
+        eCsv = fullfile(villDirs(k).folder,villDirs(k).name,'Results', ...
+
+                        'SumProfiles.Electricity.csv');
+
+        tbl  = readtable(eCsv,'VariableNamingRule','preserve');
+
+        col  = find(contains(tbl.Properties.VariableNames,'kWh','IgnoreCase',true),1);
+
+        P_kw_house(k,:) = 60*tbl{1:NSTEPS,col}.';
+
+    end
+
+    %% — 2)  Buildings
+
+    rng(42)
+
+    P_kw_pala = zeros(2,NSTEPS);          % buses 7 and 13
+
+    for p = 1:2
+
+        idx6 = randsample(nvill,6,false);
+
+        P_kw_pala(p,:) = sum(P_kw_house(idx6,:),1);
+
+    end
+
+    %% — 3)  Synthetic profiles (bar, restaurant, …)
+
+    [bar,parr,autolav,farm,rist,scu] = utils.profiles_synthetic(tmin);
+
+    P_kw_sint = bar + parr + autolav + farm + rist + scu;
+
+    %% — 4)  Sum and plot
+
+    P_total = sum(P_kw_house,1) + sum(P_kw_pala,1) + P_kw_sint;
+
+    figure('Name','Total micro-grid load');
+
+    plot(h,P_total,'k','LineWidth',1.8); grid on
+
+    xlabel('Hour of day'), ylabel('Total power [kW]')
+
+    title('Total micro-grid load (residential + commercial)')
+
+end
+
+
+30) empc_optimizer.m
+
+function [P_bess_15m, diagnostic] = empc_optimizer(P_load_15m, P_pv_15m, BESS)
+% EMPC_OPTIMIZER - Asymmetric Peak Shaving & Soft Constraints
+% Garantisce 100% Feasibility e gestisce il ritorno del SOC a fine giornata in modo morbido.
+
+% Pulizia dell'ambiente YALMIP per prevenire saturazione della memoria nelle iterazioni
+    yalmip('clear'); 
+    NSTEPS = 96; dt_h = 0.25;
+    if isempty(BESS)
+        P_bess_15m = zeros(1, NSTEPS); diagnostic = struct('status', 'No BESS'); return;
+    end
+
+    E_max_tot = sum([BESS.E_kWh]); 
+    P_max_tot = sum([BESS.Pmax_kW]);
+    eta_ch = 0.94; eta_dch = 0.94;
+    soc_min = 0.10; soc_max = 0.95;
+    soc_0 = mean([BESS.SOC_init]);
+    
+    % FIX MATEMATICO: Clamp di sicurezza contro gli errori di arrotondamento (Addio Infeasible)
+    soc_0 = min(max(soc_0, soc_min), soc_max);
+
+    % Tariffe Economiche
+    c_buy = 0.15 * ones(1, NSTEPS); 
+    c_buy(18*4+1:21*4) = 0.30; % F1 Serale (Penalizza l'acquisto al picco)
+    c_sell = 0.08 * ones(1, NSTEPS); 
+    c_deg = 0.02; % Costo usura celle
+
+    % Variabili YALMIP principali
+    P_buy = sdpvar(1, NSTEPS); P_sell = sdpvar(1, NSTEPS);
+    P_ch = sdpvar(1, NSTEPS); P_dch = sdpvar(1, NSTEPS);
+    SoC = sdpvar(1, NSTEPS);
+    
+    % SLACK BIDIREZIONALI (Scudo totale contro l'Infeasible)
+    S_deficit = sdpvar(1, NSTEPS); % Attivo se manca energia fisicamente
+    S_surplus = sdpvar(1, NSTEPS); % Attivo se c'è troppa energia fisicamente
+    
+    % Variabili per Picchi e Soft Constraint del SOC
+    P_peak_import = sdpvar(1, 1);
+    P_peak_export = sdpvar(1, 1);
+    SoC_shortfall = sdpvar(1, 1); % Raccoglie il "debito" a fine giornata
+
+    % Vincoli base e positività
+    Constraints = [SoC(1) == soc_0, P_peak_import >= 0, P_peak_export >= 0, SoC_shortfall >= 0];
+    
+    for t = 1:NSTEPS
+        % Gabbia asimmetrica per i picchi
+        Constraints = [Constraints, 0 <= P_buy(t) <= P_peak_import];
+        Constraints = [Constraints, 0 <= P_sell(t) <= P_peak_export];
+        
+        Constraints = [Constraints, 0 <= P_ch(t) <= P_max_tot, 0 <= P_dch(t) <= P_max_tot];
+        Constraints = [Constraints, soc_min <= SoC(t) <= soc_max];
+        Constraints = [Constraints, S_deficit(t) >= 0, S_surplus(t) >= 0];
+        
+        % Bilancio Nodale Blindato
+        Constraints = [Constraints, P_buy(t) - P_sell(t) + P_dch(t) - P_ch(t) + S_deficit(t) - S_surplus(t) == P_load_15m(t) - P_pv_15m(t)];
+        
+        if t < NSTEPS
+            Constraints = [Constraints, SoC(t+1)*E_max_tot == SoC(t)*E_max_tot + P_ch(t)*dt_h*eta_ch - P_dch(t)*dt_h/eta_dch];
+        end
+    end
+    
+    % IL SOFT CONSTRAINT SUL SOC: Vogliamo che a mezzanotte torni a soc_0.
+    % Se non ce la fa, la differenza finisce in SoC_shortfall e viene multata.
+    Constraints = [Constraints, SoC(end) + SoC_shortfall >= soc_0]; 
+
+    % Costi operativi base
+    Cost_Opex = sum(c_buy.*P_buy - c_sell.*P_sell + c_deg.*(P_ch+P_dch)) * dt_h;
+    
+    % Pesi asimmetrici sui picchi (Odiamo l'importazione 10 volte più dell'esportazione)
+    Cost_Peak = 50 * P_peak_import^2 + 5 * P_peak_export^2; 
+    Cost_Smooth = 0.5 * sum(diff(P_ch - P_dch).^2);
+    
+    % Multe severissime per chi sgarra i soft constraints
+    Cost_Slack = 10000 * sum(S_deficit + S_surplus);
+    Cost_SoC_Pen = 500 * SoC_shortfall; % Multa se la batteria finisce scarica
+    
+    Objective = Cost_Opex + Cost_Peak + Cost_Smooth + Cost_Slack + Cost_SoC_Pen;
+
+    Options = sdpsettings('solver', 'gurobi', 'verbose', 0);
+    sol = optimize(Constraints, Objective, Options);
+
+    if sol.problem == 0
+        P_bess_15m = value(P_ch) - value(P_dch);
+        % OPEX puro per la reportistica (depurato dai costi fittizi di penalità)
+        diagnostic = struct('status', 'Optimal', 'OPEX_euro', value(Cost_Opex));
+    else
+        P_bess_15m = zeros(1, NSTEPS);
+        diagnostic = struct('status', sol.info, 'OPEX_euro', NaN);
+    end
+end
+
+
+31) get_forecast_15min.m
+
+
+function [P_load_15m, P_pv_15m] = get_forecast_15min(projRoot, N, dayNum, PV_struct)
+% GET_FORECAST_15MIN - Estrae e aggrega a 15 minuti i profili di carico e FV
+% per l'intera microrete. Simula l'input predittivo (Perfect Foresight) per l'EMPC.
+
+    NSTEPS_1min = 1440;
+    NSTEPS_15min = 96; % 1440 / 15
+    
+    % 1. Estrazione Carico a 1 minuto (Aggregato per tutto il distretto)
+    [P_kw_nodes, ~] = utils.profiles_synthetic_residential(projRoot, N, NSTEPS_1min, dayNum);
+    
+    % --- FIX STRESS TEST: Comunichiamo all'MPC il carico scalato ---
+    global Load_scale;
+    if isempty(Load_scale)
+        Load_scale = 1.0;
+    end
+    
+    P_load_1min = sum(P_kw_nodes * Load_scale, 1); % Somma di tutti i carichi nodali (1x1440) scalati
+    
+    % 2. Estrazione FV a 1 minuto (Aggregato)
+    P_pv_1min = zeros(1, NSTEPS_1min);
+    if ~isempty(PV_struct) && isfield(PV_struct, 'Pmax_kW')
+        % Carica il profilo solare annuale di Roma
+        pvYear = pv_profile_hourly_kW_per_kWp(projRoot); 
+        pv24   = pvYear((dayNum-1)*24 + (1:24));
+        t_min  = 0:1:1439;
+        
+        % Stessa interpolazione pchip usata nel tuo run_district_day
+        pvMin  = interp1(0:60:1380, pv24(:).', t_min, 'pchip', 0); 
+        
+        % Somma le potenze di targa di tutti gli impianti fotovoltaici
+        kWp_tot = sum([PV_struct.Pmax_kW]);
+        P_pv_1min = pvMin * kWp_tot; % Potenza FV totale generata (positiva)
+    end
+    
+    % 3. Aggregazione a 15 minuti (Media su finestre di 15 min)
+    % Trasforma il vettore 1x1440 in una matrice 15x96 e fa la media delle colonne
+    P_load_15m = mean(reshape(P_load_1min, 15, NSTEPS_15min), 1);
+    P_pv_15m   = mean(reshape(P_pv_1min, 15, NSTEPS_15min), 1);
+
+end
+
+
+
+Cartella post (Analisi Dati e Risultati)
+
+Gli script che entrano in azione quando la simulazione ha finito di sudare.
+
+
+
+32) run_all_postprocessing.m (Il master script che lancia tutte le analisi a cascata)
+
+
+
+% =========================================================================
+% MASTER POST-PROCESSING SCRIPT (BULLETPROOF)
+% Chiama tutte le funzioni esistenti per generare CSV e Grafici definitivi
+% =========================================================================
+clear; clc; close all;
+year = 2023;
+
+% --- BINARIO 1: Scenari di Evoluzione Topologica ---
+scenarios_topo = {
+    'scn0_passive', 
+    'scn1_3PV', 
+    'scn2_5PV_1BESS', 
+    'scn3_7PV_2BESS', 
+    'scn4_8PV_4BESS'
+};
+
+% --- BINARIO 2: Scenari di Sensitività Sizing ---
+scenarios_sens = {
+    'scn4_k050', 'scn4_k060', 'scn4_k070', 'scn4_k080', ...
+    'scn4_k090', 'scn4_k100', 'scn4_k110', 'scn4_k120'
+};
+
+% Uniamo le liste forzandole a essere vettori riga
+all_scenarios = [scenarios_topo(:)', scenarios_sens(:)'];
+
+fprintf('=== FASE 1: Generazione CSV Annuali e Mensili ===\n');
+for i = 1:length(all_scenarios)
+    scName = all_scenarios{i};
+    % Costruiamo il percorso del file giornaliero
+    dailyCSV = fullfile('results', 'summary', sprintf('KPI_%s_daily.csv', scName));
+    
+    % CONTROLLO DI SICUREZZA: Processa solo se il file esiste
+    if isfile(dailyCSV)
+        post_process_year(year, [scName, '.mat']);
+    else
+        fprintf('  [SKIP] Dati giornalieri mancanti per %s. Passo al successivo.\n', scName);
+    end
+end
+
+fprintf('\n=== FASE 2: Generazione Grafici Mensili (Self-Sufficiency) ===\n');
+for i = 1:length(all_scenarios)
+    scName = all_scenarios{i};
+    monCSV = fullfile('results', 'summary', sprintf('KPI_%s_monthly.csv', scName));
+    
+    if isfile(monCSV)
+        plot_selfsuff_monthly(year, scName, false);
+        
+        % Salvataggio automatico
+        figDir = fullfile('figs', 'summary');
+        if ~exist(figDir,'dir'), mkdir(figDir); end
+        saveas(gcf, fullfile(figDir, sprintf('Monthly_SS_%s.png', scName)));
+        close(gcf); 
+    else
+        fprintf('  [SKIP] Grafico mensile saltato per %s (dati mancanti).\n', scName);
+    end
+end
+
+fprintf('\n=== FASE 3: Grafico Topologico (Autosufficienza vs Nodi) ===\n');
+% Questa funzione interna ha già le sue protezioni contro i file mancanti
+plot_selfsuff_vs_smartnodes_year(year);
+
+fprintf('\n=== FASE 4: Grafico di Sensitività (Autosufficienza vs Taglia) ===\n');
+% Richiama lo script per il doppio asse (SS % vs Perdite Joule)
+plot_sizing_sensitivity(year);
+
+fprintf('\n=== POST-PROCESSING COMPLETATO CON SUCCESSO ===\n');
+
+
+
+33) check_voltage_limits.m (Il "cane da guardia" normativo sui limiti 0.9-1.1 p.u.)
+
+
+
+% =========================================================================
+% VERIFICA LIMITI DI TENSIONE (0.9 - 1.1 p.u.) SU TUTTI GLI SCENARI E GIORNI
+% =========================================================================
+clear; clc;
+
+projRoot = fileparts(fileparts(mfilename('fullpath'))); % Assicurati di essere nella cartella root
+dailyDir = fullfile(projRoot, 'results', 'daily');
+
+% Cerca tutti i file .mat salvati
+matFiles = dir(fullfile(dailyDir, '*.mat'));
+assert(~isempty(matFiles), 'Nessun file .mat trovato nella cartella daily!');
+
+fprintf('=== AVVIO SCANSIONE TENSIONI SU %d FILE ===\n', length(matFiles));
+
+global_Vmin = 2.0; % Inizializzazione volutamente sballata
+global_Vmax = 0.0; 
+worst_min_file = '';
+worst_max_file = '';
+
+% Scansiona ogni singolo file
+for i = 1:length(matFiles)
+    dataFN = fullfile(matFiles(i).folder, matFiles(i).name);
+    S = load(dataFN, 'Vmag'); % Carica solo la matrice delle tensioni per essere veloce
+    
+    if isfield(S, 'Vmag')
+        current_min = min(S.Vmag(:));
+        current_max = max(S.Vmag(:));
+        
+        if current_min < global_Vmin
+            global_Vmin = current_min;
+            worst_min_file = matFiles(i).name;
+        end
+        if current_max > global_Vmax
+            global_Vmax = current_max;
+            worst_max_file = matFiles(i).name;
+        end
+    end
+end
+
+fprintf('\n=== RISULTATI ASSOLUTI DELL''INTERO ANNO ===\n');
+fprintf('Tensione MINIMA assoluta : %.4f p.u. (Trovata in: %s)\n', global_Vmin, worst_min_file);
+fprintf('Tensione MASSIMA assoluta: %.4f p.u. (Trovata in: %s)\n', global_Vmax, worst_max_file);
+
+if global_Vmin >= 0.90 && global_Vmax <= 1.10
+    fprintf('\n[SUCCESS] Nessuna violazione dei limiti di rete! La rete e stabile.\n');
+else
+    fprintf('\n[WARNING] LIMITI VIOLATI! Controllare i file indicati.\n');
+end
+
+
+
+
+34) post_process_day.m
+
+
+
+function outCSV = post_process_day(year, dayNum, scenarioName)
+% =========================================================================
+%  Daily post-processing (rev. BUGFIX PoC Masking + VISUAL FIX)
+% =========================================================================
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+    addpath(fullfile(projRoot,'post','utils'))
+    
+    % Sanitize scenario name
+    tag = erase(scenarioName, '.mat');
+    tag = regexprep(tag, '[^\w]', '_');
+    
+    % Expected .mat file location
+    dataFN = fullfile(projRoot,'results','daily', ...
+                      sprintf('day%03d__%s.mat', dayNum, tag));
+                      
+    % Fallback
+    if ~isfile(dataFN)
+        pat  = sprintf('day%03d__*.mat', dayNum);
+        cand = dir(fullfile(projRoot,'results','daily', pat));
+        for k = 1:numel(cand)
+            if contains(cand(k).name, tag)
+                dataFN = fullfile(cand(k).folder, cand(k).name);
+                break;
+            end
+        end
+    end
+    assert(isfile(dataFN), "MAT file %s not found", dataFN);
+    
+    scName = erase(scenarioName,'.mat');
+    figDir = fullfile(projRoot,'figs', scName, sprintf('day%03d', dayNum));
+    if ~exist(figDir,'dir'), mkdir(figDir); end
+    
+    S = load(dataFN);
+    t = minutes(S.t_min);
+    
+    % --- CALCOLO VERO SCAMBIO RETE (P_ext e Q_ext) ---
+    Psl_kW = S.Psl * 100;
+    Qsl_kvar = S.Qsl * 100;
+    
+    P_nodes_kW = S.P_kw;
+    Q_nodes_kvar = S.Q_kw;
+    if isfield(S,'P_pv'),   P_nodes_kW = P_nodes_kW + S.P_pv;   end
+    if isfield(S,'Q_pv'),   Q_nodes_kvar = Q_nodes_kvar + S.Q_pv; end
+    if isfield(S,'P_bess'), P_nodes_kW = P_nodes_kW + S.P_bess; end
+    if isfield(S,'Q_bess'), Q_nodes_kvar = Q_nodes_kvar + S.Q_bess; end
+    
+    P_ext_kW = Psl_kW + P_nodes_kW(1, :); % VERO FLUSSO CABINA MT
+    Q_ext_kvar = Qsl_kvar + Q_nodes_kvar(1, :);
+    % -------------------------------------------------
+
+    % ----- 1) Voltage heat-map -------------------------------------------
+    fig = figure('Visible','off','Color','w');
+    plot_voltage_map(t, S.Vmag);
+    title(sprintf('Day %03d – Voltage profile', dayNum));
+    saveas(fig, fullfile(figDir, 'Vmag_map.png')); close(fig);
+    
+    % ----- 2) Slack P/Q (CORRETTO) ---------------------------------------
+    fig = figure('Visible','off','Color','w');
+    plot_slack_power(t, P_ext_kW/100, Q_ext_kvar/100); 
+    title(sprintf('True Net Exchange MT/BT – Day %03d', dayNum));
+    saveas(fig, fullfile(figDir, 'SlackPQ.png')); close(fig);
+    
+    % ----- 3) SOC (mean) --------------------------------------------------
+    if isfield(S,'SOC_mean') || isfield(S,'SOC')
+        if isfield(S,'SOC_mean'), socPlot = S.SOC_mean;
+        else,                     socPlot = S.SOC;
+        end
+        if ~isempty(socPlot) && all(isfinite(socPlot(:)))
+            fig = figure('Visible','off','Color','w');
+            plot(t, socPlot*100, 'LineWidth',1.2); grid on
+            xlabel('Hour'), ylabel('SOC [%]'), title('BESS state of charge (mean)');
+            saveas(fig, fullfile(figDir, 'BESS_SOC.png')); close(fig);
+        end
+    end
+    
+    % ----- 4) Daily KPIs -------------------------------------------------
+    [~, Ploss] = energy_balance(S.Psl, dataFN);  % kWh of losses
+    
+    E_imp  = sum( max(P_ext_kW, 0) ) / 60;
+    E_exp  = sum( abs(min(P_ext_kW, 0)) ) / 60;
+    
+    E_pv   = 0;
+    if isfield(S,'P_pv'), E_pv = sum(-min(S.P_pv(:),0))/60; end
+    
+    E_load = E_imp - E_exp + E_pv;
+    
+    SelfSuff = 1 - E_imp / max(E_load, eps);
+    SelfCons = 1 - E_exp / max(E_pv , eps);
+    
+    fig = figure('Visible','off','Color','w');
+    bar(1, SelfSuff*100,'FaceColor',[0 .5 .8]); ylim([0 100]); grid on
+    title(sprintf('Day %03d – Self-sufficiency %.1f %%', dayNum, SelfSuff*100));
+    saveas(fig, fullfile(figDir,'SelfSuff.png')); close(fig);
+    
+    % ----- 5) Append to KPI CSV ------------------------------------------
+    sumDir   = fullfile(projRoot,'results','summary');
+    if ~isfolder(sumDir), mkdir(sumDir); end
+    
+    outCSV     = fullfile(sumDir, sprintf('KPI_%s_daily.csv', scName));
+    backlogCSV = fullfile(sumDir, sprintf('KPI_%s_daily_BACKLOG.csv', scName));
+    Date = datetime(year,1,1) + days(dayNum-1);
+    
+    Trow = table(year, dayNum, month(Date), Date, ...
+                 E_imp, E_exp, E_pv, SelfSuff, SelfCons, Ploss, ...
+                 'VariableNames',{'Year','Day','Month','Date', ...
+                                  'E_imp_kWh','E_exp_kWh','E_pv_kWh', ...
+                                  'SelfSuff','SelfCons','E_losses_kWh'});
+                                  
+    maxTry = 15;  ok=false;
+    for k = 1:maxTry
+        try
+            if isfile(outCSV) && dayNum ~= 1
+                writetable(Trow, outCSV, 'WriteMode','Append', 'WriteVariableNames', false);
+            else
+                writetable(Trow, outCSV);
+            end
+            ok = true; break
+        catch ME
+            if contains(ME.message,'Permission denied','IgnoreCase',true) || ...
+               contains(ME.message,'process','IgnoreCase',true)
+                fclose('all');
+                pause(min(8, 0.5*2^(k-1)));
+            else
+                rethrow(ME);
+            end
+        end
+    end
+    
+    if ~ok
+        if isfile(backlogCSV) && dayNum ~= 1
+            writetable(Trow, backlogCSV, 'WriteMode','Append', 'WriteVariableNames', false);
+        else
+            writetable(Trow, backlogCSV);
+        end
+        warning('post_process_day: %s locked – KPIs queued (%s) [day %d]', ...
+                scName, backlogCSV, dayNum);
+    end
+end
+
+
+
+35) post_process_year.m
+
+
+
+% =========================================================================
+%  FILE:  post/post_process_year.m     (rev. 2025-05-19 monthly+annual)
+% =========================================================================
+function post_process_year(year, scenarioName)
+%  Read the daily CSV, compute monthly and annual KPIs,
+%  and create/update three files:
+%     KPI_<scenario>_monthly.csv
+%     KPI_<scenario>.csv          (single annual row – backward compatible)
+%  also print a summary to console.
+
+projRoot = fileparts(fileparts(mfilename('fullpath')));
+sumDir   = fullfile(projRoot,'results','summary');
+
+scName   = erase(scenarioName,'.mat');
+dailyCSV = fullfile(sumDir, sprintf('KPI_%s_daily.csv', scName));
+assert(isfile(dailyCSV),'Missing %s (daily simulation has not been post-processed)', dailyCSV);
+
+Tday = readtable(dailyCSV);
+
+% ----- filter by requested year ------------------------------------------
+Tday = Tday(Tday.Year == year, :);
+assert(height(Tday)==365,'Simulated/recorded days different from 365');
+
+% ----- monthly KPIs ------------------------------------------------------
+Tm = groupsummary(Tday,'Month','sum', ...
+        {'E_imp_kWh','E_exp_kWh','E_pv_kWh','E_losses_kWh'});
+
+%   recompute SelfSuff / SelfCons on aggregated values
+Eimp  = Tm.sum_E_imp_kWh;
+Eexp  = Tm.sum_E_exp_kWh;
+Epv   = Tm.sum_E_pv_kWh;
+Eload = Eimp - Eexp + Epv;
+
+Tm.SelfSuff = 1 - Eimp./max(Eload,eps);
+Tm.SelfCons = 1 - Eexp./max(Epv ,eps);
+
+% ----- save monthly CSV --------------------------------------------------
+monCSV = fullfile(sumDir, sprintf('KPI_%s_monthly.csv', scName));
+writetable(Tm, monCSV);
+
+% ----- annual KPI --------------------------------------------------------
+Eimp = sum(Eimp);   Eexp = sum(Eexp);   Epv = sum(Epv);
+Eload = Eimp - Eexp + Epv;
+SelfSuff = 1 - Eimp/max(Eload,eps);
+SelfCons = 1 - Eexp/max(Epv,eps);
+Eloss = sum(Tm.sum_E_losses_kWh);
+
+Tall = table(year, string(scenarioName), Eimp, Eexp, Epv, ...
+             SelfSuff, SelfCons, Eloss, ...
+             'VariableNames',{'Year','Scenario','E_imp_kWh','E_exp_kWh', ...
+                              'E_pv_kWh','SelfSuff','SelfCons','E_losses_kWh'});
+
+annCSV = fullfile(sumDir, sprintf('KPI_%s.csv', scName));
+writetable(Tall, annCSV);
+
+fprintf('\n=== KPI %s %d =========================================\n', scName, year)
+fprintf('  Imported energy    : %8.1f kWh\n', Eimp);
+fprintf('  Exported energy    : %8.1f kWh\n', Eexp);
+fprintf('  PV energy          : %8.1f kWh\n', Epv);
+fprintf('  Self-sufficiency   : %8.1f %%\n', SelfSuff*100);
+fprintf('  Self-consumption   : %8.1f %%\n', SelfCons*100);
+fprintf('  Joule losses       : %8.1f kWh\n', Eloss);
+fprintf('  ► Annual CSV  : %s\n', annCSV);
+fprintf('  ► Monthly CSV : %s\n', monCSV);
+end
+
+
+
+
+36) plot_selfsuff_monthly.m
+
+
+
+function plot_selfsuff_monthly(year,scenario,useSub)
+
+% =========================================================================
+
+%  Monthly self-sufficiency bar chart  (robust)
+
+%
+
+%     plot_selfsuff_monthly(2023,'scn3_7PV_2BESS')           % subscripts ON
+
+%     plot_selfsuff_monthly(2023,'scn3_7PV_2BESS',false)     % raw title
+
+%
+
+%   • reads KPIs already created by post_process_day/year
+
+%   • if useSub==true use Interpreter='tex' and subscripts PV₇ BESS₂
+
+% =========================================================================
+
+if nargin < 2
+
+    error('Usage: plot_selfsuff_monthly(year, scenarioName)');
+
+end
+
+if nargin < 3 || isempty(useSub)
+
+    useSub = true;
+
+end
+
+% ---------- read monthly KPI ---------------------------------------------
+
+proj   = fileparts(fileparts(mfilename('fullpath')));   % project folder
+
+sumDir = fullfile(proj,'results','summary');
+
+Tm     = kpi_monthly(sumDir,scenario,year);             % robust table
+
+% ---------- plot ----------------------------------------------------------
+
+figure('Color','w');
+
+bar(Tm.Month, Tm.SelfSuff*100, 'FaceColor',[0 .45 .74])
+
+grid on, ylim([0 100])
+
+xlabel('Month'), ylabel('Self-sufficiency [%]')
+
+% ---------- clean title ---------------------------------------------------
+
+if useSub
+
+    % extract id, nPV, nBESS (all optional)
+
+    tok = regexp(scenario, ...
+
+        '^(?<id>[^_]+)(?:_(?<nPV>\d+)PV)?(?:_(?<nBESS>\d+)BESS)?$', ...
+
+        'names','once');
+
+    pieces = tok.id;                     % e.g.  scn3
+
+    if isfield(tok,'nPV')   && ~isempty(tok.nPV)
+
+        pieces = [pieces, sprintf('  PV_{%s}',  tok.nPV)];
+
+    end
+
+    if isfield(tok,'nBESS') && ~isempty(tok.nBESS)
+
+        pieces = [pieces, sprintf('  BESS_{%s}',tok.nBESS)];
+
+    end
+
+    title(sprintf('%s  %d – Monthly self-sufficiency',pieces,year), ...
+
+          'Interpreter','tex','FontWeight','bold');
+
+else
+
+    title(sprintf('%s  %d – Monthly self-sufficiency',scenario,year), ...
+
+          'Interpreter','none','FontWeight','bold');
+
+end
+
+end
+
+
+
+
+
+37) plot_selfsuff_vs_smartnodes_year.m
+
+
+
+function plot_selfsuff_vs_smartnodes_year(year)
+
+% Plots self-sufficiency versus number of smart nodes with a smooth trend line.
+
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+
+    scDir    = fullfile(projRoot,'data','scenarios');
+
+    sumDir   = fullfile(projRoot,'results','summary');
+
+    figDir   = fullfile(projRoot,'figs','summary');
+
+    if ~exist(figDir,'dir'), mkdir(figDir); end
+
+    
+
+    dscn   = dir(fullfile(scDir,'scn*.mat'));
+
+    nSmart = [];
+
+    SS     = [];
+
+    labels = {};
+
+    
+
+    for k = 1:numel(dscn)
+
+        scID = erase(dscn(k).name,'.mat');
+
+        csvA = fullfile(sumDir, sprintf('KPI_%s.csv', scID));
+
+        
+
+        if ~isfile(csvA), continue, end
+
+        
+
+        TA = readtable(csvA);
+
+        if isnumeric(TA.Year)
+
+            idx = (TA.Year == year);
+
+        else
+
+            idx = (str2double(string(TA.Year)) == year);
+
+        end
+
+        if ~any(idx), continue, end
+
+        
+
+        SS  = [SS; TA.SelfSuff(idx)*100];
+
+        labels = [labels; scID];
+
+        
+
+        % --- FIX APPLICATO: Ripristinato l'uso di utils.get_nodes ---
+
+        % Carica tutto il file in modo sicuro (senza forzare PV o BESS)
+
+        S = load(fullfile(dscn(k).folder, dscn(k).name));
+
+        nodes = [];
+
+        
+
+        % Se esiste PV, usa la funzione 'get_nodes' originale per estrarre i nodi
+
+        if isfield(S, 'PV') && ~isempty(S.PV)
+
+            nodes = [nodes, utils.get_nodes(S.PV)];
+
+        end
+
+        % Idem per BESS
+
+        if isfield(S, 'BESS') && ~isempty(S.BESS)
+
+            nodes = [nodes, utils.get_nodes(S.BESS)];
+
+        end
+
+        
+
+        nSmart = [nSmart; numel(unique(nodes))];
+
+        % --- FINE FIX ---
+
+    end
+
+    
+
+    [nSmart, order] = sort(nSmart);
+
+    SS     = SS(order);
+
+    labels = labels(order);
+
+    
+
+    fig = figure('Color','w');
+
+    scatter(nSmart, SS, 80, 'b', 'filled'); hold on
+
+    
+
+    if numel(nSmart) > 2
+
+        p    = polyfit(nSmart, SS, min(numel(nSmart)-1,2));
+
+        xfit = linspace(min(nSmart), max(nSmart), 100);
+
+        yfit = polyval(p, xfit);
+
+        plot(xfit, yfit, 'r--', 'LineWidth', 1.5);
+
+    end
+
+    
+
+    grid on
+
+    xlabel('Number of smart nodes (PV + BESS)');
+
+    ylabel('Self-sufficiency [%]');
+
+    title(sprintf('District %d – self-sufficiency vs smart nodes', year));
+
+    
+
+    dx = 0.2; dy = 1.5;
+
+    for i = 1:numel(nSmart)
+
+        text(nSmart(i) + dx, SS(i) + dy, labels{i}, 'FontSize', 8, ...
+
+             'Interpreter','none');
+
+    end
+
+    
+
+    saveas(fig, fullfile(figDir,'selfsuff_vs_smartnodes.png'));
+
+    close(fig);
+
+    fprintf('► Improved self-sufficiency vs smart-nodes plot saved to %s\n', figDir);
+
+end
+
+
+38) post_process_day_mpc.m
+
+function outCSV = post_process_day_mpc(year, dayNum, scenarioName)
+% POST_PROCESS_DAY_MPC - Estrae i KPI dai risultati dell'ottimizzatore EMPC.
+    
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+    addpath(fullfile(projRoot,'post','utils'));
+    
+    tag = erase(scenarioName, '.mat');
+    tag = regexprep(tag, '[^\w]', '_');
+    
+    % Punta alla cartella del nuovo modello
+    dataFN = fullfile(projRoot,'results','daily_mpc', sprintf('day%03d__%s_MPC.mat', dayNum, tag));
+    if ~isfile(dataFN)
+        outCSV = ''; return; % Salta silenziosamente se il file non c'è
+    end
+    
+    S = load(dataFN);
+    
+    % Calcolo Vero Scambio al PoC (Nodo Slack + Nodo 1)
+    Psl_kW = S.Psl * 100;
+    P_nodes_kW = S.P_kw;
+    if isfield(S,'P_pv'),   P_nodes_kW = P_nodes_kW + S.P_pv;   end
+    if isfield(S,'P_bess'), P_nodes_kW = P_nodes_kW + S.P_bess; end
+    P_ext_kW = Psl_kW + P_nodes_kW(1, :);
+    
+    % Calcolo Perdite Joule (La funzione legge automaticamente P_kw dal matfile)
+    [~, Ploss] = energy_balance(S.Psl, dataFN);
+    
+    E_imp  = sum( max(P_ext_kW, 0) ) / 60;
+    E_exp  = sum( abs(min(P_ext_kW, 0)) ) / 60;
+    E_pv   = 0;
+    if isfield(S,'P_pv'), E_pv = sum(-min(S.P_pv(:),0))/60; end
+    
+    E_load = E_imp - E_exp + E_pv;
+    SelfSuff = 1 - E_imp / max(E_load, eps);
+    SelfCons = 1 - E_exp / max(E_pv , eps);
+    
+    sumDir   = fullfile(projRoot,'results','summary');
+    if ~isfolder(sumDir), mkdir(sumDir); end
+    
+    outCSV = fullfile(sumDir, sprintf('KPI_%s_MPC_daily.csv', tag));
+    Date = datetime(year,1,1) + days(dayNum-1);
+    
+    Trow = table(year, dayNum, month(Date), Date, ...
+                 E_imp, E_exp, E_pv, SelfSuff, SelfCons, Ploss, ...
+                 'VariableNames',{'Year','Day','Month','Date', ...
+                                  'E_imp_kWh','E_exp_kWh','E_pv_kWh', ...
+                                  'SelfSuff','SelfCons','E_losses_kWh'});
+                                  
+    % Se è il primo giorno, sovrascrive. Altrimenti appende.
+    if isfile(outCSV) && dayNum ~= 1
+        writetable(Trow, outCSV, 'WriteMode','Append', 'WriteVariableNames', false);
+    else
+        writetable(Trow, outCSV);
+    end
+end
+
+39) post_process_year_mpc.m
+
+function post_process_year_mpc(year, scenarioName)
+% POST_PROCESS_YEAR_MPC - Genera i KPI mensili e annuali per il modello predittivo.
+
+    projRoot = fileparts(fileparts(mfilename('fullpath')));
+    sumDir   = fullfile(projRoot,'results','summary');
+    
+    scName   = erase(scenarioName,'.mat');
+    dailyCSV = fullfile(sumDir, sprintf('KPI_%s_MPC_daily.csv', scName));
+    
+    if ~isfile(dailyCSV)
+        warning('File %s non trovato. Runnare prima i daily.', dailyCSV); 
+        return;
+    end
+    
+    Tday = readtable(dailyCSV);
+    Tday = Tday(Tday.Year == year, :);
+    
+    Tm = groupsummary(Tday,'Month','sum', {'E_imp_kWh','E_exp_kWh','E_pv_kWh','E_losses_kWh'});
+    
+    Eimp  = Tm.sum_E_imp_kWh;
+    Eexp  = Tm.sum_E_exp_kWh;
+    Epv   = Tm.sum_E_pv_kWh;
+    Eload = Eimp - Eexp + Epv;
+    
+    Tm.SelfSuff = 1 - Eimp./max(Eload,eps);
+    Tm.SelfCons = 1 - Eexp./max(Epv ,eps);
+    
+    writetable(Tm, fullfile(sumDir, sprintf('KPI_%s_MPC_monthly.csv', scName)));
+    
+    % Bilancio Annuale
+    Eimp_tot = sum(Eimp);   Eexp_tot = sum(Eexp);   Epv_tot = sum(Epv);
+    Eload_tot = Eimp_tot - Eexp_tot + Epv_tot;
+    SelfSuff_tot = 1 - Eimp_tot/max(Eload_tot,eps);
+    SelfCons_tot = 1 - Eexp_tot/max(Epv_tot,eps);
+    Eloss_tot = sum(Tm.sum_E_losses_kWh);
+    
+    Tall = table(year, string([scName '_MPC']), Eimp_tot, Eexp_tot, Epv_tot, ...
+                 SelfSuff_tot, SelfCons_tot, Eloss_tot, ...
+                 'VariableNames',{'Year','Scenario','E_imp_kWh','E_exp_kWh', ...
+                                  'E_pv_kWh','SelfSuff','SelfCons','E_losses_kWh'});
+                                  
+    writetable(Tall, fullfile(sumDir, sprintf('KPI_%s_MPC.csv', scName)));
+end
+
+
+40) run_all_postprocessing_mpc.m
+
+% =========================================================================
+% MASTER POST-PROCESSING SCRIPT (MPC)
+% Analizza le simulazioni predittive e costruisce i CSV definitivi
+% =========================================================================
+clear; clc; close all;
+
+% Inizializza i path
+projRoot = fileparts(fileparts(mfilename('fullpath')));
+addpath(fullfile(projRoot,'post'));
+addpath(fullfile(projRoot,'post','utils'));
+
+year = 2023;
+
+scenarios = {
+    'scn1_3PV.mat';
+    'scn2_5PV_1BESS.mat';
+    'scn3_7PV_2BESS.mat';
+    'scn4_k050.mat'; 'scn4_k060.mat'; 'scn4_k070.mat'; 'scn4_k080.mat';
+    'scn4_k090.mat'; 'scn4_k100.mat'; 'scn4_k110.mat'; 'scn4_k120.mat'
+};
+
+fprintf('=== FASE 1: Estrazione KPI Giornalieri MPC ===\n');
+for i = 1:numel(scenarios)
+    scn = scenarios{i};
+    fprintf(' Elaborazione %s...\n', scn);
+    for d = 1:365
+        post_process_day_mpc(year, d, scn);
+    end
+end
+
+fprintf('\n=== FASE 2: Aggregazione Mensile e Annuale MPC ===\n');
+for i = 1:numel(scenarios)
+    scn = scenarios{i};
+    post_process_year_mpc(year, scn);
+end
+
+fprintf('\n=== POST-PROCESSING MPC COMPLETATO ===\n');
+
+
+Cartella post/utils (Strumenti di Plottaggio Specifici)
+
+Le funzioni di disegno richiamate dai file di post-processing.
+
+
+
+41) energy_balance.m
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  FILE:  energy_balance.m            (rev. BUGFIX PoC Masking - Nodo 1)
+%
+%  Computes:
+%      ▸ E_imp_kWh   energy imported from the MT grid (kWh, >=0)
+%      ▸ E_loss_kWh  Joule losses on LV lines         (kWh, >=0)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [E_imp_kWh , E_loss_kWh] = energy_balance(Psl, matfile)
+
+%% — 1)  Psl → kW ----------------------------------------------------------
+Sbase_kW = 100;                      % 100 kVA three-phase = 1 p.u.
+Psl_kW   = Psl * Sbase_kW;           % row-vector 1×T
+T        = numel(Psl_kW);            % # samples
+dt_h     = 1/60;                     % 1-min model  → hours
+
+%% — 2)  Load node profiles -----------------------------------------------
+P_kw   = [];  P_pv = [];  P_bess = [];
+if nargin>1 && isfile(matfile)
+    S = load(matfile,'P_kw','P_pv','P_bess');
+    if isfield(S,'P_kw'),   P_kw   = S.P_kw;   end
+    if isfield(S,'P_pv'),   P_pv   = S.P_pv;   end
+    if isfield(S,'P_bess'), P_bess = S.P_bess; end
+end
+
+% ---- safe fallbacks ------------------------------------------------------
+if isempty(P_kw)
+    P_kw = zeros(1,T);
+end
+if isempty(P_pv),   P_pv   = zeros(size(P_kw)); end
+if isempty(P_bess), P_bess = zeros(size(P_kw)); end
+
+%% — 3)  Compute True External Exchange (Fix Nodo 1) ----------------------
+P_nodes_kW = P_kw + P_pv + P_bess;      % N×T
+P_ext_kW   = Psl_kW + P_nodes_kW(1, :); % True power from MT grid
+E_imp_kWh  = trapz( max(P_ext_kW, 0) ) * dt_h;
+
+%% — 4)  Losses (buses 2…N) -----------------------------------------------
+P_int_kW   = P_nodes_kW( 2:end , : );   % exclude slack bus
+P_loss_kW  = max( 0 , Psl_kW - sum(P_int_kW,1) );   % 1×T
+E_loss_kWh = trapz( P_loss_kW ) * dt_h;
+
+end
+
+
+
+
+42) kpi_monthly.m
+
+
+% =========================================================================
+%  FILE:  post/utils/kpi_monthly.m      (2025-05-19 compatible with new CSVs)
+% =========================================================================
+function Tm = kpi_monthly(sumDir, scenarioName, year)
+%  Return the monthly KPI table already computed by post_process_year.
+%
+%   Tm = kpi_monthly(sumDir,'scn4_8PV_4BESS',2023)
+
+monCSV = fullfile(sumDir, sprintf('KPI_%s_monthly.csv', scenarioName));
+assert(isfile(monCSV),'File %s not found – run post_process_year first', monCSV);
+
+Tm = readtable(monCSV);
+if any(Tm.Month ~= (1:12).')
+    warning('Monthly CSV does not seem complete (missing months)');
+end
+if nargin > 2
+    % filter year if CSV contains multiple years (future option)
+    if ismember('Year',Tm.Properties.VariableNames)
+        Tm = Tm(Tm.Year == year, :);
+    end
+end
+end
+
+
+
+
+
+
+43) plot_voltage_map.m (Generatore delle Heatmap)
+
+
+
+function plot_voltage_map(t, Vmag)
+% PLOT_VOLTAGE_MAP  – heat-map of voltage profile (p.u.)
+%
+%   plot_voltage_map(t, Vmag)
+%
+% Input
+%   t     : time vector (durations or minutes)
+%   Vmag  : N × Nsteps matrix with |V| in p.u.
+
+    % ---------- X axis in hours ------------------------------------------
+    if isduration(t)
+        h = hours(t);
+    else
+        h = t / 60;
+    end
+
+    imagesc(h, 1:size(Vmag,1), Vmag);
+    set(gca,'YDir','normal');
+    xlabel('Hour of day [h]'), ylabel('Bus')
+
+    caxis([0.94 1.06]), colormap(parula)
+    cb = colorbar; cb.Label.String = 'p.u.';
+end
+
+
+
+
+
+
+
+44) plot_slack_power.m (Generatore dei grafici P/Q a doppio asse)
+
+
+
+function plot_slack_power(t, Psl_pu, Qsl_pu, Sbase_kVA)
+% PLOT_SLACK_POWER  – active/reactive power at the slack bus
+%
+%   plot_slack_power(t, Psl, Qsl)
+%   plot_slack_power(t, Psl, Qsl, Sbase_kVA)
+%
+% Input
+%   t          : time vector (durations or minutes 0…1439)
+%   Psl_pu     : active power in p.u. (1 × Nsteps)
+%   Qsl_pu     : reactive power in p.u. (1 × Nsteps)
+%   Sbase_kVA  : three-phase base [kVA]  (default 100)
+%
+% Output -- none (plot only)
+
+    % ---------- base constant --------------------------------------------
+    if nargin < 4 || isempty(Sbase_kVA),  Sbase_kVA = 100;  end
+    kW_base   = Sbase_kVA;          % 1 p.u.  → 100 kW
+    kvar_base = Sbase_kVA;
+
+    % ---------- X axis in hours ------------------------------------------
+    if isduration(t)
+        h = hours(t);               % duration → decimal hours
+    else
+        h = t / 60;                 % minutes numeric → hours
+    end
+
+    % ---------- plotting --------------------------------------------------
+    yyaxis left
+    plot(h, Psl_pu * kW_base, 'b', 'LineWidth',1.2)
+    ylabel('P [kW]')
+
+    yyaxis right
+    plot(h, Qsl_pu * kvar_base, 'r--', 'LineWidth',1.2)
+    ylabel('Q [kvar]')
+
+    xlabel('Hour of day [h]'), grid on
+    legend({'P_{slack}','Q_{slack}'},'Location','best')
+end
+
+
+
+
+
+45) plot_pv_profile.m
+
+
+
+function plot_pv_profile(year, scenario, m, d)
+% PLOT_PV_PROFILE  Plot daily or monthly-average PV generation using PVGIS data.
+%
+%   plot_pv_profile(2023,'scn2_5PV_1BESS',5,12)   % 12-May profile
+%   plot_pv_profile(2023,'scn4_8PV_4BESS',7)      % July average
+%
+% This version uses the PVGIS Rome profile and scales it by the total 
+% installed PV capacity. It applies the same 'pchip' interpolation used 
+% in the simulation engine to guarantee visual and numerical consistency.
+
+    if nargin < 3, m = 7;  end      % default month is July
+    if nargin < 4, d = []; end      % empty day -> monthly average
+    
+    % Find the project root
+    proj = fileparts(fileparts(fileparts(mfilename('fullpath'))));
+    
+    % Load PVGIS profile (8760x1 kW per 1 kWp)
+    P1 = utils.read_pv_rome_kWp();
+    
+    % Load scenario file to determine installed PV capacity
+    S = load(fullfile(proj, 'data', 'scenarios', [scenario '.mat']), 'PV');
+    if isfield(S.PV,'kWp')
+        kWp = sum([S.PV.kWp]);
+    elseif isfield(S.PV,'Pmax_kW')
+        kWp = sum([S.PV.Pmax_kW]);
+    else
+        error('PV struct has neither kWp nor Pmax_kW fields.');
+    end
+    
+    % Select the relevant hours for the given month/day
+    t0   = datetime(year,1,1,0,0,0);
+    hIdx = t0 + hours(0:8759);  % datetime vector for each hour of the year
+    
+    if isempty(d)
+        % EXTRACT MONTHLY AVERAGE (Fixing the 744 hours bug)
+        pick = (month(hIdx) == m);
+        Pv_raw = P1(pick) * kWp; 
+        % Reshape into a 24 x (days in month) matrix and average the days
+        Pv_24h = mean(reshape(Pv_raw, 24, []), 2); 
+        lab  = sprintf('%dkWp  average %02d/%d', round(kWp), m, year);
+    else
+        % EXTRACT SPECIFIC DAY
+        pick = (month(hIdx) == m & day(hIdx) == d);
+        Pv_24h = P1(pick) * kWp;
+        lab  = sprintf('%dkWp  %02d/%02d/%d', round(kWp), d, m, year);
+    end
+    
+    % Interpolate to 1-minute resolution using pchip (same as run_district_day)
+    Pv_1min = interp1(0:60:1380, Pv_24h, 0:1439, 'pchip', 0);
+    
+    % Plot
+    h = (0:1439) / 60;  % hours of day for the X-axis
+    figure('Color','w');
+    plot(h, Pv_1min, 'LineWidth',1.6); grid on
+    xlabel('Hour of day');
+    ylabel('P_{PV} [kW]');
+    title(sprintf('%s - PV generation (%s)', erase(scenario, '.mat'), lab), ...
+          'Interpreter','none','FontWeight','bold');
+end
+
+
+46) plot_pv_vs_load.m
+
+
+
+
+
+function plot_pv_vs_load(year, dayNum, scenarioName)
+% PLOT_PV_VS_LOAD  Compare total PV generation and total load for a given day and scenario.
+%
+%   plot_pv_vs_load(2023, 32, 'scn2_5PV_1BESS.mat')
+%
+% The function locates the daily .mat file under results/daily, sums all
+% active-power loads (P_kw) and PV injections (-P_pv) across buses, and plots
+% both curves over the 24-hour period.
+
+    % Climb up to find the project root (directory containing 'results')
+    here = fileparts(mfilename('fullpath'));
+    projRoot = here;
+    while ~exist(fullfile(projRoot,'results'),'dir')
+        parent = fileparts(projRoot);
+        if strcmp(parent,projRoot)
+            error('Cannot locate the project root containing "results" folder.');
+        end
+        projRoot = parent;
+    end
+    
+    % Build expected MAT filename (tag as in run_district_day)
+    tag = erase(scenarioName,'.mat');
+    tag = regexprep(tag,'[^\w]','_');
+    matFN = fullfile(projRoot,'results','daily', ...
+                     sprintf('day%03d__%s.mat', dayNum, tag));
+    assert(isfile(matFN), 'Result MAT file not found:\n%s', matFN);
+    
+    % Load data
+    S = load(matFN, 't_min','P_kw','P_pv');
+    
+    % FIX ASSE X: Da minuti ad ore decimali per il plot
+    h = S.t_min / 60; 
+    
+    totalLoad = sum(S.P_kw, 1);           % [kW]
+    
+    % Compute total PV generation (positive values); handle missing field
+    if isfield(S,'P_pv') && ~isempty(S.P_pv)
+        totalPV = -sum(S.P_pv, 1);        % P_pv negative -> generation positive
+    else
+        totalPV = zeros(size(totalLoad));
+    end
+    
+    % Plot
+    figure('Color','w');
+    plot(h, totalLoad, 'b', 'LineWidth',1.4); hold on
+    plot(h, totalPV, 'r', 'LineWidth',1.4);
+    grid on
+    legend({'Total load','Total PV generation'}, 'Location','best');
+    xlabel('Hour of day');
+    ylabel('Power [kW]');
+    title(sprintf('%s - PV vs Load (Day %03d)', erase(scenarioName,'.mat'), dayNum), ...
+          'Interpreter','none');
+end

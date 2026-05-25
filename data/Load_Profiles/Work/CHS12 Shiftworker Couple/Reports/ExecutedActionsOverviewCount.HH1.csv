@@ -1,0 +1,31 @@
+-----
+CHS12 Regina (29/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+do laundry at 30°C (by variable);1;0;0;0;0;1;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+bake a cake;1;0;0;0;0;1;0;0;cooking;bake a cake;Food;
+cook together at all times;1;0;0;0;0;1;0;0;cooking;cook together at all times;Food;
+go to the toilet;5;0;0;0;2;3;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with hair washing (women) (5 min hair drying);1;0;0;0;1;0;0;0;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+read a newspaper for 30min;2;0;0;0;1;1;0;0;recreation;read a newspaper for 30min;Media Use;
+relax in the garden;1;0;0;0;1;0;0;0;recreation;relax in the garden;Hobby;
+use the laptop for Internet, Movie, Music, News (2 h);1;0;0;0;1;0;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch a movie for 1 h 30 min;1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min;Media Use;
+sleep bed 06 (08 h) (shift worker woman);2;0;0;0;1;1;0;0;sleeping;sleep bed 06 (08 h) (shift worker woman);Sleep;
+work as shift worker (woman);2;0;0;0;1;1;0;0;work;work as shift worker (woman);Work / School;
+-----
+CHS12 Falk (31/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+cook together at all times;1;0;0;0;1;0;0;0;cooking;cook together at all times;Food;
+eat breakfast (1 h);2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+exercise for 30 min on the treadmill;1;0;0;0;0;1;0;0;recreation;exercise for 30 min on the treadmill;Sport;
+go for walk (1 h);2;0;0;0;1;1;0;0;recreation;go for walk (1 h);Sport;
+read a newspaper for 30min;1;0;0;0;1;0;0;0;recreation;read a newspaper for 30min;Media Use;
+water the garden outside;1;0;0;0;0;1;0;0;recreation;water the garden outside;Hobby;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;0;1;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 07 (08 h) (shift worker man);2;0;0;0;1;1;0;0;sleeping;sleep bed 07 (08 h) (shift worker man);Sleep;
+work as shift worker (man);2;0;0;0;1;1;0;0;work;work as shift worker (man);Work / School;

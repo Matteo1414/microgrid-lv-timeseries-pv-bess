@@ -1,0 +1,56 @@
+------
+CHR03 Fin (43/Male);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+wake up by alarm clock A;364;work;wake up by alarm clock A;Work / School
+get ready in the morning (men);24;hygiene;get ready in the morning (men);Hygiene
+eat small breakfast (25min) interruping subaff, no alarm;54;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food
+take a shower (men);44;hygiene;take a shower (men);Hygiene
+watch a movie for 2 h with home cinema system;140;recreation;watch a movie for 2 h with home cinema system;Media Use
+work at the office (09 h);1097;work;work at the office (09 h);Work / School
+go to the toilet;17;hygiene;go to the toilet;Hygiene
+go shopping for food in the supermarket (1_5 h);99;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work
+use the laptop for Internet, Movie, Music, News (2 h);182;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+eat a cooked meal (interrupting) (cook for the family after 16:30);117;cooking;cook for the family after 16:30;Food
+play Wii;65;recreation;play Wii;Games
+sleep bed 01 (08 h);496;sleeping;sleep bed 01 (08 h);Sleep
+exercise for 30 min on the treadmill;31;recreation;exercise for 30 min on the treadmill;Sport
+play board games (1 h);54;recreation;play board games (1 h);Games
+run the dishwasher (triggered);16;cleaning;run the dishwasher (triggered);Unpaid Work
+bake bread;80;cooking;bake bread;Food
+------
+CHR03 Luka (10/Male);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+wake up by alarm clock C;397;sleeping;wake up by alarm clock C;Sleep
+go to the toilet;15;hygiene;go to the toilet;Hygiene
+get ready in the morning (children);10;hygiene;get ready in the morning (children);Hygiene
+eat small breakfast (25min) interruping subaff, no alarm;27;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food
+go to primary school for 6h every day, with vacation;739;work;go to primary school for 6h every day, with vacation;Work / School
+use the laptop for Internet, Movie, Music, News (2 h);270;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+watch a movie for 1 h 30 min with home cinema system;90;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use
+watch TV with someone (watch a movie for 1 h 30 min with home cinema system);1;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use
+relax in the garden 2;63;recreation;relax in the garden 2;Hobby
+use the computer (1_5 h);75;recreation;use the computer (1_5 h);Media Use
+eat a cooked meal (interrupting) (cook for the family after 16:30);118;cooking;cook for the family after 16:30;Food
+play digital piano (1 h);57;recreation;play digital piano (1 h);Hobby
+sleep bed 03 (10 h) Child;710;sleeping;sleep bed 03 (10 h) Child;Sleep
+play board games (1 h);50;recreation;play board games (1 h);Games
+play in the garden;75;recreation;play in the garden;Games
+take a shower (men);19;hygiene;take a shower (men);Hygiene
+watch a movie for 2 h with home cinema system;137;recreation;watch a movie for 2 h with home cinema system;Media Use
+use the laptop (1 h);27;recreation;use the laptop (1 h);Media Use
+------
+CHR03 Ava (40/Female);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+wake up by alarm clock B;422;sleeping;wake up by alarm clock B;Sleep
+go to the toilet;24;hygiene;go to the toilet;Hygiene
+get ready in the morning (women);42;hygiene;get ready in the morning (women);Hygiene
+eat small breakfast (25min) interruping subaff, no alarm;51;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food
+exercise for 30 min on the treadmill;27;recreation;exercise for 30 min on the treadmill;Sport
+work as teacher;1097;work;work as teacher;Work / School
+take a shower with hair washing (women) (5 min hair drying);57;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene
+do laundry at 30°C (by variable);14;cleaning;do laundry at 30°C (by variable);Unpaid Work
+open bathroom window;5;hygiene;open bathroom window;Hygiene
+cook for the family after 16:30;289;cooking;cook for the family after 16:30;Food
+use the computer (1_5 h);91;recreation;use the computer (1_5 h);Media Use
+use the laptop for Internet, Movie, Music, News (2 h);118;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+sleep bed 02 (10 h);528;sleeping;sleep bed 02 (10 h);Sleep
+play board games together (play board games (1 h));40;recreation;play board games (1 h);Games
+run the dryer with wet laundry, only below 15°C (by variable);15;cleaning;run the dryer with wet laundry, only below 15°C (by variable);Unpaid Work
+take a shower without hair washing (women);60;hygiene;take a shower without hair washing (women);Hygiene

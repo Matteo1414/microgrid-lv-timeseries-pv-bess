@@ -1,0 +1,970 @@
+Bedroom:
+  wake up by alarm clock B (Time limit: Every workday between 07:00 and 07:30)
+    Alarm clock B Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  sleep bed 02 (10 h) (Time limit: )
+    Bed 2 Offset: 0 / 0
+  wake up by alarm clock A (Time limit: Every workday between 06:00 and 06:30)
+    Alarm clock A Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  sleep bed 01 (08 h) (Time limit: )
+    Bed 1 Offset: 0 / 0
+  wake up by alarm clock C (Time limit: Every Schoolday between 06:30 and 07:00)
+    Alarm clock C Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  Replacement Activity A (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity B (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity C (Time limit: )
+    Book Offset: 0 / 0
+  Replacement Activity D (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+
+Living room:
+  play board games (1 h) (Time limit: Below 15°C)
+    Board Games Offset: 0 / 0
+  use the computer (1 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  use the computer (1_5 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer (2 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+  use the computer for recreation (2 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer with external HD (1 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  exercise for 30 min on the treadmill (Time limit: )
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  iron and watch TV with Sat Reciever (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    Steam Iron / Phillips GC 4410 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  iron Clothes (Time limit: )
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+    Steam Iron / Phillips GC 4410 Offset: 5 / 5
+  use the laptop (1 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop (1_5 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  relax in the massage chair (Time limit: )
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+  watch a movie for 1 h 30 min with home cinema system (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h with home cinema system (Time limit: )
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play digital piano (1 h) (Time limit: )
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+  listen to music on compact hifi (2 h) (Time limit: )
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+  read a newspaper for 30min (Time limit: )
+    Newspaper Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Wii (Time limit: )
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Xbox (1 h) (Time limit: )
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play board games (1 h) (Time limit: Below 15°C)
+    Board Games Offset: 0 / 0
+  use the computer (1 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  use the computer (1_5 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer (2 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    TASKalfa 180 Offset: 30 / 30
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+    Canon CanoScan LIDE 110 Offset: 50 / 50
+  use the computer for recreation (2 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+  use the computer with external HD (1 h) (Time limit: )
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC / Acer Aspire T310 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    PC Monitor / Fujitsu Siemens Scaleoview D19-1 Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    External Harddrive Iomega 3.5" Offset: 0 / 0
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    Epson Stylus Color 860 Offset: 20 / 20
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+    TASKalfa 180 Offset: 50 / 50
+  exercise for 30 min on the treadmill (Time limit: )
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+    Christopeit Treadmill TM 2 Pro Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop (1 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop (1_5 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  relax in the massage chair (Time limit: )
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+    Asviva High End Wellness Massage Seat Offset: 0 / 0
+  watch a movie for 1 h 30 min with home cinema system (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h with home cinema system (Time limit: )
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play digital piano (1 h) (Time limit: )
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+  listen to music on compact hifi (2 h) (Time limit: )
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+  read a newspaper for 30min (Time limit: )
+    Newspaper Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch the news (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Wii (Time limit: )
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Xbox (1 h) (Time limit: )
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play board games (1 h) (Time limit: Below 15°C)
+    Board Games Offset: 0 / 0
+  use the laptop (1 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  use the laptop for Internet, Movie, Music, News (2 h) (Time limit: )
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+    Laptop / ACER BT.00603.043 Replacement laptop battery Offset: 0 / 0
+  watch a movie for 1 h 30 min with home cinema system (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h with home cinema system (Time limit: )
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    Home Cinema System / Samsung HT-D5550 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play digital piano (1 h) (Time limit: )
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+    Digitalpiano / Kawai CN-23 Offset: 0 / 0
+  listen to music on compact hifi (2 h) (Time limit: )
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+    Hifi System / Sharp XL-HF300PH Offset: 0 / 0
+  read a book (1 h) (Time limit: )
+    Book Offset: 0 / 0
+  read a book on the couch all the time (Time limit: )
+    Couch Offset: 0 / 0
+  read a book on the couch only 9:00 to 22:00 (Time limit: )
+    Couch Offset: 0 / 0
+  read a magazine (Time limit: )
+    Magazine Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+    LED Lamp Globe E 14 Ambient 3W matt Offset: 0 / 0
+  take a nap (Time limit: )
+    Couch Offset: 0 / 0
+  take nap on the weekend (2 h) (Time limit: )
+    Couch Offset: 0 / 0
+  watch a movie for 1 h 30 min (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch a movie for 2 h (Time limit: )
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    CD/DVD Player / Phillips HDR3810/31 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch sports on TV with SAT Reciever (2 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  watch TV (1 h) (Time limit: )
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    SAT Receiver / Kathrein UFS913 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Wii (Time limit: )
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    Nintendo Wii Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+  play Xbox (1 h) (Time limit: )
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    Microsoft Xbox 360 Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+    TV / Phillips Goya 9770 VT Offset: 0 / 0
+
+Kitchen:
+  bake bread (Time limit: )
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Kitchen Sink (7.5L/min) Offset: 0 / 0
+    Kitchen Sink (7.5L/min) Offset: 70 / 70
+  eat small breakfast (25min) interruping subaff, no alarm (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  bake a cake (Time limit: )
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+  cook for the family after 16:30 (Time limit: Dinner Time (18:00-21:00))
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 5 / 5
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 5 / 5
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 5 / 5
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 5 / 5
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Miele DA 61 Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+  cook weekend lunch for the family (Time limit: Lunch Time on Weekends (11:00-13:00))
+    Miele DA 61 Offset: 5 / 5
+    Miele DA 61 Offset: 5 / 5
+    Miele DA 61 Offset: 5 / 5
+    Miele DA 61 Offset: 5 / 5
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Single Stove Plate Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+    Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind Offset: 15 / 15
+  hang up laundry outside only above 15°C (by variable) (Time limit: )
+    Cloth Drying Rack Offset: 5 / 5
+  run the dryer with wet laundry, only below 15°C (by variable) (Time limit: )
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+    Dryer / Miele T 8626 WP Offset: 5 / 5
+  do laundry at 30°C (by variable) (Time limit: )
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+  do laundry at 60°C (by variable) (Time limit: )
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+    Washing Machine Samsung P1405J Offset: 10 / 10
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (7.5L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  bake bread (Time limit: )
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Bread Baking Machine Unold 6595 Offset: 0 / 0
+    Kitchen Sink (7.5L/min) Offset: 0 / 0
+    Kitchen Sink (7.5L/min) Offset: 70 / 70
+  eat small breakfast (25min) interruping subaff, no alarm (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  make and eat sunday morning brunch (4 h) (Time limit: )
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Egg Cooker / Russell Hobbs 14048-56 Stylo Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Kitchen radio / AEG KRC 4323 CD Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Nespresso Coffee Machine, Single Cup Offset: 0 / 0
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 3 / 3
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 3 / 3
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 3 / 3
+    Food Slicer / DOMO Schneidemaschine DO521S Offset: 3 / 3
+    Moulinex electronic 833 Offset: 4 / 4
+    Moulinex electronic 833 Offset: 4 / 4
+    Moulinex electronic 833 Offset: 4 / 4
+    Moulinex electronic 833 Offset: 4 / 4
+    Toaster Salco MT 400 Offset: 5 / 5
+    Toaster Salco MT 400 Offset: 5 / 5
+    Toaster Salco MT 400 Offset: 5 / 5
+    Toaster Salco MT 400 Offset: 5 / 5
+    Kitchen Sink (7.5L/min) Offset: 20 / 20
+    Kitchen Sink (7.5L/min) Offset: 50 / 50
+    Nespresso Coffee Machine, Single Cup Offset: 60 / 60
+    Nespresso Coffee Machine, Single Cup Offset: 60 / 60
+    Nespresso Coffee Machine, Single Cup Offset: 60 / 60
+    Nespresso Coffee Machine, Single Cup Offset: 60 / 60
+    Kitchen Sink (7.5L/min) Offset: 80 / 80
+    Electric Kettle / Petra WK288 1.5L Offset: 80 / 80
+    Electric Kettle / Petra WK288 1.5L Offset: 80 / 80
+    Electric Kettle / Petra WK288 1.5L Offset: 80 / 80
+    Electric Kettle / Petra WK288 1.5L Offset: 80 / 80
+  bake a cake (Time limit: )
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Oven / AEG B 33512-5-M Offset: 0 / 0
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+    Handmixer / Phillips Robust HR 1581 Offset: 10 / 10
+  run the dishwasher (triggered) (Time limit: )
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+    Dishwasher NEFF SD6P1F (2011) Offset: 5 / 5
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (7.5L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  vacuum the household (Time limit: )
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+    Canister vacuum cleaner / Siemens VS 06 G 1831 Offset: 10 / 10
+  eat small breakfast (25min) interruping subaff, no alarm (Time limit: Breakfast Times, On Workdays between 06:00 and 10:00, on the Weekend until 12)
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Toaster Salco MT 400 Offset: 0 / 0
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Single Stove Plate Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+  make and drink tea (15 min) (Time limit: )
+    Kitchen Sink (7.5L/min) Offset: 0 / 0
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+    Electric Kettle / Petra WK288 1.5L Offset: 1 / 1
+
+Bath:
+  clean the bath (Time limit: )
+    Cleanser Offset: 0 / 0
+  open bathroom window (Time limit: )
+    Window Offset: 0 / 0
+  turn on the dehumidifier below 15 °C outside after shower (Time limit: )
+    Dehumidifier / Trotec TTK 50 S Offset: 0 / 0
+    Dehumidifier / Trotec TTK 50 S Offset: 0 / 0
+    Dehumidifier / Trotec TTK 50 S Offset: 0 / 0
+    Dehumidifier / Trotec TTK 50 S Offset: 0 / 0
+  get ready in the morning (women) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 3 / 3
+    Bathroom Sink 5 L/Min Offset: 10 / 10
+  take a shower with hair washing (women) (20 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+  take a shower with hair washing (women) (5 min hair drying) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+    Hair Dryer / Braun Satin Pro 2200 Ion Care Offset: 22 / 22
+  take a shower without hair washing (women) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+  get ready in the morning (men) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 5 / 5
+    Bathroom Sink 5 L/Min Offset: 9 / 9
+  take a shower (men) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 12 / 12
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+  get ready in the morning (children) (Time limit: )
+    Bathroom Sink 5 L/Min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 3 / 3
+  take a shower (men) (Time limit: )
+    Shower 10 L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 12 / 12
+  go to the toilet (Time limit: )
+    Toilet 10L/min Offset: 0 / 0
+    Bathroom Sink 5 L/Min Offset: 1 / 1
+
+Garden:
+  do garden work every day (Time limit: )
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+  relax in the garden (Time limit: )
+    Sunbed Offset: 0 / 0
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+  do garden work every day (Time limit: )
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Hedge Trimmer / Bosch AHS 550-24 ST Offset: 0 / 0
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Atika LH 2500 G Offset: 40 / 40
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+    Lawn Mower / Sabo 32-EL Offset: 60 / 60
+  relax in the garden (Time limit: )
+    Sunbed Offset: 0 / 0
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+  play in the garden (Time limit: )
+    Sandbox Offset: 0 / 0
+    Swing Offset: 60 / 60
+    Slide Offset: 75 / 75
+  relax in the garden 2 (Time limit: )
+    Sunbed 2 Offset: 0 / 0
+
+Opera:
+  visit an opera (Time limit: )
+    Opera Offset: 0 / 0
+  visit an opera (Time limit: )
+    Opera Offset: 0 / 0
+
+School 2:
+  work as teacher (Time limit: )
+    Teachers job Offset: 0 / 0
+
+Supermarket:
+  go shopping for food in the supermarket (1_5 h) (Time limit: )
+    Supermarket Offset: 0 / 0
+
+Office Workplace 1:
+  work at the office (09 h) (Time limit: )
+    Office Offset: 0 / 0
+
+Children's room:
+  do homework (Time limit: )
+    Schoolbook Offset: 0 / 0
+  sleep bed 03 (10 h) Child (Time limit: )
+    Bed 3 (Children) Offset: 0 / 0
+
+School:
+  go to primary school for 6h every day, with vacation (Time limit: )
+    School (primary) Offset: 0 / 0
+

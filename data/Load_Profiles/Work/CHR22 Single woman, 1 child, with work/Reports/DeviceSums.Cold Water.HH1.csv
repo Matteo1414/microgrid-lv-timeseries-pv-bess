@@ -1,0 +1,7 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Bathroom Sink 10L/min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Kitchen Sink (5L/min);0;0;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Toilet 6 L/min;114;20805;0;0;Bath devices / Toilet;Toilet;
+Washing Machine / Bosch WFS 8000;65;11862,5;0;0;Appliances / Washing machine;Laundry;
+Shower 7,5 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Sums;179;32667,5;0

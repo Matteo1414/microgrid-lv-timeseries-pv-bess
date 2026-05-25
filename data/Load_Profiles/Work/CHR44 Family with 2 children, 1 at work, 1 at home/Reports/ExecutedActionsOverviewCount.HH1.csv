@@ -1,0 +1,85 @@
+-----
+CHR44 Christopher (16/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;7;0;0;0;3;4;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+Replacement Activity A;52;0;0;0;16;36;0;0;recreation;Replacement Activity A;Media Use;
+Replacement Activity B;49;0;0;0;14;35;0;0;recreation;Replacement Activity B;Media Use;
+Replacement Activity C;46;0;0;0;14;32;0;0;recreation;Replacement Activity C;Media Use;
+Replacement Activity D;68;0;0;0;19;49;0;0;recreation;Replacement Activity D;Media Use;
+join watching a movie in the home cinema (watch a movie for 2 h with home cinema system);1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+listen to music on hifi (2 h);2;0;0;0;1;1;0;0;recreation;listen to music on hifi (2 h);Media Use;
+paint a picture;2;0;0;0;1;1;0;0;recreation;paint a picture;Hobby;
+play Wii;2;0;0;0;1;1;0;0;recreation;play Wii;Games;
+play a puzzle game;1;0;0;0;1;0;0;0;recreation;play a puzzle game;Games;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+relax in the garden;2;0;0;0;1;1;0;0;recreation;relax in the garden;Hobby;
+use the laptop for Internet, Movie, Music, News (2 h);4;0;0;0;2;2;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch TV with someone (watch a movie for 2 h with home cinema system);2;0;0;0;1;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+watch a movie for 1 h 30 min with home cinema system;1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+sleep bed 03 (08 h) Child;2;0;0;0;1;1;0;0;sleeping;sleep bed 03 (08 h) Child;Sleep;
+-----
+CHR44 Barbara (43/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+clean the bath;1;0;0;0;1;0;0;0;cleaning;clean the bath;Unpaid Work;
+do laundry at 30°C (by variable);1;0;0;0;1;0;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+hang up laundry outside;1;0;0;0;1;0;0;0;cleaning;hang up laundry outside;Unpaid Work;
+run the dishwasher (triggered);1;0;0;0;1;0;0;0;cleaning;run the dishwasher (triggered);Unpaid Work;
+vacuum the household;1;0;0;0;1;0;0;0;cleaning;vacuum the household;Unpaid Work;
+bake bread;1;0;0;0;1;0;0;0;cooking;bake bread;Food;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+fry two eggs and eat them with toast;1;0;0;0;1;0;0;0;cooking;fry two eggs and eat them with toast;Food;
+make soup;1;0;0;0;0;1;0;0;cooking;make soup;Food;
+get ready in the morning (women);1;0;0;0;0;1;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with hair washing (women) (20 min hair drying);1;0;0;0;0;1;0;0;hygiene;take a shower with hair washing (women) (20 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;1;0;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+invite friends for coffee;1;0;0;0;0;1;0;0;recreation;invite friends for coffee;Contacts;
+listen to music on hifi (2 h);1;0;0;0;0;1;0;0;recreation;listen to music on hifi (2 h);Media Use;
+paint a picture;1;0;0;0;1;0;0;0;recreation;paint a picture;Hobby;
+play Wii;1;0;0;0;1;0;0;0;recreation;play Wii;Games;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+play puzzle game together (play a puzzle game);1;0;0;0;1;0;0;0;recreation;play a puzzle game;Games;
+use the laptop for Internet, Movie, Music, News (2 h);3;0;0;0;2;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch TV with someone (watch a movie for 1 h 30 min with home cinema system);1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;0;1;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 02 (10 h);3;0;0;0;2;1;0;0;sleeping;sleep bed 02 (10 h);Sleep;
+-----
+CHR44 Sandy (14/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (children);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (children);Hygiene;
+go to the toilet;3;0;0;0;2;1;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with hair washing (women) (5 min hair drying);1;0;0;0;1;0;0;0;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+join watching a movie in the home cinema (watch a movie for 1 h 30 min with home cinema system);1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+paint a picture;1;0;0;0;1;0;0;0;recreation;paint a picture;Hobby;
+play Wii;1;0;0;0;1;0;0;0;recreation;play Wii;Games;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+play with toys (1_5 h);1;0;0;0;1;0;0;0;recreation;play with toys (1_5 h);Games;
+play with toys (2 h);1;0;0;0;0;1;0;0;recreation;play with toys (2 h);Games;
+play with toys 30min;1;0;0;0;1;0;0;0;recreation;play with toys 30min;Games;
+play with wooden toys (1 h);1;0;0;0;1;0;0;0;recreation;play with wooden toys (1 h);Entertainment;
+read a book on the couch only 9:00 to 22:00;3;0;0;0;2;1;0;0;recreation;read a book on the couch only 9:00 to 22:00;Hobby;
+relax in the garden 2;1;0;0;0;0;1;0;0;recreation;relax in the garden 2;Hobby;
+use the laptop for Internet, Movie, Music, News (2 h);3;0;0;0;2;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch TV with someone (watch a movie for 2 h with home cinema system);2;0;0;0;1;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+sleep bed 05 (10 h) Child;2;0;0;0;1;1;0;0;sleeping;sleep bed 05 (10 h) Child;Sleep;
+-----
+CHR44 Rainer (45/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat small breakfast (25min) interruping subaff, no alarm;1;0;0;0;0;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;3;0;0;0;1;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+use the laptop for Internet, Movie, Music, News (2 h);1;0;0;0;0;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch a movie for 1 h 30 min with home cinema system;1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+watch a movie for 2 h with home cinema system;2;0;0;0;1;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+read a book on the couch all the time;1;0;0;0;1;0;0;0;shopping;read a book on the couch all the time;Entertainment;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+work at the office (09 h);2;0;0;0;1;1;0;0;work;work at the office (09 h);Work / School;

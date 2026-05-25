@@ -1,0 +1,37 @@
+------
+CHR02 Tomi (38/Male);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat breakfast (1 h);543;cooking;eat breakfast (1 h);Food
+get ready in the morning (men);21;hygiene;get ready in the morning (men);Hygiene
+go to the toilet;21;hygiene;go to the toilet;Hygiene
+work at the office (09 h);989;work;work at the office (09 h);Work / School
+take a shower (men);41;hygiene;take a shower (men);Hygiene
+run the dishwasher (triggered);14;cleaning;run the dishwasher (triggered);Unpaid Work
+do laundry at 30°C (by variable);16;cleaning;do laundry at 30°C (by variable);Unpaid Work
+practice Tuba;34;recreation;practice Tuba;Hobby
+go shopping for food in the supermarket (1_5 h);97;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work
+use the computer (1_5 h);81;recreation;use the computer (1_5 h);Media Use
+make smoothie;12;cooking;make smoothie;Food
+read a book on the couch only 9:00 to 22:00;94;recreation;read a book on the couch only 9:00 to 22:00;Hobby
+sleep bed 02 (08 h);448;sleeping;sleep bed 02 (08 h);Sleep
+cook coffee;9;cooking;cook coffee;Food
+use the laptop (1 h);57;recreation;use the laptop (1 h);Media Use
+run the dryer with wet laundry (by variable);15;cleaning;run the dryer with wet laundry (by variable);Unpaid Work
+use the computer for recreation (2 h);144;recreation;use the computer for recreation (2 h);Media Use
+relax in the garden 2;108;recreation;relax in the garden 2;Hobby
+use the laptop for Internet, Movie, Music, News (2 h);136;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use
+------
+CHR02 Katee (37/Female);Time;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+get ready in the morning (women);456;hygiene;get ready in the morning (women);Hygiene
+go to the toilet;23;hygiene;go to the toilet;Hygiene
+eat a cooked meal (interrupting) (eat breakfast (1 h));40;cooking;eat breakfast (1 h);Food
+eat breakfast (1 h);121;cooking;eat breakfast (1 h);Food
+work as teacher;1238;work;work as teacher;Work / School
+take a shower with hair washing (women) (20 min hair drying);64;hygiene;take a shower with hair washing (women) (20 min hair drying);Hygiene
+use the laptop (1 h);66;recreation;use the laptop (1 h);Media Use
+make smoothie;11;cooking;make smoothie;Food
+exercise for 30 min on the treadmill;35;recreation;exercise for 30 min on the treadmill;Sport
+play computer games;95;recreation;play computer games;Media Use
+sleep bed 01 (08 h);492;sleeping;sleep bed 01 (08 h);Sleep
+use the computer with external HD (1 h);39;recreation;use the computer with external HD (1 h);Media Use
+take a shower without hair washing (women);59;hygiene;take a shower without hair washing (women);Hygiene
+use the computer for recreation (2 h);141;recreation;use the computer for recreation (2 h);Media Use

@@ -1,0 +1,3 @@
+CHR52 Chris (22/Male)(22/Male)
+CHR52 Iris (22/Female)(22/Female)
+CHR52 Maddy (23/Female)(23/Female)

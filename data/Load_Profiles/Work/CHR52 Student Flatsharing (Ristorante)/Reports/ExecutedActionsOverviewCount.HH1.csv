@@ -1,0 +1,70 @@
+-----
+CHR52 Iris (22/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+fry two eggs and eat them with toast;1;0;0;0;1;0;0;0;cooking;fry two eggs and eat them with toast;Food;
+heat up leftovers;1;0;0;0;1;0;0;0;cooking;heat up leftovers;Food;
+make frozen pizza and eat it;1;0;0;0;0;1;0;0;cooking;make frozen pizza and eat it;Food;
+make soup;1;0;0;0;0;1;0;0;cooking;make soup;Food;
+get ready in the morning (women);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;3;0;0;0;2;1;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with electric air heater;1;0;0;0;1;0;0;0;hygiene;take a shower with electric air heater;Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+read a book on the couch only 9:00 to 22:00;1;0;0;0;0;1;0;0;recreation;read a book on the couch only 9:00 to 22:00;Hobby;
+use the laptop (1 h);1;0;0;0;1;0;0;0;recreation;use the laptop (1 h);Media Use;
+use the laptop (1_5 h);2;0;0;0;1;1;0;0;recreation;use the laptop (1_5 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);2;0;0;0;1;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;1;0;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 02 (08 h);1;0;0;0;1;0;0;0;sleeping;sleep bed 02 (08 h);Sleep;
+take a nap;1;0;0;0;0;1;0;0;sleeping;take a nap;Sleep;
+go to part time job;1;0;0;0;1;0;0;0;work;go to part time job;Work / School;
+study at home;1;0;0;0;0;1;0;0;work;study at home;Work / School;
+study sports;2;0;0;0;1;1;0;0;work;study sports;Work / School;
+-----
+CHR52 Maddy (23/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+clean the bath;1;0;0;0;1;0;0;0;cleaning;clean the bath;Unpaid Work;
+bake a cake;1;0;0;0;0;1;0;0;cooking;bake a cake;Food;
+cook pasta and eat it;1;0;0;0;1;0;0;0;cooking;cook pasta and eat it;Food;
+eat breakfast (1 h);2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+heat up leftovers;1;0;0;0;1;0;0;0;cooking;heat up leftovers;Food;
+make soup;1;0;0;0;0;1;0;0;cooking;make soup;Food;
+get ready in the morning (women);1;0;0;0;1;0;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;3;0;0;0;2;1;0;0;hygiene;go to the toilet;Hygiene;
+take a shower with electric air heater;1;0;0;0;1;0;0;0;hygiene;take a shower with electric air heater;Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+go to a bar (4 h);1;0;0;0;0;1;0;0;recreation;go to a bar (4 h);Events;
+paint a picture;1;0;0;0;0;1;0;0;recreation;paint a picture;Hobby;
+play board games (1 h);1;0;0;0;1;0;0;0;recreation;play board games (1 h);Games;
+use the laptop (1 h);1;0;0;0;0;1;0;0;recreation;use the laptop (1 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);2;0;0;0;1;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;1;0;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+read a book on the couch all the time;1;0;0;0;1;0;0;0;shopping;read a book on the couch all the time;Entertainment;
+sleep bed 08 (08 h);1;0;0;0;1;0;0;0;sleeping;sleep bed 08 (08 h);Sleep;
+study at home;2;0;0;0;1;1;0;0;work;study at home;Work / School;
+study mechanical enginering;2;0;0;0;1;1;0;0;work;study mechanical enginering;Work / School;
+-----
+CHR52 Chris (22/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+do laundry at 30°C (by variable);1;0;0;0;0;1;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+hang up laundry outside;1;0;0;0;0;1;0;0;cleaning;hang up laundry outside;Unpaid Work;
+eat breakfast (1 h);2;0;0;0;1;1;0;0;cooking;eat breakfast (1 h);Food;
+fry two eggs and eat them with toast;1;0;0;0;1;0;0;0;cooking;fry two eggs and eat them with toast;Food;
+make frozen pizza and eat it;1;0;0;0;1;0;0;0;cooking;make frozen pizza and eat it;Food;
+make soup;1;0;0;0;0;1;0;0;cooking;make soup;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+play board games (1 h);1;0;0;0;1;0;0;0;recreation;play board games (1 h);Games;
+take singing lessons;1;0;0;0;0;1;0;0;recreation;take singing lessons;Hobby;
+use the laptop (1 h);1;0;0;0;0;1;0;0;recreation;use the laptop (1 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);2;0;0;0;1;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch TV with someone (watch a movie for 2 h with home cinema system);1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+watch a movie for 1 h 30 min with home cinema system;1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;1;0;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+read a book on the couch all the time;1;0;0;0;0;1;0;0;shopping;read a book on the couch all the time;Entertainment;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+study at home;2;0;0;0;1;1;0;0;work;study at home;Work / School;
+study philosophy;2;0;0;0;1;1;0;0;work;study philosophy;Work / School;

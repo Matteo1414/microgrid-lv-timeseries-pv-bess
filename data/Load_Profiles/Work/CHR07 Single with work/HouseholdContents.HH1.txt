@@ -1,0 +1,460 @@
+Name:CHR07 Single with work HH1 HH1
+Location:(Italy) Rom
+Temperatureprofile:Hamburg, Germany 2007 from Deutscher Wetterdienst DWD (www.dwd.de)
+Persons:
+CHR07 Christian (23/Male)
+	Desires:
+		Hygiene / Bathing
+		Food / Breakfast, small, interrupting, no alarm
+		Special / Car Washing
+		Special / Ceiling Fan
+		Cleaning / Bathroom
+		Food / Coffee
+		Spare Time / Computer Gaming
+		Spare Time / Computer Usage
+		Food / Cooking Pasta
+		Food / Soup
+		Food / Fry Eggs with Toast
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Weekend Lunch cooking
+		Spare Time / Club Dancing
+		Food / Icecream
+		Special / Dehumidify
+		Cleaning / Dishwashing
+		Laundry / Dry Laundry
+		Exercise / Treadmill Exercise
+		Cleaning / Floor Sweeping
+		Special / Food Stocking
+		Spare Time / Invite Friends for Coffee
+		Hygiene / Get ready in the morning (men)
+		Laundry / Laundry at 30°C
+		Laundry / Laundry at 60°C
+		Spare Time / Meet Friends in Cafe
+		Special / Air Conditioning Desire
+		Spare Time / Playstation
+		Other / Replacement Activity
+		Hygiene / Showering (men)
+		Sleep / Sleep Bed 01 (08h)
+		Spare Time / Watch TV
+		Hygiene / Toilet
+		Special / Un-Hungry
+		Cleaning / Vacuuming
+		Cleaning / Clean Windows
+		Work / Employment (Office 9h)
+	Sickness Desires:
+		Hygiene / Bathing
+		Food / Breakfast, small, interrupting, no alarm
+		Spare Time / Computer Gaming
+		Food / Cooking Pasta
+		Food / Soup
+		Food / Fry Eggs with Toast
+		Food / Frozen Pizza
+		Food / Leftovers
+		Food / Icecream
+		Special / Dehumidify
+		Cleaning / Dishwashing
+		Hygiene / Get ready in the morning (men)
+		Spare Time / Playstation
+		Other / Replacement Activity
+		Hygiene / Showering (men)
+		Sleep / Napping
+		Spare Time / Watch TV
+		Spare Time / Read a Book
+		Spare Time / Tea Drinking
+		Spare Time / Magazine reading
+		Spare Time / Read Newspaper
+		Sleep / Weekend Napping
+		Sleep / Sleep Bed 01 (08h)
+		Hygiene / Toilet
+		Special / Un-Hungry
+
+
+
+Locations:
+
+
+
+Bath
+
+	Light Devices:
+		Bathroom Light (20W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Bathroom Mirror Light 100W (Conventional) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Bath Tub (Hot water, Warm Water, Cold Water)
+		Cleanser (None)
+		Window (None)
+		Dehumidifier / Trotec TTK 50 S (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Bathroom Sink 15 L/Min (Cold Water, Warm Water, Hot water)
+		Shower 5 L/min (Cold Water, Hot water, Warm Water)
+		Toilet 10L/min (Cold Water)
+
+	Affordances (with desires):
+		take a bath (150L)
+			take a bath (150L) - Hygiene / Bathing
+		take a bath (200L)
+			take a bath (200L) - Hygiene / Bathing
+		clean the bath
+			clean the bath - Cleaning / Bathroom
+		open bathroom window
+			open bathroom window - Special / Dehumidify
+		turn on the dehumidifier below 15 °C outside after shower
+			turn on the dehumidifier below 15 °C outside after shower - Special / Dehumidify
+		get ready in the morning (men)
+			get ready in the morning (men) - Hygiene / Get ready in the morning (men)
+		take a shower (men)
+			take a shower (men) - Hygiene / Showering (men)
+		go to the toilet
+			go to the toilet - Hygiene / Toilet
+
+
+
+Kitchen
+
+	Light Devices:
+		Kitchen Light (60W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Toaster / Bosch TAT8SL1 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front left (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Electric Kettle / Phillips Essential HD 4685/90 Schwarz (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Clatronic MS 3249 Milk Foamer (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Sink (10L/min) (Hot water, Cold Water, Warm Water)
+		Nespresso Coffee Machine, Single Cup (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Extractor Hood / Miele DA 429-4 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen radio / AEG KRC 4323 CD (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind- semi aktiv (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Microwave / Panasonic NN 5259 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Oven / AEG B 33512-5-M (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Miele DA 61 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Bauknecht GTM 2511 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Dishwasher Whirlpool 45cm from Ikea (Electricity, Apparent, Cold Water, Reactive, Inner Device Heat Gains)
+		Cloth Drying Rack (None)
+		Miele T 495 C (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Mop (None)
+		Washing Machine AEG Lavamat 54610 (Cold Water, Apparent, Reactive, Electricity, Inner Device Heat Gains)
+		Siemens VS 91143 S Super 911 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Window (None)
+
+	Affordances (with desires):
+		eat small breakfast (25min) interruping subaff, no alarm
+			eat small breakfast (25min) interruping subaff, no alarm - Food / Breakfast, small, interrupting, no alarm
+			eat small breakfast (25min) interruping subaff, no alarm - Special / Un-Hungry
+		cook coffee
+			cook coffee - Food (maid) / Cooking
+			cook coffee - Food / Coffee
+		cook pasta and eat it
+			cook pasta and eat it - Food / Cooking Pasta
+			cook pasta and eat it - Special / Un-Hungry
+		fry two eggs and eat them with toast
+			fry two eggs and eat them with toast - Food / Fry Eggs with Toast
+			fry two eggs and eat them with toast - Special / Un-Hungry
+		heat up leftovers
+			heat up leftovers - Food / Leftovers
+			heat up leftovers - Special / Un-Hungry
+		make frozen pizza and eat it
+			make frozen pizza and eat it - Food / Frozen Pizza
+			make frozen pizza and eat it - Special / Un-Hungry
+		make soup
+			make soup - Food / Soup
+			make soup - Special / Un-Hungry
+		cook weekend lunch for the family
+			cook weekend lunch for the family - Food / Weekend Lunch cooking
+			cook weekend lunch for the family - Special / Un-Hungry
+		eat icecream from from freezer
+			eat icecream from from freezer - Food / Icecream
+			eat icecream from from freezer - Special / Un-Hungry
+		run the dishwasher (triggered)
+			run the dishwasher (triggered) - Cleaning / Dishwashing
+		hang up laundry outside only above 15°C (by variable)
+			hang up laundry outside only above 15°C (by variable) - Laundry / Dry Laundry
+		run the dryer with wet laundry, only below 15°C (by variable)
+			run the dryer with wet laundry, only below 15°C (by variable) - Laundry / Dry Laundry
+		sweep the floors
+			sweep the floors - Cleaning / Floor Sweeping
+		do laundry at 30°C (by variable)
+			do laundry at 30°C (by variable) - Laundry / Laundry at 30°C
+		do laundry at 60°C (by variable)
+			do laundry at 60°C (by variable) - Laundry / Laundry at 60°C
+		make and drink tea (15 min)
+			make and drink tea (15 min) - Spare Time / Tea Drinking
+		vacuum the household
+			vacuum the household - Cleaning / Vacuuming
+		clean the windows
+			clean the windows - Cleaning / Clean Windows
+
+
+
+Car Wash
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Car (Gasoline)
+
+	Affordances (with desires):
+		wash the car saturday (1 h)
+			wash the car saturday (1 h) - Special / Car Washing
+
+
+
+Living room
+
+	Light Devices:
+		Living Room Light (Energy Saving Lamp, 20W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Westinghouse Fanaway (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		PC / Acer Aspire M3640 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		PC Monitor / Fujitsu Siemens Scaleoview H19-1 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Epson Stylus Color 860 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		TASKalfa 180 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Canon CanoScan LIDE 110 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		External Harddrive Iomega 3.5" (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Electronic hometrainer / Kettler Track Perfomance (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Coffee Machine / Braun Impression KF 600 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Electric Kettle / Petra WK288 1.5L (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Tectro TP 020 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Sony PlayStation 3 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		TV Samsung LED UE40 B7090 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Book (None)
+		Couch (None)
+		Magazine (None)
+		Osram Light Bulb Classic A 60W (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		Newspaper (None)
+		CD/DVD Player / Phillips CD 380 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+		SAT Receiver / Kathrein UFS913 (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Affordances (with desires):
+		turn on ceiling fan (4 h)
+			turn on ceiling fan (4 h) - Special / Ceiling Fan
+		play computer games
+			play computer games - Spare Time / Computer Gaming
+		use the computer (1 h)
+			use the computer (1 h) - Spare Time / Computer Usage
+		use the computer (1_5 h)
+			use the computer (1_5 h) - Spare Time / Computer Usage
+		use the computer (2 h)
+			use the computer (2 h) - Spare Time / Computer Usage
+		use the computer for recreation (2 h)
+			use the computer for recreation (2 h) - Spare Time / Computer Usage
+		use the computer with external HD (1 h)
+			use the computer with external HD (1 h) - Spare Time / Computer Usage
+		exercise for 30 min on the treadmill
+			exercise for 30 min on the treadmill - Exercise / Treadmill Exercise
+		invite friends for coffee
+			invite friends for coffee - Spare Time / Invite Friends for Coffee
+		run air conditioner for 3 h
+			run air conditioner for 3 h - Special / Air Conditioning Desire
+		play Playstation
+			play Playstation - Spare Time / Playstation
+		read a book (1 h)
+			read a book (1 h) - Spare Time / Read a Book
+		read a book on the couch all the time
+			read a book on the couch all the time - Spare Time / Read a Book
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		read a magazine
+			read a magazine - Spare Time / Magazine reading
+		read a newspaper for 30min
+			read a newspaper for 30min - Spare Time / Read Newspaper
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		watch a movie for 1 h 30 min
+			watch a movie for 1 h 30 min - Spare Time / Watch TV
+		watch a movie for 2 h
+			watch a movie for 2 h - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+		watch sports on TV with SAT Reciever (2 h)
+			watch sports on TV with SAT Reciever (2 h) - Spare Time / Watch TV
+		watch the news
+			watch the news - Spare Time / Watch TV
+		watch TV (1 h)
+			watch TV (1 h) - Spare Time / Watch TV
+
+
+
+Dance Club
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Dance Club (None)
+
+	Affordances (with desires):
+		go club dancing (4 h, Fri/Sa)
+			go club dancing (4 h, Fri/Sa) - Spare Time / Club Dancing
+
+
+
+Supermarket
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Supermarket (None)
+
+	Affordances (with desires):
+		go shopping for food in the supermarket (1_5 h)
+			go shopping for food in the supermarket (1_5 h) - Special / Food Stocking
+
+
+
+Cafe
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Cafe Table (None)
+
+	Affordances (with desires):
+		meet friends in a cafe
+			meet friends in a cafe - Spare Time / Meet Friends in Cafe
+
+
+
+Bedroom
+
+	Light Devices:
+		Bedroom Light (200W) (Electricity, Apparent, Reactive, Inner Device Heat Gains)
+
+	Devices:
+		Book (None)
+		Couch (None)
+		Bed 1 (None)
+
+	Affordances (with desires):
+		Replacement Activity A
+			Replacement Activity A - Other / Replacement Activity
+		Replacement Activity B
+			Replacement Activity B - Other / Replacement Activity
+		Replacement Activity C
+			Replacement Activity C - Other / Replacement Activity
+		Replacement Activity D
+			Replacement Activity D - Other / Replacement Activity
+		read a book on the couch only 9:00 to 22:00
+			read a book on the couch only 9:00 to 22:00 - Spare Time / Read a Book
+		take a nap
+			take a nap - Sleep / Napping
+		take nap on the weekend (2 h)
+			take nap on the weekend (2 h) - Sleep / Weekend Napping
+		sleep bed 01 (08 h)
+			sleep bed 01 (08 h) - Sleep / Sleep Bed 01 (08h)
+
+
+
+Office Workplace 1
+
+	Light Devices:
+		(None)
+
+	Devices:
+		Office (None)
+
+	Affordances (with desires):
+		work at the office (09 h)
+			work at the office (09 h) - Work / Employment (Office 9h)
+
+
+
+All Devices:
+Bath Tub
+Toaster / Bosch TAT8SL1
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove front left
+Electric Kettle / Phillips Essential HD 4685/90 Schwarz
+Car
+Westinghouse Fanaway
+Cleanser
+Clatronic MS 3249 Milk Foamer
+Kitchen Sink (10L/min)
+Nespresso Coffee Machine, Single Cup
+PC / Acer Aspire M3640
+PC Monitor / Fujitsu Siemens Scaleoview H19-1
+Epson Stylus Color 860
+TASKalfa 180
+Canon CanoScan LIDE 110
+External Harddrive Iomega 3.5"
+Extractor Hood / Miele DA 429-4
+Kitchen radio / AEG KRC 4323 CD
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen stove left hind- semi aktiv
+Microwave / Panasonic NN 5259
+Oven / AEG B 33512-5-M
+Miele DA 61
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind
+Dance Club
+Bauknecht GTM 2511
+Window
+Dehumidifier / Trotec TTK 50 S
+Dishwasher Whirlpool 45cm from Ikea
+Cloth Drying Rack
+Miele T 495 C
+Electronic hometrainer / Kettler Track Perfomance
+Mop
+Supermarket
+Coffee Machine / Braun Impression KF 600
+Electric Kettle / Petra WK288 1.5L
+Bathroom Sink 15 L/Min
+Washing Machine AEG Lavamat 54610
+Cafe Table
+Tectro TP 020
+Sony PlayStation 3
+TV Samsung LED UE40 B7090
+Book
+Shower 5 L/min
+Couch
+Book
+Couch
+Magazine
+Osram Light Bulb Classic A 60W
+Newspaper
+CD/DVD Player / Phillips CD 380
+SAT Receiver / Kathrein UFS913
+Bed 1
+Toilet 10L/min
+Siemens VS 91143 S Super 911
+Window
+Office
+
+
+
+Autonomous Devices:
+Bauknecht GTM 2511 @ Kitchen
+CD/DVD Player / Phillips CD 380 @ Living room
+Electric Razor / Phillips PT860/16 Razor PowerTouch Plus @ Bath
+Electric Toothbrush Dondodent Professional Clean @ Bath
+Epson Stylus Color 860 @ Living room
+Kitchen radio / AEG KRC 4323 CD @ Kitchen
+Microwave / Panasonic NN 5259 @ Kitchen
+PC / Acer Aspire M3640 @ Living room
+PC Monitor / Fujitsu Siemens Scaleoview H19-1 @ Living room
+Router O2 Box 6431 @ Living room
+SAT Receiver / Kathrein UFS913 @ Living room
+Siemens Kl 20 LA 65 (A+) @ Kitchen
+Smartphone Samung S4 @ Living room
+Sony PlayStation 3 @ Living room
+TASKalfa 180 @ Living room
+TV Samsung LED UE40 B7090 @ Living room
+Yamaha RX-V667 @ Living room

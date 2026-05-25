@@ -1,0 +1,3 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;
+Car;0;0;9000;0;Other;
+Sums;0;0;9000

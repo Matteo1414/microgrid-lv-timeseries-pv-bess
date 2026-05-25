@@ -1,0 +1,82 @@
+
+Cartella Principale (Root)
+L'ingresso e l'uscita del tuo ambiente di lavoro.
+
+1) main.m (Il direttore d'orchestra che lancia tutto)
+
+2) startup.m (Configura i path e le variabili di base all'avvio)
+
+3) shutdown.m (Pulisce l'ambiente alla chiusura)
+
+4) verify_day_robust.m (Check di robustezza numerica)
+
+Cartella src (Core & Simulazione)
+I file che costruiscono la fisica della rete e macinano i calcoli pesanti.
+
+5) topology_district.m (Definisce linee, nodi e impedenze)
+
+6) create_scenarios.m (Genera i file .mat con le topologie PV/BESS)
+
+7) pv_profile_hourly_kW_per_kWp.m (Motore di generazione del profilo solare)
+
+8) run_district_day.m (Il cuore del ciclo giornaliero)
+
+9) run_district_range.m (Gestisce cicli su più giorni/mesi)
+
+10) bfs_powerflow_radial1.m (Il risolutore matematico di rete)
+
+11) smoke_test_day.m (Script di collaudo rapido)
+
+
+Cartella src/+utils (Librerie di Supporto Core)
+Tutte le funzioni richiamate dalla cartella src durante la simulazione.
+
+12) read_pv_rome.m
+
+13) read_pv_rome_kWp.m
+
+14) profiles_synthetic_residential.m
+
+15) profiles_synthetic.m
+
+16) dispatch_bess.m (L'algoritmo di EMS per le batterie)
+
+17) get_nodes.m
+
+18) safeget.m
+
+19) plot_residential_profiles.m
+
+20) plot_synthetic_profiles.m
+
+21) plot_total_microgrid.m
+
+Cartella post (Analisi Dati e Risultati)
+Gli script che entrano in azione quando la simulazione ha finito di sudare.
+
+22) run_all_postprocessing.m (Il master script che lancia tutte le analisi a cascata)
+
+23) check_voltage_limits.m (Il "cane da guardia" normativo sui limiti 0.9-1.1 p.u.)
+
+24) post_process_day.m
+
+25) post_process_year.m
+
+26) plot_selfsuff_monthly.m
+
+27) plot_selfsuff_vs_smartnodes_year.m
+
+Cartella post/utils (Strumenti di Plottaggio Specifici)
+Le funzioni di disegno richiamate dai file di post-processing.
+
+28) energy_balance.m
+
+29) kpi_monthly.m
+
+30) plot_voltage_map.m (Generatore delle Heatmap)
+
+31) plot_slack_power.m (Generatore dei grafici P/Q a doppio asse)
+
+32) plot_pv_profile.m
+
+33) plot_pv_vs_load.m

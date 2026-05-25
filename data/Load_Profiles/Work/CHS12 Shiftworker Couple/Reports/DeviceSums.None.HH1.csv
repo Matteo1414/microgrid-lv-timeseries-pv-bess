@@ -1,0 +1,27 @@
+Device name;Usage sum in this simulation [None];Usage sum in this simulation linear extrapolated to 1 year [None];Comparison Value from the device entry [None];Percentage of the comparison value [1 = 100%];Device Category;
+Board Games;0;0;0;0;Other;
+Cinema;0;0;0;0;Other;
+Cleanser;0;0;0;0;Cleaning devices;
+Watering Can;0;0;0;0;Other;
+Supermarket;5460;996450;0;0;Other;
+Grill;0;0;0;0;Other;
+Couch;0;0;0;0;Furniture;
+Newspaper;0;0;0;0;Other;
+Sunbed;0;0;0;0;Furniture / Garden furniture;
+Sunbed 2;0;0;0;0;Furniture / Garden furniture;
+Book;0;0;0;0;Other;
+Day Trip Bus;0;0;0;0;Other;
+Shopping Cart;0;0;0;0;External locations;
+Snow Shovel;0;0;0;0;Other;
+Book;0;0;0;0;Other;
+Couch;0;0;0;0;Furniture;
+Magazine;0;0;0;0;Other;
+Bed 7 (shift worker2);0;0;0;0;Furniture;
+Bed 6 (shift worker woman);0;0;0;0;Furniture;
+Walking Shoes;0;0;0;0;External locations;
+Shift worker man;0;0;0;0;External locations;
+Doctors Office;0;0;0;0;External locations / Doctors Office;
+Cloth Drying Rack;0;0;0;0;Furniture;
+Window;0;0;0;0;Furniture;
+Shift worker woman;0;0;0;0;External locations;
+Sums;5460;996450;0

@@ -1,0 +1,193 @@
+Device;Load Type;Profile;Number of Activations
+Bathroom Light (60W);Apparent;Bath - light [Synthetic for Light Device];10
+Bathroom Light (60W);Electricity;Bath - light [Synthetic for Light Device];10
+Bathroom Light (60W);Inner Device Heat Gains;Bath - light [Synthetic for Light Device];10
+Bathroom Light (60W);Reactive;Bath - light [Synthetic for Light Device];10
+Bathroom Mirror Light 100W (Conventional);Apparent;Bath - light [Synthetic for Light Device];10
+Bathroom Mirror Light 100W (Conventional);Electricity;Bath - light [Synthetic for Light Device];10
+Bathroom Mirror Light 100W (Conventional);Inner Device Heat Gains;Bath - light [Synthetic for Light Device];10
+Bathroom Mirror Light 100W (Conventional);Reactive;Bath - light [Synthetic for Light Device];10
+Bathroom Sink 10L/min;Warm Water;0 h 01 min 100% [Synthetic];20
+Bathroom Sink 10L/min;Warm Water;0 h 01 min 50% [Synthetic];6
+Bed 1;None;08 h 0 min 100% [Synthetic];5
+Bed 3 (Children);None;10 h 0 min 100% [Synthetic];5
+Bedroom Light (200W);Apparent;Bedroom - light [Synthetic for Light Device];132
+Bedroom Light (200W);Electricity;Bedroom - light [Synthetic for Light Device];132
+Bedroom Light (200W);Inner Device Heat Gains;Bedroom - light [Synthetic for Light Device];132
+Bedroom Light (200W);Reactive;Bedroom - light [Synthetic for Light Device];132
+Book;None;0 h 01 min 100% [Synthetic];128
+Book;None;01 h 0 min 100% [Synthetic];2
+CD/DVD Player / Philips DVDR 725 H;Apparent;01 h 30 min 100% [Synthetic];1
+CD/DVD Player / Philips DVDR 725 H;Apparent;02 h 0 min 100% [Synthetic];3
+CD/DVD Player / Philips DVDR 725 H;Apparent;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+CD/DVD Player / Philips DVDR 725 H;Electricity;01 h 30 min 100% [Synthetic];1
+CD/DVD Player / Philips DVDR 725 H;Electricity;02 h 0 min 100% [Synthetic];3
+CD/DVD Player / Philips DVDR 725 H;Electricity;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+CD/DVD Player / Philips DVDR 725 H;Inner Device Heat Gains;01 h 30 min 100% [Synthetic];1
+CD/DVD Player / Philips DVDR 725 H;Inner Device Heat Gains;02 h 0 min 100% [Synthetic];3
+CD/DVD Player / Philips DVDR 725 H;Inner Device Heat Gains;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+CD/DVD Player / Philips DVDR 725 H;Reactive;01 h 30 min 100% [Synthetic];1
+CD/DVD Player / Philips DVDR 725 H;Reactive;02 h 0 min 100% [Synthetic];3
+CD/DVD Player / Philips DVDR 725 H;Reactive;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+Children Room Light Device (20W);Apparent;Children's room - light [Synthetic for Light Device];7
+Children Room Light Device (20W);Electricity;Children's room - light [Synthetic for Light Device];7
+Children Room Light Device (20W);Inner Device Heat Gains;Children's room - light [Synthetic for Light Device];7
+Children Room Light Device (20W);Reactive;Children's room - light [Synthetic for Light Device];7
+Cloth Drying Rack;None;0 h 20 min 100% [Synthetic];1
+Coffee Machine / Braun KF 580E;Apparent;0 h 10 min 100% [Synthetic];3
+Coffee Machine / Braun KF 580E;Electricity;0 h 10 min 100% [Synthetic];3
+Coffee Machine / Braun KF 580E;Inner Device Heat Gains;0 h 10 min 100% [Synthetic];3
+Coffee Machine / Braun KF 580E;Reactive;0 h 10 min 100% [Synthetic];3
+Couch;None;02 h 0 min 100% [Synthetic];13
+Egg Cooker / Russell Hobbs 14048-56 Stylo;Apparent;0 h 05 min 100% [Synthetic];3
+Egg Cooker / Russell Hobbs 14048-56 Stylo;Electricity;0 h 05 min 100% [Synthetic];3
+Egg Cooker / Russell Hobbs 14048-56 Stylo;Inner Device Heat Gains;0 h 05 min 100% [Synthetic];3
+Egg Cooker / Russell Hobbs 14048-56 Stylo;Reactive;0 h 05 min 100% [Synthetic];3
+Electric Tooth Brush / Phillips HX9332;Apparent;01 h 0 min 100% [Synthetic];122
+Electric Tooth Brush / Phillips HX9332;Electricity;01 h 0 min 100% [Synthetic];122
+Electric Tooth Brush / Phillips HX9332;Inner Device Heat Gains;01 h 0 min 100% [Synthetic];122
+Electric Tooth Brush / Phillips HX9332;Reactive;01 h 0 min 100% [Synthetic];122
+Food Slicer / DOMO Schneidemaschine DO521S;Apparent;0 h 01 min 100% [Synthetic];3
+Food Slicer / DOMO Schneidemaschine DO521S;Electricity;0 h 01 min 100% [Synthetic];3
+Food Slicer / DOMO Schneidemaschine DO521S;Inner Device Heat Gains;0 h 01 min 100% [Synthetic];3
+Food Slicer / DOMO Schneidemaschine DO521S;Reactive;0 h 01 min 100% [Synthetic];3
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Apparent;0 h 05 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Apparent;0 h 20 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Electricity;0 h 05 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Electricity;0 h 20 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Inner Device Heat Gains;0 h 05 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Inner Device Heat Gains;0 h 20 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Reactive;0 h 05 min 100% [Synthetic];1
+Hair Dryer / Braun Satin Pro 2200 Ion Care;Reactive;0 h 20 min 100% [Synthetic];1
+Kitchen Light (20W);Apparent;Kitchen - light [Synthetic for Light Device];7
+Kitchen Light (20W);Electricity;Kitchen - light [Synthetic for Light Device];7
+Kitchen Light (20W);Inner Device Heat Gains;Kitchen - light [Synthetic for Light Device];7
+Kitchen Light (20W);Reactive;Kitchen - light [Synthetic for Light Device];7
+Kitchen Sink (5L/min);Warm Water;0 h 01 min 100% [Synthetic];6
+Kitchen Sink (5L/min);Warm Water;0 h 01 min 25% [unknown];10
+Kitchen Sink (5L/min);Warm Water;0 h 01 min 50% [Synthetic];2
+Kitchen Sink (5L/min);Warm Water;0 h 05 min 100% [Synthetic];1
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind;Apparent;0 h 30 min 100% [Synthetic];1
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind;Electricity;0 h 30 min 100% [Synthetic];1
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind;Inner Device Heat Gains;0 h 30 min 100% [Synthetic];1
+Kitchen Stove / Bauknecht Heko 750 PT Kitchen-stove right hind;Reactive;0 h 30 min 100% [Synthetic];1
+Kitchen radio / AEG KRC 4323 CD;Apparent;01 h 0 min 100% [Synthetic];3
+Kitchen radio / AEG KRC 4323 CD;Apparent;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];121
+Kitchen radio / AEG KRC 4323 CD;Electricity;01 h 0 min 100% [Synthetic];3
+Kitchen radio / AEG KRC 4323 CD;Electricity;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];121
+Kitchen radio / AEG KRC 4323 CD;Inner Device Heat Gains;01 h 0 min 100% [Synthetic];3
+Kitchen radio / AEG KRC 4323 CD;Inner Device Heat Gains;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];121
+Kitchen radio / AEG KRC 4323 CD;Reactive;01 h 0 min 100% [Synthetic];3
+Kitchen radio / AEG KRC 4323 CD;Reactive;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];121
+Laptop Sony Vaio SVE151G11M;Apparent;Profile for Laptop Sony Vaio SVE151G11M 1.5h Apparent [Measurement by ZSW (1min)];3
+Laptop Sony Vaio SVE151G11M;Apparent;Profile for Laptop Sony Vaio SVE151G11M 1h Apparent [Measurement by ZSW (1min)];4
+Laptop Sony Vaio SVE151G11M;Apparent;Profile for Laptop Sony Vaio SVE151G11M 2h Apparent [Measurement by ZSW (1min)];5
+Laptop Sony Vaio SVE151G11M;Apparent;Standby Generic 1h 0 min 10% [Synthetic];118
+Laptop Sony Vaio SVE151G11M;Electricity;Profile for Laptop Sony Vaio SVE151G11M 1.5h Electricity [Measurement by ZSW (1min)];3
+Laptop Sony Vaio SVE151G11M;Electricity;Profile for Laptop Sony Vaio SVE151G11M 1h Electricity [Measurement by ZSW (1min)];4
+Laptop Sony Vaio SVE151G11M;Electricity;Profile for Laptop Sony Vaio SVE151G11M 2h Electricity [Measurement by ZSW (1min)];5
+Laptop Sony Vaio SVE151G11M;Electricity;Standby Generic 1h 0 min 10% [Synthetic];118
+Laptop Sony Vaio SVE151G11M;Inner Device Heat Gains;Profile for Laptop Sony Vaio SVE151G11M 1.5h Electricity [Measurement by ZSW (1min)];3
+Laptop Sony Vaio SVE151G11M;Inner Device Heat Gains;Profile for Laptop Sony Vaio SVE151G11M 1h Electricity [Measurement by ZSW (1min)];4
+Laptop Sony Vaio SVE151G11M;Inner Device Heat Gains;Profile for Laptop Sony Vaio SVE151G11M 2h Electricity [Measurement by ZSW (1min)];5
+Laptop Sony Vaio SVE151G11M;Inner Device Heat Gains;Standby Generic 1h 0 min 10% [Synthetic];118
+Laptop Sony Vaio SVE151G11M;Reactive;Profile for Laptop Sony Vaio SVE151G11M 1.5h Reactive [Measurement by ZSW (1min)];3
+Laptop Sony Vaio SVE151G11M;Reactive;Profile for Laptop Sony Vaio SVE151G11M 1h Reactive [Measurement by ZSW (1min)];4
+Laptop Sony Vaio SVE151G11M;Reactive;Profile for Laptop Sony Vaio SVE151G11M 2h Reactive [Measurement by ZSW (1min)];5
+Laptop Sony Vaio SVE151G11M;Reactive;Standby Generic 1h 0 min 10% [Synthetic];118
+Liebherr CBP 4056-20A;Apparent;05 h 0 min Fridge, 1h 100%, 4h 0% [Synthetic];24
+Liebherr CBP 4056-20A;Electricity;05 h 0 min Fridge, 1h 100%, 4h 0% [Synthetic];24
+Liebherr CBP 4056-20A;Inner Device Heat Gains;05 h 0 min Fridge, 1h 100%, 4h 0% [Synthetic];24
+Liebherr CBP 4056-20A;Reactive;05 h 0 min Fridge, 1h 100%, 4h 0% [Synthetic];24
+Living Room Light (60W);Apparent;Living room - light [Synthetic for Light Device];15
+Living Room Light (60W);Electricity;Living room - light [Synthetic for Light Device];15
+Living Room Light (60W);Inner Device Heat Gains;Living room - light [Synthetic for Light Device];15
+Living Room Light (60W);Reactive;Living room - light [Synthetic for Light Device];15
+Microwave / Panasonic NN-CD757W;Apparent;Standby Generic 01 h 0 min 1% [Synthetic];119
+Microwave / Panasonic NN-CD757W;Electricity;Standby Generic 01 h 0 min 1% [Synthetic];119
+Microwave / Panasonic NN-CD757W;Inner Device Heat Gains;Standby Generic 01 h 0 min 1% [Synthetic];119
+Microwave / Panasonic NN-CD757W;Reactive;Standby Generic 01 h 0 min 1% [Synthetic];119
+Miele DA 61;Apparent;01 h 0 min 100% [Synthetic];1
+Miele DA 61;Electricity;01 h 0 min 100% [Synthetic];1
+Miele DA 61;Inner Device Heat Gains;01 h 0 min 100% [Synthetic];1
+Miele DA 61;Reactive;01 h 0 min 100% [Synthetic];1
+Miele H 5241 B;Apparent;Backing profile I 20 min [Synthetic];1
+Miele H 5241 B;Electricity;Backing profile I 20 min [Synthetic];1
+Miele H 5241 B;Inner Device Heat Gains;Backing profile I 20 min [Synthetic];1
+Miele H 5241 B;Reactive;Backing profile I 20 min [Synthetic];1
+Moulinex electronic 833;Apparent;0 h 10 min 100% [Synthetic];3
+Moulinex electronic 833;Electricity;0 h 10 min 100% [Synthetic];3
+Moulinex electronic 833;Inner Device Heat Gains;0 h 10 min 100% [Synthetic];3
+Moulinex electronic 833;Reactive;0 h 10 min 100% [Synthetic];3
+Office;None;09 h 0 min 100% [Synthetic];4
+Phillips 32-9615;Apparent;01 h 0 min 100% [Synthetic];4
+Phillips 32-9615;Apparent;01 h 30 min 100% [Synthetic];1
+Phillips 32-9615;Apparent;02 h 0 min 100% [Synthetic];3
+Phillips 32-9615;Apparent;Standby TV / Receiver 1 h 0 min 3% [Synthetic];119
+Phillips 32-9615;Electricity;01 h 0 min 100% [Synthetic];4
+Phillips 32-9615;Electricity;01 h 30 min 100% [Synthetic];1
+Phillips 32-9615;Electricity;02 h 0 min 100% [Synthetic];3
+Phillips 32-9615;Electricity;Standby TV / Receiver 1 h 0 min 3% [Synthetic];119
+Phillips 32-9615;Inner Device Heat Gains;01 h 0 min 100% [Synthetic];4
+Phillips 32-9615;Inner Device Heat Gains;01 h 30 min 100% [Synthetic];1
+Phillips 32-9615;Inner Device Heat Gains;02 h 0 min 100% [Synthetic];3
+Phillips 32-9615;Inner Device Heat Gains;Standby TV / Receiver 1 h 0 min 3% [Synthetic];119
+Phillips 32-9615;Reactive;01 h 0 min 100% [Synthetic];4
+Phillips 32-9615;Reactive;01 h 30 min 100% [Synthetic];1
+Phillips 32-9615;Reactive;02 h 0 min 100% [Synthetic];3
+Phillips 32-9615;Reactive;Standby TV / Receiver 1 h 0 min 3% [Synthetic];119
+Phone Siemens Gigaset C320;Apparent;Profile for Phone Siemens Gigaset C320 Apparent [Measurement by ZSW (1min)];122
+Phone Siemens Gigaset C320;Electricity;Profile for Phone Siemens Gigaset C320 Electricity [Measurement by ZSW (1min)];122
+Phone Siemens Gigaset C320;Inner Device Heat Gains;Profile for Phone Siemens Gigaset C320 Electricity [Measurement by ZSW (1min)];122
+Phone Siemens Gigaset C320;Reactive;Profile for Phone Siemens Gigaset C320 Reactive [Measurement by ZSW (1min)];122
+Router / AVM FRITZ! Box Fon WLAN 7390;Apparent;Standby Router 1 h 0 min 100 % [Synthetic];122
+Router / AVM FRITZ! Box Fon WLAN 7390;Electricity;Standby Router 1 h 0 min 100 % [Synthetic];122
+Router / AVM FRITZ! Box Fon WLAN 7390;Inner Device Heat Gains;Standby Router 1 h 0 min 100 % [Synthetic];122
+Router / AVM FRITZ! Box Fon WLAN 7390;Reactive;Standby Router 1 h 0 min 100 % [Synthetic];122
+SAT Receiver / Kathrein UFS913;Apparent;01 h 0 min 100% [Synthetic];4
+SAT Receiver / Kathrein UFS913;Apparent;02 h 0 min 100% [Synthetic];3
+SAT Receiver / Kathrein UFS913;Apparent;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];118
+SAT Receiver / Kathrein UFS913;Electricity;01 h 0 min 100% [Synthetic];4
+SAT Receiver / Kathrein UFS913;Electricity;02 h 0 min 100% [Synthetic];3
+SAT Receiver / Kathrein UFS913;Electricity;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];118
+SAT Receiver / Kathrein UFS913;Inner Device Heat Gains;01 h 0 min 100% [Synthetic];4
+SAT Receiver / Kathrein UFS913;Inner Device Heat Gains;02 h 0 min 100% [Synthetic];3
+SAT Receiver / Kathrein UFS913;Inner Device Heat Gains;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];118
+SAT Receiver / Kathrein UFS913;Reactive;01 h 0 min 100% [Synthetic];4
+SAT Receiver / Kathrein UFS913;Reactive;02 h 0 min 100% [Synthetic];3
+SAT Receiver / Kathrein UFS913;Reactive;Standby TV / Receiver (Substitute) 1 h 0 min 9% [Synthetic];118
+School (primary);None;0 h 01 min 100% [Synthetic];4
+Shower 7,5 L/min;Warm Water;Shower Profile for Women 14 min [Synthetic];5
+Single Stove Plate;Apparent;Profile for Stove Plate 10 min Cooking Cycle Apparent [Measurement by ZSW (1min)];3
+Single Stove Plate;Apparent;Profile for Stove Plate 30 min Cooking Cycle Apparent [Measurement by ZSW (1min)];1
+Single Stove Plate;Apparent;Profile for Stove Plate 40 min Cooking Cycle Apparent [Measurement by ZSW (1min)];3
+Single Stove Plate;Electricity;Profile for Stove Plate 10 min Cooking Cycle Electricity [Measurement by ZSW (1min)];3
+Single Stove Plate;Electricity;Profile for Stove Plate 30 min Cooking Cycle Electricity [Measurement by ZSW (1min)];1
+Single Stove Plate;Electricity;Profile for Stove Plate 40 min Cooking Cycle Electricity [Measurement by ZSW (1min)];3
+Single Stove Plate;Inner Device Heat Gains;Profile for Stove Plate 10 min Cooking Cycle Electricity [Measurement by ZSW (1min)];3
+Single Stove Plate;Inner Device Heat Gains;Profile for Stove Plate 30 min Cooking Cycle Electricity [Measurement by ZSW (1min)];1
+Single Stove Plate;Inner Device Heat Gains;Profile for Stove Plate 40 min Cooking Cycle Electricity [Measurement by ZSW (1min)];3
+Single Stove Plate;Reactive;Profile for Stove Plate 10 min Cooking Cycle Reactive [Measurement by ZSW (1min)];3
+Single Stove Plate;Reactive;Profile for Stove Plate 30 min Cooking Cycle Reactive [Measurement by ZSW (1min)];1
+Single Stove Plate;Reactive;Profile for Stove Plate 40 min Cooking Cycle Reactive [Measurement by ZSW (1min)];3
+Supermarket;None;01 h 30 min 100% [Synthetic];1
+Toaster / Tefal Vario;Apparent;Profile for Toaster_Tefal_Vario Apparent [Measurement by ZSW (1min)];3
+Toaster / Tefal Vario;Electricity;Profile for Toaster_Tefal_Vario Electricity [Measurement by ZSW (1min)];3
+Toaster / Tefal Vario;Inner Device Heat Gains;Profile for Toaster_Tefal_Vario Electricity [Measurement by ZSW (1min)];3
+Toaster / Tefal Vario;Reactive;Profile for Toaster_Tefal_Vario Reactive [Measurement by ZSW (1min)];3
+Toilet 6 L/min;Cold Water;0 h 01 min 100% [Synthetic];13
+Toys;None;0 h 30 min 100% [Synthetic];1
+Toys;None;01 h 0 min 100% [Synthetic];2
+Toys;None;01 h 30 min 100% [Synthetic];2
+Toys;None;02 h 0 min 100% [Synthetic];1
+Washing Machine / Bosch WFS 8000;Apparent;Washing Machine Profile Measured 30°C 2h 16 min [Measured 1 min Resolution (Noah)];1
+Washing Machine / Bosch WFS 8000;Cold Water;0 h 10 min 100% [Synthetic];1
+Washing Machine / Bosch WFS 8000;Electricity;Washing Machine Profile Measured 30°C 2h 16 min [Measured 1 min Resolution (Noah)];1
+Washing Machine / Bosch WFS 8000;Inner Device Heat Gains;Washing Machine Profile Measured 30°C 2h 16 min [Measured 1 min Resolution (Noah)];1
+Washing Machine / Bosch WFS 8000;Reactive;Washing Machine Profile Measured 30°C 2h 16 min [Measured 1 min Resolution (Noah)];1
+Wooden Toys;None;01 h 0 min 100% [Synthetic];4
+Wooden Toys;None;02 h 0 min 100% [Synthetic];6
+Yamaha RX-V667;Apparent;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+Yamaha RX-V667;Electricity;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+Yamaha RX-V667;Inner Device Heat Gains;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120
+Yamaha RX-V667;Reactive;Standby TV / Receiver 1 h 0 min 3% [Synthetic];120

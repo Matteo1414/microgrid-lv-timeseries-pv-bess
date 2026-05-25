@@ -1,0 +1,8 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (10L/min);16,781612386957963;3062,6442606198284;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 5 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Shower 10 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 10L/min;610;111325;0;0;Bath devices / Toilet;Toilet;
+Dishwasher NEFF SD6P1F (2011);33;6022,5;0;0;Kitchen equipment / Dishwashers;Dishwashing;
+Washing Machine / Bosch WAE 28143;65;11862,5;0;0;Appliances / Washing machine;Laundry;
+Sums;724,7816123869579;132272,64426061983;0

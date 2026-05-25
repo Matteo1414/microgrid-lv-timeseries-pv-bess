@@ -1,0 +1,15 @@
+-----
+Destatis Water Usage Statistics
+Tag;Energy Used [L];Percentage;Reference Value;
+Hygiene;575;0,9359;47698;
+NoWater;39,39301204750033;0,0641;;
+
+Sum;614,3930120475003;1;
+-----
+Energieagentur.NRW Tags
+Tag;Energy Used [L];Percentage;Reference Value;
+Other;185;0,3011;;
+Dish washing;39,39301204750033;0,0641;;
+Washing;390;0,6348;;
+
+Sum;614,3930120475003;1;

@@ -1,0 +1,3 @@
+CHR03 Ava (40/Female)(40/Female)
+CHR03 Fin (43/Male)(43/Male)
+CHR03 Luka (10/Male)(10/Male)

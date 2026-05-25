@@ -1,0 +1,21 @@
+Device name;Usage sum in this simulation [None];Usage sum in this simulation linear extrapolated to 1 year [None];Comparison Value from the device entry [None];Percentage of the comparison value [1 = 100%];Device Category;
+Schoolbook;0;0;0;0;Other;
+Toys;0;0;0;0;Other;
+Wooden Toys;56640;10336800;0;0;Other;
+Book;0;0;0;0;Other;
+Book;0;0;0;0;Other;
+School (primary);0;0;0;0;External locations;
+Couch;0;0;0;0;Furniture;
+Toys;0;0;0;0;Other;
+Couch;0;0;0;0;Furniture;
+Bed 3 (Children);0;0;0;0;Furniture;
+Cleanser;0;0;0;0;Cleaning devices;
+Dancing Shoes;0;0;0;0;Other;
+Cloth Drying Rack;1320;240900;0;0;Furniture;
+Supermarket;5820;1062150;0;0;Other;
+Origami Paper;0;0;0;0;Other;
+Magazine;0;0;0;0;Other;
+Newspaper;0;0;0;0;Other;
+Bed 1;0;0;0;0;Furniture;
+Office;134520;24549900;0;0;Other;
+Sums;198300;36189750;0

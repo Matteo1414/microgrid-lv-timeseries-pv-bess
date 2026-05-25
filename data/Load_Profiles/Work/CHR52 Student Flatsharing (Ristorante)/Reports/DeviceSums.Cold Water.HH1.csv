@@ -1,0 +1,7 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (7.5L/min);23,120567439710012;4219,503557747077;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Bathroom Sink 5 L/Min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Washing Machine Samsung P1405J;100;18250;0;0;Appliances / Washing machine;Laundry;
+Shower 10 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 6 L/min;270;49275;0;0;Bath devices / Toilet;Toilet;
+Sums;393,12056743971004;71744,50355774708;0

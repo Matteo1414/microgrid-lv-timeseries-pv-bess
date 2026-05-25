@@ -1,0 +1,39 @@
+CHR56 Andreas (50/Male)
+Activity;Time Used [60 seconds];Percentage
+Passive Entertainment (TV etc.);724;0,25
+hygiene;81;0,03
+cleaning;38;0,01
+Offline Entertainment;329;0,11
+cooking;79;0,03
+work;1157;0,40
+sports;27;0,01
+sleep;363;0,13
+shopping;82;0,03
+CHR56 Anton (16/Male)
+Activity;Time Used [60 seconds];Percentage
+hygiene;408;0,14
+Active Entertainment (Computer, Internet etc);1345;0,47
+cooking;215;0,07
+Passive Entertainment (TV etc.);89;0,03
+sleep;711;0,25
+Offline Entertainment;112;0,04
+CHR56 Sandi (14/Female)
+Activity;Time Used [60 seconds];Percentage
+hygiene;529;0,18
+cooking;96;0,03
+Offline Entertainment;501;0,17
+Active Entertainment (Computer, Internet etc);721;0,25
+sports;107;0,04
+sleep;845;0,29
+gardening and maintenance;81;0,03
+CHR56 Sabine (45/Female)
+Activity;Time Used [60 seconds];Percentage
+hygiene;591;0,21
+cooking;787;0,27
+Active Entertainment (Computer, Internet etc);550;0,19
+cleaning;145;0,05
+shopping;114;0,04
+Passive Entertainment (TV etc.);99;0,03
+sleep;461;0,16
+sports;28;0,01
+gardening and maintenance;105;0,04

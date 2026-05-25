@@ -103,10 +103,17 @@ for b = 1:nBESS
         socVec(t) = soc;
     end
 
-    % Inject BESS power at its node (sum if multiple BESS share the node)
+% Inject BESS power at its node (sum if multiple BESS share the node)
     P_kw(node,:)  = P_kw(node,:) + Pcmd;
     SOC_full(b,:) = socVec;
-end
+    
+    % --- FIX: AGGIORNAMENTO DINAMICO DELLA RETE ---
+    % La potenza della batteria (+ se carica, - se scarica) viene sommata al carico.
+    % In questo modo, la prossima batteria del ciclo leggerà un Pgrid aggiornato
+    % (il surplus/deficit residuo) e non andrà a sovraccaricare la rete.
+    Pgrid = Pgrid + Pcmd;
+    
+end % <-- fine del ciclo sulle batterie
 
 % -------------------------------------------------------------------------
 % SOC output

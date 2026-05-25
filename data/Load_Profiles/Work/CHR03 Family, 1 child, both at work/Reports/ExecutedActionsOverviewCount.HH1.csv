@@ -1,0 +1,59 @@
+-----
+CHR03 Fin (43/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+run the dishwasher (triggered);1;0;0;0;0;1;0;0;cleaning;run the dishwasher (triggered);Unpaid Work;
+bake bread;1;0;0;0;0;1;0;0;cooking;bake bread;Food;
+eat a cooked meal (interrupting) (cook for the family after 16:30);2;0;0;0;1;1;0;0;cooking;cook for the family after 16:30;Food;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;3;0;0;0;1;2;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+exercise for 30 min on the treadmill;1;0;0;0;0;1;0;0;recreation;exercise for 30 min on the treadmill;Sport;
+play Wii;1;0;0;0;1;0;0;0;recreation;play Wii;Games;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+use the laptop for Internet, Movie, Music, News (2 h);3;0;0;0;2;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;1;0;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;1;0;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+wake up by alarm clock A;2;0;0;0;1;1;0;0;work;wake up by alarm clock A;Work / School;
+work at the office (09 h);2;0;0;0;1;1;0;0;work;work at the office (09 h);Work / School;
+-----
+CHR03 Luka (10/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+eat a cooked meal (interrupting) (cook for the family after 16:30);2;0;0;0;1;1;0;0;cooking;cook for the family after 16:30;Food;
+eat small breakfast (25min) interruping subaff, no alarm;1;0;0;0;1;0;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (children);1;0;0;0;1;0;0;0;hygiene;get ready in the morning (children);Hygiene;
+go to the toilet;3;0;0;0;2;1;0;0;hygiene;go to the toilet;Hygiene;
+take a shower (men);1;0;0;0;0;1;0;0;hygiene;take a shower (men);Hygiene;
+play board games (1 h);1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+play digital piano (1 h);1;0;0;0;1;0;0;0;recreation;play digital piano (1 h);Hobby;
+play in the garden;1;0;0;0;0;1;0;0;recreation;play in the garden;Games;
+relax in the garden 2;1;0;0;0;1;0;0;0;recreation;relax in the garden 2;Hobby;
+use the computer (1_5 h);1;0;0;0;1;0;0;0;recreation;use the computer (1_5 h);Media Use;
+use the laptop (1 h);1;0;0;0;0;1;0;0;recreation;use the laptop (1 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);2;0;0;0;1;1;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+watch TV with someone (watch a movie for 1 h 30 min with home cinema system);1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+watch a movie for 1 h 30 min with home cinema system;1;0;0;0;1;0;0;0;recreation;watch a movie for 1 h 30 min with home cinema system;Media Use;
+watch a movie for 2 h with home cinema system;1;0;0;0;0;1;0;0;recreation;watch a movie for 2 h with home cinema system;Media Use;
+sleep bed 03 (10 h) Child;2;0;0;0;1;1;0;0;sleeping;sleep bed 03 (10 h) Child;Sleep;
+wake up by alarm clock C;2;0;0;0;1;1;0;0;sleeping;wake up by alarm clock C;Sleep;
+go to primary school for 6h every day, with vacation;2;0;0;0;1;1;0;0;work;go to primary school for 6h every day, with vacation;Work / School;
+-----
+CHR03 Ava (40/Female)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+do laundry at 30°C (by variable);1;0;0;0;1;0;0;0;cleaning;do laundry at 30°C (by variable);Unpaid Work;
+run the dryer with wet laundry, only below 15°C (by variable);1;0;0;0;0;1;0;0;cleaning;run the dryer with wet laundry, only below 15°C (by variable);Unpaid Work;
+cook for the family after 16:30;2;0;0;0;1;1;0;0;cooking;cook for the family after 16:30;Food;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+get ready in the morning (women);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (women);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+open bathroom window;1;0;0;0;1;0;0;0;hygiene;open bathroom window;Hygiene;
+take a shower with hair washing (women) (5 min hair drying);1;0;0;0;1;0;0;0;hygiene;take a shower with hair washing (women) (5 min hair drying);Hygiene;
+take a shower without hair washing (women);1;0;0;0;0;1;0;0;hygiene;take a shower without hair washing (women);Hygiene;
+exercise for 30 min on the treadmill;1;0;0;0;1;0;0;0;recreation;exercise for 30 min on the treadmill;Sport;
+play board games together (play board games (1 h));1;0;0;0;0;1;0;0;recreation;play board games (1 h);Games;
+use the computer (1_5 h);1;0;0;0;1;0;0;0;recreation;use the computer (1_5 h);Media Use;
+use the laptop for Internet, Movie, Music, News (2 h);1;0;0;0;1;0;0;0;recreation;use the laptop for Internet, Movie, Music, News (2 h);Media Use;
+sleep bed 02 (10 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 02 (10 h);Sleep;
+wake up by alarm clock B;2;0;0;0;1;1;0;0;sleeping;wake up by alarm clock B;Sleep;
+work as teacher;2;0;0;0;1;1;0;0;work;work as teacher;Work / School;

@@ -2,8 +2,8 @@
 %  FILE:  topology_district.m               (must run in the same folder)
 %
 %  Creates in the MATLAB workspace the variables:
-%     • N  (number of buses)                  • lineData   (topology)
-%     • idxLineMat  (row lookup matrix)       • fromBus, toBus, Zpu (opt.)
+%      • N  (number of buses)                 • lineData   (topology)
+%      • idxLineMat  (row lookup matrix)      • fromBus, toBus, Zpu (opt.)
 %
 %  ────────────────────────────────────────────────────────────────────────────
 %  WARNING
@@ -13,17 +13,27 @@
 %    automatically propagate to ALL scripts that call it.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% (Topo-0) STRESS TEST PARAMETER INJECTION
+global L_scale;
+if isempty(L_scale)
+    L_scale = 1.0; % Valore di default: rete normale
+end
+
 %% (Topo-1) General data
 N = 16;                   % bus 1 = slack
 
 %% (Topo-2) Reference LV line impedance
 Z_line_km = 0.20 + 1j*0.15;   % Ω/km   (Cu 4×150 mm² 3-phase 0.4 kV)
 
-%% (Topo-3) Branch lengths (km)
+%% (Topo-3) Branch lengths (km) - CON APPLICAZIONE L_scale SUI RAMI PERIFERICI
 L_1_2  = 0.03;                  % 30 m  → school
-L_1_3  = 0.05; L_3_4 = 0.05; L_4_5 = 0.05; L_5_6 = 0.05;           % shops
-L_1_7  = 0.15; L_7_8 = 0.08; L_8_9 = 0.08; L_9_10 = 0.08; L_10_11 = 0.08;
-L_1_12 = 0.15; L_12_13 = 0.08; L_13_14 = 0.08; L_14_15 = 0.08; L_15_16 = 0.08;
+L_1_3  = 0.05; L_3_4 = 0.05; L_4_5 = 0.05; L_5_6 = 0.05;            % shops
+L_1_7  = 0.15; L_7_8 = 0.08; 
+% Tratti terminali soggetti a indebolimento topologico:
+L_8_9  = 0.08 * L_scale; L_9_10 = 0.08 * L_scale; L_10_11 = 0.08 * L_scale;
+L_1_12 = 0.15; L_12_13 = 0.08; 
+% Tratti terminali soggetti a indebolimento topologico:
+L_13_14 = 0.08 * L_scale; L_14_15 = 0.08 * L_scale; L_15_16 = 0.08 * L_scale;
 
 %% (Topo-4) Per-unit conversion
 to_pu = @(Lkm) (Z_line_km*Lkm)/Zbase;       % anonymous function (uses Zbase)

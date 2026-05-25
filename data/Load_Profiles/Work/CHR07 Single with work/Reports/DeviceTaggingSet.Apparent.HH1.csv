@@ -1,0 +1,21 @@
+-----
+Destatis Water Usage Statistics
+Tag;Energy Used [kWh];Percentage;Reference Value;
+NoWater;0,00016558404595865412;0,8425;;
+Dishwashing;3,0959036527777784E-05;0,1575;;
+
+Sum;0,0001965430824864319;1;
+-----
+Energieagentur.NRW Tags
+Tag;Energy Used [kWh];Percentage;Reference Value;
+Light;3,1865725195337384E-06;0,0162;;
+Cooling;1,4450198555555544E-05;0,0735;;
+Office;3,176034874208511E-05;0,1616;;
+TV/Audio;2,0317588460932362E-05;0,1034;;
+Cooking;7,184793199897466E-05;0,3656;;
+Freezing;2,054560046469389E-05;0,1045;;
+Washing;3,4758052168788294E-06;0,0177;;
+Other;0;0,0000;;
+Dish washing;3,0959036527777784E-05;0,1575;;
+
+Sum;0,0001965430824864319;1;

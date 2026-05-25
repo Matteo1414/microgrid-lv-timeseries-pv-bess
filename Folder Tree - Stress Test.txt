@@ -1,0 +1,151 @@
+Microgrid_District_TimeSeries_PV_BESS - MPC/
+│
+├── data/
+│   ├── Load_Profiles/
+│   │   └── Work/
+│   │       ├── CHR02 Couple, 30 - 64 age, with work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR03 Family, 1 child, both at work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR07 Single with work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR22 Single woman, 1 child, with work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR44 Family with 2 children, 1 at work, 1 at home/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR52 Student Flatsharing (Ristorante)/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR56 Couple with 2 children, husband at work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHR59 Family, 3 children, parents without work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       ├── CHS04 Retired Couple, no work/
+│   │       │   └── Results/
+│   │       │       ├── SumProfiles.Electricity.csv
+│   │       │       └── SumProfiles.Reactive.csv
+│   │       └── CHS12 Shiftworker Couple/
+│   │           └── Results/
+│   │               ├── SumProfiles.Electricity.csv
+│   │               └── SumProfiles.Reactive.csv
+│   │
+│   ├── PV_Profiles/
+│   │   └── PV_Roma_kWp_2023.csv
+│   │
+│   └── scenarios/
+│       ├── scn0_passive.mat
+│       ├── scn1_3PV.mat
+│       ├── scn2_5PV_1BESS.mat
+│       ├── scn3_7PV_2BESS.mat
+│       └── scn4_k050.mat
+│       └── scn4_k060.mat
+│       └── scn4_k070.mat
+│       └── scn4_k080.mat
+│       └── scn4_k090.mat
+│       └── scn4_k100.mat
+│       └── scn4_k110.mat
+│       └── scn4_k120.mat
+│
+├── figs/
+│   ├── scn0_passive/
+│   ├── scn1_3PV/
+│   ├── scn2_5PV_1BESS/
+│   ├── scn3_7PV_2BESS/
+│   ├── scn4_8PV_4BESS/
+│   ├── scn4_k050/
+│   ├── scn4_k060/
+│   ├── scn4_k070/
+│   ├── scn4_k080/
+│   ├── scn4_k090/
+│   ├── scn4_k100/
+│   ├── scn4_k110/
+│   ├── scn4_k120/
+│   └── summary/
+│
+├── post/
+│   ├── utils/
+│   │   ├── energy_balance.m
+│   │   ├── kpi_monthly.m
+│   │   ├── plot_pv_profile.m
+│   │   ├── plot_pv_vs_load.m
+│   │   ├── plot_slack_power.m
+│   │   └── plot_voltage_map.m
+│   │
+│   ├── check_voltage_limits.m
+│   ├── check_voltage_limits_mpc
+│   ├── plot_selfsuff_monthly.m
+│   ├── plot_annual_ss_mpc.m
+│   ├── plot_daily_mpc.m
+│   ├── plot_monthly_mpc_all.m
+│   ├── plot_selfsuff_monthly.m
+│   ├── plot_selfsuff_vs_smartnodes_year.m
+│   ├── plot_sensitivity_mcp.m
+│   ├── plot_sizing_sensitivity.m 
+│   ├── post_process_day.m
+│   ├── post_process_day_mpc.m
+│   ├── post_process_year.m
+│   ├── post_process_year_mpc.m
+│   ├── run_all_post_processing.m
+│   └── run_all_postprocessing_mpc.m
+│
+├── results/
+│   ├── daily/
+│   ├── daily_mpc/
+│   ├── figs/
+│   └── summary/
+│
+├── src/
+│   ├── +utils/
+│   │   ├── dispatch_bess.m
+│   │   ├── empc_optimizer.m
+│   │   ├── get_forecast_15min.m
+│   │   ├── get_nodes.m
+│   │   ├── plot_residential_profiles.m
+│   │   ├── plot_synthetic_profiles.m
+│   │   ├── plot_total_microgrid.m
+│   │   ├── profiles_synthetic.m
+│   │   ├── profiles_synthetic_residential.m
+│   │   ├── read_pv_rome.m
+│   │   ├── read_pv_rome_kWp.m
+│   │   └── safeget.m
+│   │
+│   ├── bfs_powerflow_radial1.m
+│   ├── create_scenarios.m
+│   ├── pv_profile_hourly_kW_per_kWp.m
+│   ├── run_district_day.m
+│   ├── run_district_day_mpc.m
+│   ├── run_district_range.m
+│   ├── smoke_test_day.m
+│   └── topology_district.m
+├── YALMIP-master/
+├── compare_mpc.m
+├── compare_statcom.m
+├── Elenco funzioni              (File di testo/documentazione)  
+├── Folder Tree - Stress Test    (File di testo/documentazione)
+├── Functions - Stress Test      (File di testo/documentazione)
+├── generate_thesis_figures_mpc
+├── main.m
+├── main_mpc.m
+├── run_master_stresstests.m
+├── plot_battery_health.m
+├── generate_chap5_figures.m
+├── plot_thesis_results.m
+├── README                       (File di documentazione)
+├── shutdown.m
+├── startup.m
+└── verify_day_robust.m

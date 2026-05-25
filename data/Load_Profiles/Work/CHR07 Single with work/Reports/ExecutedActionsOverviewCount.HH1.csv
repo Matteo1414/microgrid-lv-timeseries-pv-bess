@@ -1,0 +1,21 @@
+-----
+CHR07 Christian (23/Male)
+Actions;Times of execution in the simulation period;Sunday;Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Basic Tagging;Tagging Set For Planning;Wo bleibt die Zeit;
+run the dishwasher (triggered);1;0;0;0;0;1;0;0;cleaning;run the dishwasher (triggered);Unpaid Work;
+cook coffee;2;0;0;0;1;1;0;0;cooking;cook coffee;Food;
+eat small breakfast (25min) interruping subaff, no alarm;2;0;0;0;1;1;0;0;cooking;eat small breakfast (25min) interruping subaff, no alarm;Food;
+make frozen pizza and eat it;1;0;0;0;1;0;0;0;cooking;make frozen pizza and eat it;Food;
+make soup;1;0;0;0;0;1;0;0;cooking;make soup;Food;
+get ready in the morning (men);2;0;0;0;1;1;0;0;hygiene;get ready in the morning (men);Hygiene;
+go to the toilet;4;0;0;0;2;2;0;0;hygiene;go to the toilet;Hygiene;
+open bathroom window;1;0;0;0;1;0;0;0;hygiene;open bathroom window;Hygiene;
+take a shower (men);2;0;0;0;1;1;0;0;hygiene;take a shower (men);Hygiene;
+turn on the dehumidifier below 15 °C outside after shower;1;0;0;0;1;0;0;0;hygiene;turn on the dehumidifier below 15 °C outside after shower;Hygiene;
+play computer games;1;0;0;0;0;1;0;0;recreation;play computer games;Media Use;
+use the computer (1 h);1;0;0;0;1;0;0;0;recreation;use the computer (1 h);Media Use;
+use the computer (1_5 h);2;0;0;0;1;1;0;0;recreation;use the computer (1_5 h);Media Use;
+use the computer (2 h);1;0;0;0;0;1;0;0;recreation;use the computer (2 h);Media Use;
+watch the news;1;0;0;0;0;1;0;0;recreation;watch the news;Media Use;
+go shopping for food in the supermarket (1_5 h);1;0;0;0;0;1;0;0;shopping;go shopping for food in the supermarket (1_5 h);Unpaid Work;
+sleep bed 01 (08 h);2;0;0;0;1;1;0;0;sleeping;sleep bed 01 (08 h);Sleep;
+work at the office (09 h);2;0;0;0;1;1;0;0;work;work at the office (09 h);Work / School;

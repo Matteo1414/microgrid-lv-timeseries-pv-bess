@@ -1,0 +1,8 @@
+Device name;Usage sum in this simulation [L];Usage sum in this simulation linear extrapolated to 1 year [L];Comparison Value from the device entry [L];Percentage of the comparison value [1 = 100%];Device Category;Destatis Water Usage Statistics;
+Kitchen Sink (7.5L/min);7,089026986001384;1293,7474249452525;0;0;Kitchen equipment / Kitchen Sink;NoWater;
+Dishwashers / Bosch SGI 58M02 EU;33;6022,5;0;0;Kitchen equipment / Dishwashers;Dishwashing;
+Bathroom Sink 10L/min;0;0;0;0;Bath devices / Bathroom Sinks;Hygiene;
+Washing Machine / Bosch WOL 2450;191,79037620479983;35001,74365737597;0;0;Appliances / Washing machine;Laundry;
+Shower 12,5 L/min;0;0;0;0;Bath devices / Showers;Hygiene;
+Toilet 10L/min;630;114975;0;0;Bath devices / Toilet;Toilet;
+Sums;861,8794031908012;157292,9910823212;0
